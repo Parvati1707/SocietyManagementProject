@@ -1,0 +1,198 @@
+{% extends "validation/main.html" %}
+{% load static %}
+
+{% block css %}
+<!-- Owl Carousel -->
+<!-- --------------------------------------------------- -->
+<link rel="stylesheet" href="{% static 'mainpage/libs/owl.carousel/dist/assets/owl.carousel.min.css' %}">
+<!-- --------------------------------------------------- -->
+<!-- Prism Js -->
+<!-- --------------------------------------------------- -->
+<link rel="stylesheet" href="{% static 'mainpage/libs/prismjs/themes/prism-okaidia.min.css' %}">
+<!-- --------------------------------------------------- -->
+<!-- Core Css -->
+{% endblock css %}
+
+
+{% block main_block %}
+<form method="post" action="{% url "Citizen_Validation" %}">
+  {% csrf_token %}
+  <div class="col-lg-6" style="margin-left: 25%;">
+    <div class="card">
+      <div class="px-4 py-3 border-bottom">
+        <h5 class="card-title fw-semibold mb-0">Citizen Extra Detail</h5>
+      </div>
+      <div class="card-body p-4 border-bottom">
+        <h5 class="fs-4 fw-semibold mb-4">Account Details</h5>
+        <div class="mb-4 row align-items-center">
+          <label for="UserName" class="form-label fw-semibold col-sm-3 col-form-label text-end">UserName</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="UserName" id="UserName" placeholder="">
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="password" class="form-label fw-semibold col-sm-3 col-form-label text-end">Password</label>
+          <div class="col-sm-9">
+            <input type="password" class="form-control" name="password" id="password" placeholder="">
+          </div>
+        </div>
+        <br>
+        <h5 class="fs-4 fw-semibold mb-4">Society Details</h5>
+        <div class="mb-4 row align-items-center">
+          <label for="blockno" class="form-label fw-semibold col-sm-3 col-form-label text-end">Block
+            No.</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="blockno" id="blockno" placeholder="Block No. A">
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="houseno" class="form-label fw-semibold col-sm-3 col-form-label text-end">House
+            No.</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="houseno" id="houseno" placeholder="House No. 56">
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="Prof" class="form-label fw-semibold col-sm-3 col-form-label text-end">Resident Type</label>
+          <div class="col-sm-9">
+            <div class="input-group">
+          <select name="Resident" id="Resident" class="form-control">
+            <option value="Doctor">Owner</option>
+            <option value="Police">Tenant</option>                        
+          </select>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-4">
+        <h5 class="fs-4 fw-semibold mb-4">Personal Info</h5>
+        <div class="mb-4 row align-items-center">
+          <label for="fname" class="form-label fw-semibold col-sm-3 col-form-label text-end">First
+            Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="fname" id="fname" placeholder="">
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="name" class="form-label fw-semibold col-sm-3 col-form-label text-end">Last
+            Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="lname" id="lname" placeholder="">
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="email" class="form-label fw-semibold col-sm-3 col-form-label text-end">Email</label>
+          <div class="col-sm-9">
+            <div class="input-group border rounded-1">
+              <input type="email" name="email" id="email" class="form-control border-0" placeholder="">
+              <span class="input-group-text bg-transparent px-6 border-0" id="basic-addon1">@example.com</span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="TotalFamilyMembers" class="form-label fw-semibold col-sm-3 col-form-label text-end">Total Family
+            Mambers
+            Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="TotalFamilyMembers" id="TotalFamilyMembers" placeholder="">
+          </div>
+        </div>
+
+        <div class="mb-4 row align-items-center">
+          <label for="Adhar" class="form-label fw-semibold col-sm-3 col-form-label text-end">Adhar
+            Number
+          </label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="Adhar" id="Adhar" placeholder="">
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="DOB" class="form-label fw-semibold col-sm-3 col-form-label text-end">Birth
+            Date</label>
+          <div class="col-sm-9">
+            <div class="input-group">
+              <input id="DOB" name="DOB" class="form-control" type="date">
+            </div>
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="gender" class="form-label fw-semibold col-sm-3 col-form-label text-end">Gender</label><br>
+          <div class="col-sm-9">
+            <div class="input-group">
+              <input type="radio" class="form-label fw-semibold col-sm-3 col-form-label text-end" name="gender"
+                id="male"> Male
+              <input type="radio" class="form-label fw-semibold col-sm-3 col-form-label text-end" Name="gender"
+                id="female"> Female
+            </div>
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="Prof" class="form-label fw-semibold col-sm-3 col-form-label text-end">Profession</label>
+          <div class="col-sm-9">
+            <div class="input-group">
+          <select name="Prof" id="Prof" class="form-control">
+            <option value="Doctor">Doctor</option>
+            <option value="Police">Police</option>
+            <option value="Engineer">Engineer</option>
+            <option value="Lawyer">Lawyer</option>
+            <option value="Artist">Artist</option>
+            <option value="HouseWife">HouseWife</option>
+            <option value="Farmer">Farmer</option>
+            <option value="Other">Other</option>
+          </select>
+          </div>
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="phone" class="form-label fw-semibold col-sm-3 col-form-label text-end">Phone
+            no</label>
+          <div class="col-sm-9">
+            <div class="input-group">
+              <input type="text" class="form-control" name="phone" id="phone" placeholder="123 4567 201">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4 row align-items-center">
+          <label for="phone2" class="form-label fw-semibold col-sm-3 col-form-label text-end">Emergency PhoneNo.</label>
+          <div class="col-sm-9">
+            <div class="input-group">
+              <input type="text" class="form-control" name="phone2" id="phone2" placeholder="123 4567 201">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4 row align-items-center">
+          <label for="phone" class="form-label fw-semibold col-sm-3 col-form-label text-end">Address.</label>
+          <div class="col-sm-9">
+            <div class="input-group">
+             <textarea class="form-control" name="address" id="address" cols="70" rows="2">Write a Valid Address</textarea>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-9">
+            <div class="d-flex align-items-center gap-3">
+              <button type="submit" name="submit" value="submit"
+                class="btn btn-primary w-100 py-8 mb-4 rounded-2">Submit</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</form>
+
+{% block js %}
+
+<script src="{% static 'mainpage/libs/prismjs/prism.js' %}"></script>
+{% endblock js %}
+
+
+{% endblock main_block %}

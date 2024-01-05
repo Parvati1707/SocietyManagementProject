@@ -1,0 +1,86 @@
+{% extends "validation/main.html" %}
+{% load static %}
+
+{% block main_block %}
+<!-- Preloader -->
+<div class="preloader">
+  <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
+    alt="loader" class="lds-ripple img-fluid" />
+</div>
+<!-- Preloader -->
+<div class="preloader">
+  <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
+    alt="loader" class="lds-ripple img-fluid" />
+</div>
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed"
+  data-header-position="fixed">
+  <div class="position-relative overflow-hidden radial-gradient min-vh-100">
+    <div class="position-relative z-index-5">
+      <div class="row">
+        <div class="col-xl-7 col-xxl-8">
+          <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
+            <img
+              src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/backgrounds/login-security.svg"
+              alt="" class="img-fluid" width="500">
+          </div>
+        </div>
+        <div class="col-xl-5 col-xxl-4">
+          <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+            <div class="col-sm-8 col-md-6 col-xl-9">
+              <h2 class="mb-3 fs-7 fw-bolder">Digital Society</h2>
+              <div class="position-relative text-center my-4">
+                {% comment %}<span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
+                {% endcomment %}
+              </div>
+              <form method="post" action="Registration_Validation">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="UserName" class="form-label">UserName</label>
+                  <input type="text" class="form-control" name="UserName" id="UserName" aria-describedby="textHelp">
+                </div>
+                <div class="mb-4">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                </div>
+
+                <div class="mb-2">
+                  <label for="exampleInputPassword1" class="form-label">Resident Type</label>
+                </div>
+                
+                <div class="form_check">
+                  <input type="checkbox" name="role" id="Citizen" value="Citizen">
+                  <label for="Citizen">Citizen</label><br><br>
+                </div>
+
+                <div class="form_check">
+                  <input type="checkbox" name="role" id="Security" value="Security">
+                  <label for="Security">Security</label><br><br>
+                </div>
+
+                <div class="form_check">
+                  <input type="checkbox" name="role" id="Admin" value="Admin">
+                  <label for="Admin">Admin</label><br><br>
+                </div>
+
+                <div class="form_check">
+                  <input type="checkbox" name="role" id="Committee" value="Committee">
+                  <label for="Committee">Committee</label><br><br>
+                </div>
+
+                <button type="submit" name="submit" value="submit"
+                  class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sing Up</button>
+
+                <div class="d-flex align-items-center">
+                  <p class="fs-4 mb-0 text-dark">Already have an Account?</p>
+                  <a class="text-primary fw-medium ms-2" href="{% url "Login_Page" %}">Sign In</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main_block %}

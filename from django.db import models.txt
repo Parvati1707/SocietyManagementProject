@@ -1,0 +1,177 @@
+Email_Password=uvxz csbq cwpg nzeh
+app_Name=DigitalSociety
+
+from django.db import models
+
+# Create your models here.
+
+class Registration(models.Model):
+    UserName=models.CharField(max_length=50)
+    Password=models.CharField(max_length=50)
+    Role=models.CharField(max_length=50)
+
+class Citizen(models.Model):
+    Registration=models.ForeignKey(Registration, on_delete=models.CASCADE)
+    TotalFamilyMembers=models.CharField(max_length=50)
+    BlockNo=models.CharField(max_length=50)
+    HouseNo=models.CharField(max_length=50)
+    Resident_Type=models.CharField(max_length=50)
+    FirstName=models.CharField(max_length=50)
+    LastName=models.CharField(max_length=50)
+    Adhar_Number=models.CharField(max_length=50)
+    D_O_B=models.DateField()
+    Gender=models.CharField(max_length=50)
+    Email=models.EmailField(max_length=254)
+
+"""
+                               # **Admin Related Tables** 
+#Add Society
+
+class Add_Society(models.Model):
+    SID=models.AutoField(primary_key=True)
+    LoginID=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login 
+    Society_Name=models.CharField(max_length=50)
+    Address=models.CharField(max_length=50)
+    city=models.CharField(max_length=50)
+    PinCode=models.CharField(max_length=50)
+    NoHouse=models.CharField(max_length=50)
+    Image=models.ImageField()
+    EntryDate=models.DateField()
+
+#Add House
+
+class Add_Houses(models.Model):
+    HID=models.AutoField(primary_key=True)
+    SID=models.ForeignKey(Add_Society, on_delete=models.CASCADE)#ForeignKey of SID  form Add_Society
+    Login_ID=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login
+    Block_No=models.CharField(max_length=50)
+    House_Type=models.CharField(max_length=50)
+    Details=models.CharField(max_length=50)
+    Image=models.ImageField(upload_to=None)
+    Entry_Date=models.DateField()
+
+#Add New Block
+
+class Add_Block(models.Model):
+    BID=models.AutoField(primary_key=True)
+    SID=models.ForeignKey(Add_Society, on_delete=models.CASCADE)#ForeignKey of SID  form Add_Society
+    Login_ID=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login
+    Block_No=models.CharField(max_length=50)
+    No_Of_Block=models.CharField(max_length=50)
+    No_Of_Floors=models.CharField(max_length=50)
+    No_Of_Flats=models.CharField(max_length=50)
+
+                                 # **Committee Related Tables**                    
+#Meeting
+class Arrange_Meeting(models.Model):
+    MID=models.AutoField(primary_key=True)
+    Login_ID=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login
+    Meeting_Agenda=models.CharField(max_length=50)
+    Meeting_Datetime=models.DateTimeField()
+    Meeting_Conclusion=models.CharField( max_length=50)
+
+#Fund_Type
+
+class Fund_Type(models.Model):
+    F_typeID=models.AutoField(primary_key=True)
+    Fund_Type=models.CharField(max_length=30)
+
+#Fund_Request
+
+class Fund_Request(models.Model):
+    FID=models.AutoField(primary_key=True)
+    F_typeID=models.ForeignKey(Fund_Type, on_delete=models.CASCADE)#ForeignKey of Fund_type  form Fund_Type
+    DateTime=models.DateTimeField()
+
+#Notice_Type
+
+class Notice_Type(models.Model):
+    N_typeID=models.AutoField(primary_key=True)
+    Notice_Type=models.CharField(max_length=30)
+
+#Notice
+
+class Notice(models.Model):
+    NID=models.AutoField(primary_key=True)
+    N_typeID=models.ForeignKey(Notice_Type, on_delete=models.CASCADE)#ForeignKey of Notice_Type form Notice_Type 
+
+#Society_Event_type
+
+class Event_Type(models.Model):
+    E_typeID=models.AutoField(primary_key=True)
+    Event_Type=models.CharField(max_length=30)
+
+#Society_Event
+class Event(models.Model):
+    EID=models.AutoField(primary_key=True)
+    Event_Name=models.CharField(max_length=50)
+    E_typeID=models.ForeignKey(Event_Type, on_delete=models.CASCADE)#ForeignKey of Event_Type form Event_Type
+    DataTime=models.DateField()
+
+
+                                # **Citizen Related Tables**   
+
+#Complain_Type
+class Complain_Type(models.Model):
+    C_typeID=models.AutoField(primary_key=True)
+    Complain_Type=models.CharField(max_length=30)
+
+#Complain
+
+class Complain(models.Model):
+    Complain_ID=models.AutoField(primary_key=True)
+    Login_ID=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login
+    Subject=models.CharField(max_length=50)
+    C_typeID=models.ForeignKey(Complain_Type,on_delete=models.CASCADE)#ForeignKey of Complain_type  form Complain_Type
+    Reply=models.CharField(max_length=50)
+    Stuts=models.CharField(max_length=50)
+    EntryDate=models.DateTimeField()
+
+#Sell House
+
+class Rent(models.Model):
+    Sell_Id=models.AutoField(primary_key=True)
+    House_No=models.CharField(max_length=50)
+    SID=models.ForeignKey(Add_Society, on_delete=models.CASCADE)#ForeignKey of SID  form Add_Society
+    Login_Id=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login
+    Sell_Price=models.CharField(max_length=50)
+    Entry_Date=models.DateField()
+
+#Rent House
+
+class Sell(models.Model):
+    Rent_Id=models.AutoField(primary_key=True)
+    House_No=models.CharField(max_length=10)
+    SID=models.ForeignKey(Add_Society, on_delete=models.CASCADE)#ForeignKey of SID  form Add_Society
+    Login_Id=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login
+    Rent_Price=models.CharField(max_length=50)
+    Entry_Date=models.DateField()
+
+
+#Personal_event Booking
+
+class Personal_event_Booking(models.Model):
+    RID=models.AutoField(primary_key=True)
+    House_No=models.CharField(max_length=10)
+    SID=models.ForeignKey(Add_Society, on_delete=models.CASCADE)#ForeignKey of SID  form Add_Society
+    Login_Id=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login
+    Event_Name=models.CharField(max_length=20)
+    No_Of_Guest=models.CharField(max_length=50)
+    Entry_Date=models.DateField()
+
+
+                                # **Security Guard Related Tables**   
+
+class Guest_Entry(models.Model):
+    GID=models.AutoField(primary_key=True)
+    Login_Id=models.ForeignKey(Login, on_delete=models.CASCADE)#ForeignKey of Login_ID  form Login
+    Guest_Name=models.CharField(max_length=50)
+    Citzen_Name=models.CharField(max_length=50)
+    Reason=models.CharField(max_length=50)
+    DateTime=models.DateTimeField()
+    Contact=models.CharField(max_length=50)
+
+
+
+
+ """
