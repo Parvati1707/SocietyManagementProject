@@ -10,7 +10,7 @@ from django.db import IntegrityError
 def Send_OTP(request):
     otp=randint(1000,9999)
     request.session["otp"]
-    send_to=[request.session['login']]
+    send_to=[request.session['email']]
     send_from=settings.EMAIL_HOST_USER
     subject="Login Attemp"
     message=f"Hello! We Notice Activity in Email. OTP is :{otp}"
@@ -24,6 +24,7 @@ Home_Page_Link="Home_Page.html"
 Login_Page_Link="validation/Login_Page.html"
 Registration_Page_Link="validation/Registration_Page.html"
 Forgate_Password_Page_Link="validation/Forgate_Password_Page.html"
+OTP_Page_Link="validation/OTP_Page.html"
 
 #Citizen Pages..
 
@@ -54,6 +55,9 @@ def Registration_Page(request):
 def Forgate_Password_Page(request):
     return render(request,Forgate_Password_Page_Link)
 
+def OTP_Page(request):
+    return render(request,OTP_Page_Link)
+
 def Citizen_Registration_Page(request):
     return render(request,Citizen_Registration_Page_Link)
 
@@ -80,8 +84,8 @@ def Security_Profile_Page(request):
 
 def Login_Validation(request):
     login=SingUp.objects.get(Username=request.POST["Username"],Password=request.POST["password"])
+    request.session["Username"]=login.Username
     if login.Is_Admin==True:
-
         Send_OTP(request)
         return render(request,"Admin.html")
     elif login.Is_Citizen==True:
@@ -136,7 +140,26 @@ def Registration_Validation(request):
     return redirect(Registration_Page)
 
 def Forgate_Password_Validation(request):
-    pass
+    login=SingUp.objects.get(Username=request.session["Username"])
+    if login.Is_Citizen==True:     
+        citizen=Citizen_Registration.objects.get(singup=login)
+        if(citizen.Email==request.POST["email"]):
+            request.session['email']=citizen.Email
+            Send_OTP(request)
+        else:
+            print("invalid Email")
+    elif login.Is_Committee==True:      
+        pass
+    elif login.Is_Security==True:
+        pass
+
+    return redirect(Forgate_Password_Page)
+
+def OTP_varification(request):
+    if(request.POST["otp"]==request.session["otp"]):
+            pass
+    return redirect(OTP_Page)
+
 
 def Change_Password_Validation(request):
     pass

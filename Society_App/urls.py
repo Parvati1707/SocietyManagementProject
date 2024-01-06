@@ -7,6 +7,7 @@ urlpatterns = [
     path("Login_Page",Login_Page,name="Login_Page"),
     path("Registration_Page",Registration_Page,name="Registration_Page"),
     path("Forgate_Password_Page",Forgate_Password_Page,name="Forgate_Password_Page"),
+    path("OTP_Page",OTP_Page,name="OTP_Page"),
     path("Citizen_Registration_Page",Citizen_Registration_Page,name="Citizen_Registration_Page"),
     path("Committee_Registration_Page",Committee_Registration_Page,name="Committee_Registration_Page"),
     path("Security_Registration_Page",Security_Registration_Page,name="Security_Registration_Page"),

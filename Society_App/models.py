@@ -12,7 +12,7 @@ Gender_choice=(
 )
 
 class SingUp(models.Model):
-    Username=models.CharField(max_length=50,default="")
+    Username=models.CharField(max_length=50,default="",unique=True)
     Password=models.CharField(max_length=15,default="")
     Is_Admin=models.BooleanField(default=False)
     Is_Citizen=models.BooleanField(default=False)
@@ -23,7 +23,7 @@ class SingUp(models.Model):
         return self.Username
 
 class Citizen_Registration(models.Model):
-    singup=models.ForeignKey(SingUp, on_delete=models.CASCADE,unique=True)
+    singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     TotalMembers=models.CharField(max_length=50,default="")
     BlockNo=models.CharField(max_length=10,default="")
     HouseNo=models.CharField(max_length=10,default="")
