@@ -1,6 +1,23 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
+from random import randint
 from .models import *
+from django.db import IntegrityError
+
+
+def Send_OTP(request):
+    otp=randint(1000,9999)
+    send_to=[request.session['login']]
+    send_from=settings.EMAIL_HOST_USER
+    subject="Login Attemp"
+    message=f"Hello! We Notice Activity in Email. OTP is :{otp}"
+
+    print("Done")
+
+    send_mail(subject, message, send_from, send_to)
+
 # Create your views here.
 Home_Page_Link="Home_Page.html"
 Login_Page_Link="validation/Login_Page.html"
@@ -63,12 +80,20 @@ def Security_Profile_Page(request):
 def Login_Validation(request):
     login=SingUp.objects.get(Username=request.POST["Username"],Password=request.POST["password"])
     if login.Is_Admin==True:
+
+        Send_OTP(request)
         return render(request,"Admin.html")
     elif login.Is_Citizen==True:
+        request.session['login']=login.Username
+        Send_OTP(request)
         return redirect(Citizen_Profile_Page)
     elif login.Is_Committee==True:
+        request.session['login']=login.Username
+        Send_OTP(request)
         return redirect(Committee_Profile_Page)
     elif login.Is_Security==True:
+        request.session['login']=login.Username
+        Send_OTP(request)
         return redirect(Security_Profile_Page)
     else:
         print("You are Not Register ")
