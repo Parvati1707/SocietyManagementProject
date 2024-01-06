@@ -23,7 +23,7 @@ class SingUp(models.Model):
         return self.Username
 
 class Citizen_Registration(models.Model):
-    singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
+    singup=models.ForeignKey(SingUp, on_delete=models.CASCADE,unique=True)
     TotalMembers=models.CharField(max_length=50,default="")
     BlockNo=models.CharField(max_length=10,default="")
     HouseNo=models.CharField(max_length=10,default="")

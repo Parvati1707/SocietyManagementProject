@@ -9,6 +9,7 @@ from django.db import IntegrityError
 
 def Send_OTP(request):
     otp=randint(1000,9999)
+    request.session["otp"]
     send_to=[request.session['login']]
     send_from=settings.EMAIL_HOST_USER
     subject="Login Attemp"
