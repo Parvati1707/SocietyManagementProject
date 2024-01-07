@@ -16,7 +16,6 @@ def Send_OTP(request):
     message=f"Hello! We Notice Activity in Email. OTP is :{otp}"
 
     print(request.session["otp"])
-
     send_mail(subject, message, send_from, send_to)
 
 # Create your views here.
@@ -84,21 +83,22 @@ def Security_Profile_Page(request):
 
 def Login_Validation(request):
     login=SingUp.objects.get(Username=request.POST["Username"],Password=request.POST["password"])
-    request.session['Username']=login.Username
     if login.Is_Admin==True:
-        Send_OTP(request)
         return render(request,"Admin.html")
     elif login.Is_Citizen==True:
-        request.session['login']=login.Username
-        Send_OTP(request)
+        #request.session['login']=login.Username
+        #Send_OTP(request)
+        request.session['Username']=login.Username
         return redirect(Citizen_Profile_Page)
     elif login.Is_Committee==True:
-        request.session['login']=login.Username
-        Send_OTP(request)
+        #request.session['login']=login.Username
+        #Send_OTP(request)
+        request.session['Username']=login.Username
         return redirect(Committee_Profile_Page)
     elif login.Is_Security==True:
-        request.session['login']=login.Username
-        Send_OTP(request)
+        #request.session['login']=login.Username
+        #Send_OTP(request)
+        request.session['Username']=login.Username
         return redirect(Security_Profile_Page)
     else:
         print("You are Not Register ")
@@ -146,25 +146,39 @@ def Forgate_Password_Validation(request):
         request.session['email']=citizen.Email
         Send_OTP(request)
         return redirect(OTP_Page)
+    elif login.Is_Committee==True:
+        committee=Committee_Registration.objects.get(singup=login,Email=request.POST["email"])
+        request.session['email']=committee.Email
+        Send_OTP(request)
+        return redirect(OTP_Page)
+    elif login.Is_Security==True:
+        security=Security_Registration.objects.get(singup=login,Email=request.POST["email"])
+        request.session['email']=security.Email
+        Send_OTP(request)
+        return redirect(OTP_Page)
+    else:
+        print("Uername Not Exist")
+        return redirect(Forgate_Password_Page)
 
     return redirect(Forgate_Password_Page)
 
 
 def OTP_varification(request):
-    if int(request.POST["OTP"]==request.session['otp']):
-        print("Message",request.session['otp'])
+    print("MEass",request.session["otp"])
+    if int(request.POST["OTP"])==request.session["otp"]:
         login=SingUp.objects.get(Username=request.session['Username'])
-        if login.Is_Admin==True:
-            return render(request,"Admin.html")
-        elif login.Is_Citizen==True:
+        if login.Is_Citizen:
             return redirect(Citizen_Profile_Page)
-        elif login.Is_Committee==True:
+        elif login.Is_Committee:
             return redirect(Committee_Profile_Page)
-        elif login.Is_Security==True:
+        elif login.Is_Security:
             return redirect(Security_Profile_Page)
+        else:
+            print("Error")
+    else:
+        print("Invalid OTP")
 
     return redirect(OTP_Page)
-
 def Change_Password_Validation(request):
     pass
 
