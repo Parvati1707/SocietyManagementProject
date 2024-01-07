@@ -15,6 +15,8 @@ urlpatterns = [
     path("Committee_Profile_Page",Committee_Profile_Page,name="Committee_Profile_Page"),
     path("Security_Profile_Page",Security_Profile_Page,name="Security_Profile_Page"),
 
+    path("Logout",Logout,name="Logout"),
+
                                        #  Validations Urls
 
     path("Login_Validation",Login_Validation,name="Login_Validation"),

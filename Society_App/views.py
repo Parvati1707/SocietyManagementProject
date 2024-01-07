@@ -85,27 +85,25 @@ def Login_Validation(request):
     login=SingUp.objects.get(Username=request.POST["Username"],Password=request.POST["password"])
     if login.Is_Admin==True:
         return render(request,"Admin.html")
+
     elif login.Is_Citizen==True:
-        #request.session['login']=login.Username
-        #Send_OTP(request)
-        request.session['Username']=login.Username
         return redirect(Citizen_Profile_Page)
+
     elif login.Is_Committee==True:
-        #request.session['login']=login.Username
-        #Send_OTP(request)
-        request.session['Username']=login.Username
         return redirect(Committee_Profile_Page)
+
     elif login.Is_Security==True:
-        #request.session['login']=login.Username
-        #Send_OTP(request)
-        request.session['Username']=login.Username
         return redirect(Security_Profile_Page)
+        
     else:
         print("You are Not Register ")
         return redirect(Login_Page)
 
     return render(request,Login_Page)
 
+def Logout(request):
+    del request.session['Username']
+    return redirect(Login_Page)
 
 def Registration_Validation(request):
     rl=["Citizen","Security","Admin","Committee"]
@@ -140,7 +138,8 @@ def Registration_Validation(request):
     return redirect(Registration_Page)
 
 def Forgate_Password_Validation(request):
-    login=SingUp.objects.get(Username=request.session['Username'])
+    login=SingUp.objects.get(Username=request.POST["Username"])
+    request.session['Username']=login.Username
     if login.Is_Citizen==True:
         citizen=Citizen_Registration.objects.get(singup=login,Email=request.POST["email"])
         request.session['email']=citizen.Email
@@ -179,6 +178,7 @@ def OTP_varification(request):
         print("Invalid OTP")
 
     return redirect(OTP_Page)
+
 def Change_Password_Validation(request):
     pass
 
