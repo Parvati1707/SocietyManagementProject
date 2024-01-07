@@ -25,17 +25,13 @@
                     <p>We sent a verification code to your mobile. Enter the code from the mobile in the field below.</p>
                     <h6 class="fw-bolder">******1234</h6>
                   </div>
-                  <form method="post">
+                  <form method="post" action="{% url "OTP_varification" %}">
                     {% csrf_token %}
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label fw-semibold">Type your 6 digits security code</label>
+                      <label for="OTP" class="form-label fw-semibold">Type your 4 digits security code</label>
                       <div class="d-flex align-items-center gap-2 gap-sm-3">
-                        <input type="text" class="form-control" placeholder="">
-                        <input type="text" class="form-control" placeholder="">
-                        <input type="text" class="form-control" placeholder="">
-                        <input type="text" class="form-control" placeholder="">
-                        <input type="text" class="form-control" placeholder="">
-                        <input type="text" class="form-control" placeholder="">
+                        <input type="text" class="form-control" placeholder="Enter OTP" name="OTP" id="OTP">
+                        
                       </div>
                     </div>
                     <button type="submit" name="submit" value="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Verify My Account</button>

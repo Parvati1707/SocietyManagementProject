@@ -9,13 +9,13 @@ from django.db import IntegrityError
 
 def Send_OTP(request):
     otp=randint(1000,9999)
-    request.session["otp"]
+    request.session['otp']=otp
     send_to=[request.session['email']]
     send_from=settings.EMAIL_HOST_USER
     subject="Login Attemp"
     message=f"Hello! We Notice Activity in Email. OTP is :{otp}"
 
-    print("Done")
+    print(request.session["otp"])
 
     send_mail(subject, message, send_from, send_to)
 
@@ -84,7 +84,7 @@ def Security_Profile_Page(request):
 
 def Login_Validation(request):
     login=SingUp.objects.get(Username=request.POST["Username"],Password=request.POST["password"])
-    request.session["Username"]=login.Username
+    request.session['Username']=login.Username
     if login.Is_Admin==True:
         Send_OTP(request)
         return render(request,"Admin.html")
@@ -140,26 +140,30 @@ def Registration_Validation(request):
     return redirect(Registration_Page)
 
 def Forgate_Password_Validation(request):
-    login=SingUp.objects.get(Username=request.session["Username"])
-    if login.Is_Citizen==True:     
-        citizen=Citizen_Registration.objects.get(singup=login)
-        if(citizen.Email==request.POST["email"]):
-            request.session['email']=citizen.Email
-            Send_OTP(request)
-        else:
-            print("invalid Email")
-    elif login.Is_Committee==True:      
-        pass
-    elif login.Is_Security==True:
-        pass
+    login=SingUp.objects.get(Username=request.session['Username'])
+    if login.Is_Citizen==True:
+        citizen=Citizen_Registration.objects.get(singup=login,Email=request.POST["email"])
+        request.session['email']=citizen.Email
+        Send_OTP(request)
+        return redirect(OTP_Page)
 
     return redirect(Forgate_Password_Page)
 
-def OTP_varification(request):
-    if(request.POST["otp"]==request.session["otp"]):
-            pass
-    return redirect(OTP_Page)
 
+def OTP_varification(request):
+    if int(request.POST["OTP"]==request.session['otp']):
+        print("Message",request.session['otp'])
+        login=SingUp.objects.get(Username=request.session['Username'])
+        if login.Is_Admin==True:
+            return render(request,"Admin.html")
+        elif login.Is_Citizen==True:
+            return redirect(Citizen_Profile_Page)
+        elif login.Is_Committee==True:
+            return redirect(Committee_Profile_Page)
+        elif login.Is_Security==True:
+            return redirect(Security_Profile_Page)
+
+    return redirect(OTP_Page)
 
 def Change_Password_Validation(request):
     pass

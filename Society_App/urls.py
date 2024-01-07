@@ -22,4 +22,8 @@ urlpatterns = [
     path("Citizen_Validation",Citizen_Validation,name="Citizen_Validation"),
     path("Committee_Validation",Committee_Validation,name="Committee_Validation"),
     path("Security_Validation",Security_Validation,name="Security_Validation"),
+    path("Forgate_Password_Validation",Forgate_Password_Validation,name="Forgate_Password_Validation"),
+    path("OTP_varification",OTP_varification,name="OTP_varification"),
+
+    
 ]
