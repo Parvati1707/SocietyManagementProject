@@ -48,9 +48,11 @@
                 </a>
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
                   <li class="nav-item" >
-                    <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
-                      <i class="ti ti-power fs-6"></i>                      
-                    </button> 
+                   {% comment %}  <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                      <i class="ti ti-power fs-6"></i>
+                    </button>  {% endcomment %}
+                    
+                    <a href="{% url "Logout" %}"  class="border-0 bg-transparent text-primary ms-auto" >Logout</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -214,9 +216,8 @@
                                 <h6 class="mb-0 fs-4 fw-semibold">Mathew</h6>
                                 <span class="fs-2 text-dark">Designer</span>
                               </div>
-                              <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout" >
-                                <i class="ti ti-power fs-6"></i>
-                              </button>
+                             
+                              <a href="{% url "Logout" %}"aria-label="logout" >Logout</a>
                             </div>
                           </div>  
                           <a href="app-notes.html" class="py-8 px-7 d-flex align-items-center">

@@ -84,15 +84,18 @@ def Security_Profile_Page(request):
 def Login_Validation(request):
     login=SingUp.objects.get(Username=request.POST["Username"],Password=request.POST["password"])
     if login.Is_Admin==True:
+        request.session['Username']=login.Username
         return render(request,"Admin.html")
-
     elif login.Is_Citizen==True:
+        request.session['Username']=login.Username
         return redirect(Citizen_Profile_Page)
 
     elif login.Is_Committee==True:
+        request.session['Username']=login.Username
         return redirect(Committee_Profile_Page)
 
     elif login.Is_Security==True:
+        request.session['Username']=login.Username
         return redirect(Security_Profile_Page)
         
     else:
