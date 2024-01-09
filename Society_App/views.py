@@ -28,15 +28,15 @@ OTP_Page_Link="validation/OTP_Page.html"
 #Citizen Pages..
 
 Citizen_Registration_Page_Link="Citizen/Citizen_Registration.html"
-Citizen_Profile_Page_Link="Citizen/Citizen.html"
+Citizen_Profile_Page_Link="Citizen/Citizen_Profile.html"
 
 #Committee Pages..
 Committee_Registration_Page_Link="Committee/Committee_Registration.html"
-Committee_Profile_Page_Link="Committee/Committee.html"
+Committee_Profile_Page_Link="Committee/Committee_Profile.html"
 
 #Security Pages..
 Security_Registration_Page_Link="Security/Security_Registration.html"
-Security_Profile_Page_Link="Security/Security.html"
+Security_Profile_Page_Link="Security/Security_Profile.html"
 
 #Admin Pages..
 
