@@ -5,6 +5,7 @@ from django.conf import settings
 from random import randint
 from .models import *
 from django.db import IntegrityError
+from django.contrib import messages
 
 
 def Send_OTP(request):
@@ -109,11 +110,23 @@ def Logout(request):
     return redirect(Login_Page)
 
 def Registration_Validation(request):
-    rl=["Citizen","Security","Admin","Committee"]
+   # rl=["Citizen","Security","Admin","Committee"]
 
     if request.method=="POST":
         Role=request.POST.getlist('role') 
         print(Role)
+        
+        if request.POST["password"]!=request.POST["Coinfirmpassword"]:
+            messages.warning(request,"Password Doesn't Match")
+            return redirect(Registration_Page)
+
+        try:
+            if SingUp.objects.get(Username=request.POST["UserName"]):
+                messages.warning(request,"Username Already Exist")
+                return redirect(Registration_Page)
+        except:
+            pass
+        
         if Role==['Admin']:
             Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Is_Admin=True)
             #return redirect(Login_page)

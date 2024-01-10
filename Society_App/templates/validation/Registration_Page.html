@@ -28,11 +28,18 @@
         <div class="col-xl-5 col-xxl-4">
           <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
             <div class="col-sm-8 col-md-6 col-xl-9">
-              <h2 class="mb-3 fs-7 fw-bolder">Digital Society</h2>
+              <a class="navbar-brand me-0 py-0"> 
+                <img src="{% static 'mainpage/images/logos/Society.jpg' %}" height="100" alt="img-fluid" style="border-radius: 45%;">
+              </a>
               <div class="position-relative text-center my-4">
                 {% comment %}<span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
                 {% endcomment %}
               </div>
+              {% for message in messages  %}
+              <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong>OOPS!</strong> {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>{% endfor %}
               <form method="post" action="Registration_Validation">
                 {% csrf_token %}
                 <div class="mb-3">
@@ -42,6 +49,10 @@
                 <div class="mb-4">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-4">
+                  <label for="exampleInputPassword1" class="form-label">Coinfirm Password</label>
+                  <input type="password" name="Coinfirmpassword" class="form-control" id="exampleInputPassword1">
                 </div>
 
                 <div class="mb-2">
