@@ -364,7 +364,7 @@
     </div>
     <ul class="nav nav-pills user-profile-tab justify-content-end mt-2 bg-light-info rounded-2">
       <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-        <a class="nav-link active" aria-current="page" id="Arrange">Account Settings</a>
+        <a class="nav-link active" aria-current="page" id="Arrange" href="{% url "Account_Setting" %}">Account Settings</a>
       </li>
       
       <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
@@ -387,8 +387,8 @@
       </li>
     </ul>
 
-    {% block nav %}
-    {% endblock nav %}
+    {% block CitizenNav %}
+    {% endblock CitizenNav %}
     
   </div>
   <div class="dark-transparent sidebartoggler"></div>

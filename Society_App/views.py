@@ -26,25 +26,43 @@ Registration_Page_Link="validation/Registration_Page.html"
 Forgate_Password_Page_Link="validation/Forgate_Password_Page.html"
 OTP_Page_Link="validation/OTP_Page.html"
 
-#Citizen Pages..
+                                #Citizen Pages..
 
 Citizen_Registration_Page_Link="Citizen/Citizen_Registration.html"
 Citizen_Profile_Page_Link="Citizen/Citizen_Profile.html"
+Account_Setting_Page_Link="Citizen/Acount_Setting.html"
+Booking_Request_Page_Link="Citizen/Booking_Request.html"
+Complain_Page_Link="Citizen/Complain.html"
+Sell_Rent_House_Page_Link="Citizen/Sell_Rent_House.html"
+View_Events_Page_Link="Citizen/View_Events.html"
+View_Notice_Page_Link="Citizen/View_Notice.html"
 
-#Committee Pages..
+                                #Committee Pages..
+
 Committee_Registration_Page_Link="Committee/Committee_Registration.html"
 Committee_Profile_Page_Link="Committee/Committee_Profile.html"
-Arrange_Meeting_Link="Committee/Arrange_Meeting.html"
+Arrange_Meeting_Page_Link="Committee/Arrange_Meeting.html"
+Add_Event_Page_Link="Committee/Add_Event.html"
+Add_Notice_Page_Link="Committee/Add_Notice.html"
+Manage_complain_Page_Link="Committee/Manage_complain.html"
+Display_Owner_Information_Page_Link="Committee/Owner_info.html"
+Raise_Fund_Request_Page_Link="Committee/Raise_Fund_Request.html"
 
-#Security Pages..
+
+                                #Security Pages..
+
 Security_Registration_Page_Link="Security/Security_Registration.html"
 Security_Profile_Page_Link="Security/Security_Profile.html"
+Guest_entry_Page_Link="Security/Guest_entry.html"
+Make_Complain_Page_Link="Security/Complain.html"
+
 
 #Admin Pages..
 
+#--------------------------------------------------------------------------------------------------------------                                    
+
+
                                         # Start: Website Pages.. 
-
-
 
 def Index(request):
     return render(request,Home_Page_Link)
@@ -70,12 +88,6 @@ def Committee_Registration_Page(request):
 def Security_Registration_Page(request):
     return render(request,Security_Registration_Page_Link)
 
-def Citizen_Profile_Page(request):
-    return render(request,Citizen_Profile_Page_Link)
-
-def Committee_Profile_Page(request):
-    return render(request,Committee_Profile_Page_Link)
-
 def Security_Profile_Page(request):
     return render(request,Security_Profile_Page_Link)
 
@@ -83,9 +95,45 @@ def Security_Profile_Page(request):
 
                                         # End: Website Pages..
 
-def Arrange_Meeting(request):
-    return render(request,Arrange_Meeting_Link)
+#--------------------------------------------------------------------------------------------------------------                                      
 
+                                        #Start: Citizen Related Page ...     
+def Citizen_Profile_Page(request):
+    return render(request,Citizen_Profile_Page_Link)
+                                                                 
+def Account_Setting_Page(request):
+    return render(request,Account_Setting_Page_Link)
+
+def Sell_Rent_House_Page(request):
+    return render(request,Sell_Rent_House_Page_Link)
+
+def Make_Complain(request):
+    return render(request,Complain_Page_Link)
+
+def Booking_Request_Page(request):
+    return render(request,Booking_Request_Page_Link)
+
+def View_Notice_Page(request):
+    return render(request,View_Notice_Page_Link)
+
+def View_Events_Page(request):
+    return render(request,View_Events_Page_Link)
+
+                                        # End: Citizen Related Page..
+
+#--------------------------------------------------------------------------------------------------------------                                      
+
+                                        #Start: Committee Related Page ...
+def Committee_Profile_Page(request):
+    return render(request,Committee_Profile_Page_Link)
+
+def Arrange_Meeting(request):
+    return render(request,Arrange_Meeting_Page_Link)
+
+                                        # End: Committee Related Page..    
+
+#--------------------------------------------------------------------------------------------------------------                                      
+                                 
                                         #Start: Validation ...
 
 def Login_Validation(request):   
@@ -93,16 +141,16 @@ def Login_Validation(request):
         login=SingUp.objects.get(Username=request.POST["Username"])
         if login.Password==request.POST["password"]:
             if login.Is_Admin==True:
-                request.session['Username']=login.Username
+                request.session['Login_Name']=login.Username
                 return render(request,"Admin.html")
             elif login.Is_Citizen==True:
-                request.session['Username']=login.Username
+                request.session['Login_Name']=login.Username
                 return redirect(Citizen_Profile_Page)
             elif login.Is_Committee==True:
-                request.session['Username']=login.Username
+                request.session['Login_Name']=login.Username
                 return redirect(Committee_Profile_Page)
             elif login.Is_Security==True:
-                request.session['Username']=login.Username
+                request.session['Login_Name']=login.Username
                 return redirect(Security_Profile_Page)        
             else:
                 print("You are Not Register ")
@@ -190,7 +238,6 @@ def Forgate_Password_Validation(request):
 
     return redirect(Forgate_Password_Page)
 
-
 def OTP_varification(request):
     print("MEass",request.session["otp"])
     if int(request.POST["OTP"])==request.session["otp"]:
@@ -255,12 +302,14 @@ def Security_Validation(request):
     security.Gender=request.POST["gender"]
     security.save()
 
-    return redirect(Login_Page)
+    return redirect(Login_Page)                                   
+
+                                            #End: Validation ...
 
 
+#--------------------------------------------------------------------------------------------------------------                                      
 
-                                        #End: Validation ...
-                                     
+                                 
 
 
 
