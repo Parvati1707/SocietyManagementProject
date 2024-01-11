@@ -15,8 +15,13 @@ urlpatterns = [
     path("Committee_Profile_Page",Committee_Profile_Page,name="Committee_Profile_Page"),
     path("Security_Profile_Page",Security_Profile_Page,name="Security_Profile_Page"),
 
+                                       #  Committee Related Urls
+
+    path("Arrange_Meeting",Arrange_Meeting,name="Arrange_Meeting"),
+
                                        #  Validations Urls
                                     
+    path("Arrange_Meeting",Arrange_Meeting,name="Arrange_Meeting"),                                
     path("Logout",Logout,name="Logout"),
     path("Login_Validation",Login_Validation,name="Login_Validation"),
     path("Registration_Validation",Registration_Validation,name="Registration_Validation"),

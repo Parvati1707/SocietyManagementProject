@@ -34,6 +34,7 @@ Citizen_Profile_Page_Link="Citizen/Citizen_Profile.html"
 #Committee Pages..
 Committee_Registration_Page_Link="Committee/Committee_Registration.html"
 Committee_Profile_Page_Link="Committee/Committee_Profile.html"
+Arrange_Meeting_Link="Committee/Arrange_Meeting.html"
 
 #Security Pages..
 Security_Registration_Page_Link="Security/Security_Registration.html"
@@ -42,6 +43,8 @@ Security_Profile_Page_Link="Security/Security_Profile.html"
 #Admin Pages..
 
                                         # Start: Website Pages.. 
+
+
 
 def Index(request):
     return render(request,Home_Page_Link)
@@ -79,6 +82,9 @@ def Security_Profile_Page(request):
 
 
                                         # End: Website Pages..
+
+def Arrange_Meeting(request):
+    return render(request,Arrange_Meeting_Link)
 
                                         #Start: Validation ...
 
