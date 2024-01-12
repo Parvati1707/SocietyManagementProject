@@ -1,7 +1,6 @@
-{% extends "Citizen/Citizen_Profile.html" %}
-
+{% extends "Security/Security_Profile.html" %}
 {% load static %}
-{% block CitizenNav  %}
+{% block SecuritynAV %}
 <div class="card">
     <div class="card-body" style="margin-left:35%;">
         <h5 class="mb-4"> Society Complain Form</h5>
@@ -9,7 +8,7 @@
             <div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="tb-fname" name="Name" value={{citizen}} >
+                        <input type="text" class="form-control" id="tb-fname" name="Name" value={{security}} >
                         <label for="Name">complainer Name</label>
                     </div>
                 </div>
@@ -54,4 +53,4 @@
         </form>
     </div>
 </div>
-{% endblock CitizenNav  %}
+{% endblock SecuritynAV %}

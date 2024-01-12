@@ -1,4 +1,61 @@
 {% extends "Committee/committee_Profile.html" %}
 {% load static %}
 
-{% block CommitteeNav %}{% endblock CommitteeNav %}
+{% block CommitteeNav %}
+<div class="col-lg-6 d-flex align-items-stretch" style="margin-left: 25%;">
+    <!-- ---------------------
+                        start Complaint Form
+                    ---------------- -->
+    <div class="card w-100">
+        <form>
+            <div class="card-body">
+                <div class="d-flex no-block align-items-center">
+                    <h5 class="mb-3">Society Meeting Arangement Form</h5>
+                </div>              
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="com1" class="control-label col-form-label">Meeting Agenda</label>
+                            <input type="text" class="form-control" id="com1" name="agenda" placeholder=" Enter Meeting Agenda" />
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="datec" class="control-label col-form-label">Date Time of Meeting </label>
+                            <input type="date" name="meetingdatetime" class="form-control" id="datec" />
+                        </div>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label class="control-label col-form-label">Meeting Conclusion</label>
+                            <textarea class="form-control" id="exampleTextarea2" rows="2" name="Conclusion"
+                                placeholder=" Enter Meeting Conclusion"></textarea>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="p-3 border-top">
+                <div class="action-form">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info rounded-pill px-4 waves-effect waves-light">
+                            Send
+                        </button>
+                        <button type="submit" class="btn btn-dark rounded-pill px-4 waves-effect waves-light">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- ---------------------
+                        end Complaint Form
+                    ---------------- -->
+</div>
+
+{% endblock CommitteeNav %}

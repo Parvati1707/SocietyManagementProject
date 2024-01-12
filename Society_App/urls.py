@@ -19,12 +19,23 @@ urlpatterns = [
     path("Citizen_Account_Setting_Page",Citizen_Account_Setting_Page,name="Citizen_Account_Setting_Page"),
     path("Rent_House_Page",Rent_House_Page,name="Rent_House_Page"),
     path("Sell_House_Page",Sell_House_Page,name="Sell_House_Page"),
-    path("Make_Complain",Make_Complain,name="Make_Complain"),
+    path("Citizen_Complain",Citizen_Complain,name="Citizen_Complain"),
     path("Booking_Request_Page",Booking_Request_Page,name="Booking_Request_Page"),
 
                                        #  Committee Related Urls
 
     path("Arrange_Meeting",Arrange_Meeting,name="Arrange_Meeting"),
+    path("Committee_Account_Setting",Committee_Account_Setting,name="Committee_Account_Setting"),
+    path("Arrange_Meeting",Arrange_Meeting,name="Arrange_Meeting"),
+    path("Raise_fund_Request_Page",Raise_fund_Request_Page,name="Raise_fund_Request_Page"),
+    path("Add_Notice_Page",Add_Notice_Page,name="Add_Notice_Page"),
+    path("Add_Event_Page",Add_Event_Page,name="Add_Event_Page"),
+
+                                       #  Security Related Urls
+
+    path("Security_Account_Setting_Page",Security_Account_Setting_Page,name="Security_Account_Setting_Page"),
+    path("Guest_Entry_Page",Guest_Entry_Page,name="Guest_Entry_Page"),
+    path("Security_Complain",Security_Complain,name="Security_Complain"),
 
                                        #  Validations Urls
                                     

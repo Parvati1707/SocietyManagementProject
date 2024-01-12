@@ -57,10 +57,7 @@
               <i class="ti ti-align-justified fs-7"></i>
             </a>
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-              <li class="nav-item">                
-                
-                <a href="{% url "Logout" %}" class="border-0 bg-transparent text-primary ms-auto">SingOut</a>
-                </li>
+             
               
               <li class="nav-item">
                 <a class="nav-link notify-badge nav-icon-hover" href="javascript:void(0)" data-bs-toggle="offcanvas"
@@ -193,6 +190,10 @@
                         </div>
                       </a>  
                     </div>
+                    <div class="d-grid py-4 px-7 pt-8">
+                          
+                      <a href="{% url "Logout" %}" class="btn btn-outline-primary">Log Out</a>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -296,7 +297,7 @@
         <a class="nav-link" href="#">Notices</a>
       </li>
       <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-        <a class="nav-link" href="{% url "Make_Complain" %}">Complain</a>
+        <a class="nav-link" href="{% url "Citizen_Complain" %}">Complain</a>
       </li>
       <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
         <a class="nav-link" href="{% url "Booking_Request_Page" %}">Booking Request</a>

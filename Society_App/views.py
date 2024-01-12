@@ -44,7 +44,7 @@ View_Notice_Page_Link="Citizen/View_Notice.html"
 Committee_Registration_Page_Link="Committee/Committee_Registration.html"
 Committee_Profile_Page_Link="Committee/Committee_Profile.html"
 Arrange_Meeting_Page_Link="Committee/Arrange_Meeting.html"
-Committee_Account_Setting_Page_Link="Citizen/Acount_Setting.html"
+Committee_Account_Setting_Page_Link="Committee/Committee_Account_Setting.html"
 Add_Event_Page_Link="Committee/Add_Event.html"
 Add_Notice_Page_Link="Committee/Add_Notice.html"
 Manage_complain_Page_Link="Committee/Manage_complain.html"
@@ -56,9 +56,9 @@ Raise_Fund_Request_Page_Link="Committee/Raise_Fund_Request.html"
 
 Security_Registration_Page_Link="Security/Security_Registration.html"
 Security_Profile_Page_Link="Security/Security_Profile.html"
-Security_Guest_entry_Page_Link="Security/Guest_entry.html"
-Account_Setting_Page_Link="Citizen/Acount_Setting.html"
-Make_Complain_Page_Link="Security/Complain.html"
+Guest_entry_Page_Link="Security/Guest_entry.html"
+Security_Account_Setting_Page_Link="Security/Security_Account_Setting.html"
+Make_Complain_Page_Link="Security/Security_Complain.html"
 
 
 #Admin Pages..
@@ -97,11 +97,15 @@ def Security_Profile_Page(request):
 
 
 
-                                        # End: Website Pages..
+
 
 #--------------------------------------------------------------------------------------------------------------                                      
+                                        # End: Website Pages..
+
 
                                         #Start: Citizen Related Page ...     
+#-------------------------------------------------------------------------------------------------------------- 
+
 def Citizen_Profile_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     citizen=Citizen_Registration.objects.get(singup=login)
@@ -136,7 +140,7 @@ def Sell_House_Page(request):
     }
     return render(request,Sell_House_Page_Link,Contaxt)
 
-def Make_Complain(request):
+def Citizen_Complain(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     citizen=Citizen_Registration.objects.get(singup=login)
     Contaxt={
@@ -158,28 +162,107 @@ def View_Notice_Page(request):
 def View_Events_Page(request):
     return render(request,View_Events_Page_Link)
 
+
+
+#--------------------------------------------------------------------------------------------------------------                                      
                                         # End: Citizen Related Page..
 
-#--------------------------------------------------------------------------------------------------------------                                      
 
                                         #Start: Committee Related Page ...
-def Committee_Profile_Page(request):
-    if 'Login_Name' in request.session:
-        Load_Profile(request)
-        print(default_Dict)
-        return render(request,Committee_Profile_Page_Link,default_Dict)
+#-------------------------------------------------------------------------------------------------------------- 
 
-    return render(request,Committee_Profile_Page_Link)
+
+def Committee_Profile_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Contaxt={
+        "committee":committee
+    }
+
+    return render(request,Committee_Profile_Page_Link,Contaxt)
+
+def Committee_Account_Setting(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Contaxt={
+        "committee":committee
+    }
+    return render(request,Committee_Account_Setting_Page_Link,Contaxt)
 
 def Arrange_Meeting(request):
-    return render(request,Arrange_Meeting_Page_Link)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Contaxt={
+        "committee":committee
+    }
+    return render(request,Arrange_Meeting_Page_Link,Contaxt)
+ 
 
-                                        # End: Committee Related Page..    
+def Raise_fund_Request_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Contaxt={
+        "committee":committee
+    }
+    return render(request,Raise_Fund_Request_Page_Link,Contaxt)
 
-#--------------------------------------------------------------------------------------------------------------                                      
-                                 
+def Add_Notice_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Contaxt={
+        "committee":committee
+    }
+    return render(request,Add_Notice_Page_Link,Contaxt)
+
+def Add_Event_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Contaxt={
+        "committee":committee
+    }
+    return render(request,Add_Event_Page_Link,Contaxt)
+
+
+#--------------------------------------------------------------------------------------------------------------                                                            
+                                    # End: Committee Related Page..
+
+
+                                    # Start: Security Related Page..
+#-------------------------------------------------------------------------------------------------------------- 
+
+def Security_Account_Setting_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    security=Security_Registration.objects.get(singup=login)
+    Contaxt={
+        "security":security
+    }
+    return render(request,Security_Account_Setting_Page_Link,Contaxt)
+
+def Guest_Entry_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    security=Security_Registration.objects.get(singup=login)
+    Contaxt={
+        "security":security
+    }
+    return render(request,Guest_entry_Page_Link,Contaxt)
+
+def Security_Complain(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    security=Security_Registration.objects.get(singup=login)
+    Contaxt={
+        "security":security
+    }
+    return render(request,Make_Complain_Page_Link,Contaxt)
+
+
+
+
+#-------------------------------------------------------------------------------------------------------------- 
+                                    # Start: Security Related Page..
+                                    
+                                     
                                         #Start: Validation ...
-
+#-------------------------------------------------------------------------------------------------------------- 
 def Login_Validation(request):   
     try:
         login=SingUp.objects.get(Username=request.POST["Username"])
@@ -352,11 +435,13 @@ def Security_Validation(request):
 
     return redirect(Login_Page)                                   
 
-                                            #End: Validation ...
+
+
+
 
 
 #--------------------------------------------------------------------------------------------------------------                                      
-
+                                            #End: Validation ...
                                  
 
 
