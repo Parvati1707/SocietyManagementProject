@@ -17,6 +17,10 @@ urlpatterns = [
 
                                        #  Citizen Related Urls
     path("Citizen_Account_Setting_Page",Citizen_Account_Setting_Page,name="Citizen_Account_Setting_Page"),
+    path("Rent_House_Page",Rent_House_Page,name="Rent_House_Page"),
+    path("Sell_House_Page",Sell_House_Page,name="Sell_House_Page"),
+    path("Make_Complain",Make_Complain,name="Make_Complain"),
+    path("Booking_Request_Page",Booking_Request_Page,name="Booking_Request_Page"),
 
                                        #  Committee Related Urls
 

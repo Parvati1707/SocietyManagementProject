@@ -34,7 +34,8 @@ Citizen_Profile_Page_Link="Citizen/Citizen_Profile.html"
 Citizen_Account_Setting_Page_Link="Citizen/Acount_Setting.html"
 Booking_Request_Page_Link="Citizen/Booking_Request.html"
 Complain_Page_Link="Citizen/Complain.html"
-Sell_Rent_House_Page_Link="Citizen/Sell_Rent_House.html"
+Rent_House_Page_Link="Citizen/Rent_House.html"
+Sell_House_Page_Link="Citizen/Sell_House.html"
 View_Events_Page_Link="Citizen/View_Events.html"
 View_Notice_Page_Link="Citizen/View_Notice.html"
 
@@ -119,14 +120,37 @@ def Citizen_Account_Setting_Page(request):
     print(Contaxt)
     return render(request,Citizen_Account_Setting_Page_Link,Contaxt)
 
-def Sell_Rent_House_Page(request):
-    return render(request,Sell_Rent_House_Page_Link)
+def Rent_House_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    Contaxt={
+        "citizen":citizen
+    }
+    return render(request,Rent_House_Page_Link,Contaxt)
+
+def Sell_House_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    Contaxt={
+        "citizen":citizen
+    }
+    return render(request,Sell_House_Page_Link,Contaxt)
 
 def Make_Complain(request):
-    return render(request,Complain_Page_Link)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    Contaxt={
+        "citizen":citizen
+    }
+    return render(request,Complain_Page_Link,Contaxt)
 
 def Booking_Request_Page(request):
-    return render(request,Booking_Request_Page_Link)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    Contaxt={
+        "citizen":citizen
+    }
+    return render(request,Booking_Request_Page_Link,Contaxt)
 
 def View_Notice_Page(request):
     return render(request,View_Notice_Page_Link)

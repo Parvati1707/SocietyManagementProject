@@ -1,0 +1,57 @@
+{% extends "Citizen/Citizen_Profile.html" %}
+
+{% load static %}
+{% block CitizenNav  %}
+<div class="card">
+    <div class="card-body" style="margin-left:35%;">
+        <h5 class="mb-4"> Society Complain Form</h5>
+        <form>
+            <div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="tb-fname" name="Name" value={{citizen}} >
+                        <label for="Name">complainer Name</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <textarea name="" class="form-control" id="Subject" cols="30" rows="10" name="Subject" placeholder="Subject"></textarea>
+                        <label for="Subject">Subject</label>
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="tb-pwd" name="Complain_type" placeholder="Complain type" />
+                        <label for="Complain_type">Complain Type</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="tb-cpwd" name="Status" placeholder="Status" />
+                        <label for="Status">Status</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="datetime" class="form-control" id="tb-cpwd" name="Entry_Date" placeholder="Entry Date" />
+                        <label for="Entry Date">Entry Date</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-md-flex align-items-center mt-3">
+                       
+                        <div class="ms-auto mt-3 mt-md-0">
+                            <button type="submit" class="btn btn-info font-medium rounded-pill px-4">
+                                <div class="d-flex align-items-center">                                    
+                                    Make Complain
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock CitizenNav  %}
