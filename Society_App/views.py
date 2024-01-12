@@ -19,6 +19,7 @@ def Send_OTP(request):
     print(request.session["otp"])
     send_mail(subject, message, send_from, send_to)
 
+default_Dict={}
 # Create your views here.
 Home_Page_Link="Home_Page.html"
 Login_Page_Link="validation/Login_Page.html"
@@ -99,6 +100,11 @@ def Security_Profile_Page(request):
 
                                         #Start: Citizen Related Page ...     
 def Citizen_Profile_Page(request):
+    if 'Login_Name' in request.session:
+        Load_Profile(request)
+        print("Username",default_Dict)
+        return render(request,Citizen_Profile_Page_Link,default_Dict)
+
     return render(request,Citizen_Profile_Page_Link)
                                                                  
 def Account_Setting_Page(request):
@@ -131,6 +137,11 @@ def View_Events_Page(request):
 
                                         #Start: Committee Related Page ...
 def Committee_Profile_Page(request):
+    if 'Login_Name' in request.session:
+        Load_Profile(request)
+        print(default_Dict)
+        return render(request,Committee_Profile_Page_Link,default_Dict)
+
     return render(request,Committee_Profile_Page_Link)
 
 def Arrange_Meeting(request):
@@ -174,7 +185,23 @@ def Login_Validation(request):
 
     return render(request,Login_Page)
 
+def Load_Profile(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    if login.Is_Citizen==True:
+        citizen=Citizen_Registration.objects.get(singup=login)
+        default_Dict["profile_data"]=citizen
+    elif login.Is_Committee==True:
+        committee=Committee_Registration.objects.get(singup=login)
+        default_Dict["profile_data"]=committee
+    elif login.Is_Security==True:
+        security=Security_Registration.objects.get(singup=login)
+        default_Dict["profile_data"]=security
+    else:
+        messages.warning(request,"Session is not created")
+        return redirect(Login_Page)
+
 def Logout(request):
+    print(request.session['Login_Name'])
     del request.session['Login_Name']
     return redirect(Login_Page)
 
@@ -230,7 +257,7 @@ def Forgate_Password_Validation(request):
         Send_OTP(request)
         return redirect(OTP_Page)                  
     except:
-        messages.warning(request,"Incorrect Username")
+        messages.warning(request,"Please Enter a valid email")
         return redirect(Forgate_Password_Page)
 
     return redirect(Forgate_Password_Page)
