@@ -57,58 +57,11 @@
               <i class="ti ti-align-justified fs-7"></i>
             </a>
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-              <li class="nav-item">
-                {% comment %} <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button"
-                  aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
-                  <i class="ti ti-power fs-6"></i>
-                </button> {% endcomment %}
-                <a href="{% url "Logout" %}" class="border-0 bg-transparent text-primary ms-auto">Logout</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <img
-                    src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-flag-en.svg"
-                    alt="" class="rounded-circle object-fit-cover round-20">
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                  <div class="message-body" data-simplebar>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                      <div class="position-relative">
-                        <img
-                          src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-flag-en.svg"
-                          alt="" class="rounded-circle object-fit-cover round-20">
-                      </div>
-                      <p class="mb-0 fs-3">English (UK)</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                      <div class="position-relative">
-                        <img
-                          src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-flag-cn.svg"
-                          alt="" class="rounded-circle object-fit-cover round-20">
-                      </div>
-                      <p class="mb-0 fs-3">中国人 (Chinese)</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                      <div class="position-relative">
-                        <img
-                          src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-flag-fr.svg"
-                          alt="" class="rounded-circle object-fit-cover round-20">
-                      </div>
-                      <p class="mb-0 fs-3">français (French)</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                      <div class="position-relative">
-                        <img
-                          src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-flag-sa.svg"
-                          alt="" class="rounded-circle object-fit-cover round-20">
-                      </div>
-                      <p class="mb-0 fs-3">عربي (Arabic)</p>
-                    </a>
-                  </div>
-                </div>
-              </li>
+              <li class="nav-item">                
+                
+                <a href="{% url "Logout" %}" class="border-0 bg-transparent text-primary ms-auto">SingOut</a>
+                </li>
+              
               <li class="nav-item">
                 <a class="nav-link notify-badge nav-icon-hover" href="javascript:void(0)" data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
@@ -122,6 +75,8 @@
                   <i class="ti ti-bell-ringing"></i>
                   <div class="notification bg-primary rounded-circle"></div>
                 </a>
+                {% comment %} Notifications {% endcomment %}
+
                 <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up"
                   aria-labelledby="drop2">
                   <div class="d-flex align-items-center justify-content-between py-3 px-7">
@@ -205,6 +160,9 @@
                     </div>
                   </div>
                 </a>
+
+                {% comment %} User Profile {% endcomment %}
+
                 <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up"
                   aria-labelledby="drop1">
                   <div class="profile-dropdown position-relative" data-simplebar>
@@ -215,15 +173,15 @@
                       <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" class="rounded-circle" width="80"
                         height="80" alt="" />
                       <div class="ms-3">
-                        <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                        <span class="mb-1 d-block text-dark">Designer</span>
+                        <h5 class="mb-1 fs-3">{{citizen}}</h5>
+                        <span class="mb-1 d-block text-dark">Citizen</span>
                         <p class="mb-0 d-flex text-dark align-items-center gap-2">
-                          <i class="ti ti-mail fs-4"></i> info@modernize.com
+                          <i class="ti ti-mail fs-4"></i>{{citizen.singup.Email}}
                         </p>
                       </div>
                     </div>
                     <div class="message-body">
-                      <a href="page-user-profile.html" class="py-8 px-7 mt-8 d-flex align-items-center">
+                      <a href="{% url "Citizen_Account_Setting_Page" %}" class="py-8 px-7 mt-8 d-flex align-items-center">
                         <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                           <img
                             src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-account.svg"
@@ -233,46 +191,7 @@
                           <h6 class="mb-1 bg-hover-primary fw-semibold"> My Profile </h6>
                           <span class="d-block text-dark">Account Settings</span>
                         </div>
-                      </a>
-                      <a href="app-email.html" class="py-8 px-7 d-flex align-items-center">
-                        <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
-                          <img
-                            src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-inbox.svg"
-                            alt="" width="24" height="24">
-                        </span>
-                        <div class="w-75 d-inline-block v-middle ps-3">
-                          <h6 class="mb-1 bg-hover-primary fw-semibold">My Inbox</h6>
-                          <span class="d-block text-dark">Messages & Emails</span>
-                        </div>
-                      </a>
-                      
-                      <a href="app-notes.html" class="py-8 px-7 d-flex align-items-center">
-                        <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
-                          <img
-                            src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-tasks.svg"
-                            alt="" width="24" height="24">
-                        </span>
-                        <div class="w-75 d-inline-block v-middle ps-3">
-                          <h6 class="mb-1 bg-hover-primary fw-semibold">My Task</h6>
-                          <span class="d-block text-dark">To-do and Daily Tasks</span>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="d-grid py-4 px-7 pt-8">
-                      <div class="upgrade-plan bg-light-primary position-relative overflow-hidden rounded-4 p-4 mb-9">
-                        <div class="row">
-                          <div class="col-6">
-                            <h5 class="fs-4 mb-3 w-50 fw-semibold text-dark">Unlimited Access</h5>
-                            <button class="btn btn-primary text-white">Upgrade</button>
-                          </div>
-                          <div class="col-6">
-                            <div class="m-n4">
-                              <img src="{% static 'mainpage/images/backgrounds/unlimited-bg.png' %}" alt=""
-                                class="w-100">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      </a>  
                     </div>
                   </div>
                 </div>
@@ -323,7 +242,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <h5 class="fs-5 mb-0 fw-semibold">{{profile_data}}</h5>
+                  <h5 class="fs-5 mb-0 fw-semibold">{{citizen}}</h5>
                   <p class="mb-0 fs-4">Citizen</p>
                 </div>
               </div>
@@ -363,12 +282,12 @@
       </div>     
     </div>
     <ul class="nav nav-pills user-profile-tab justify-content-end mt-2 bg-light-info rounded-2">
+            
       <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-        <a class="nav-link" aria-current="page" id="Arrange" href="{% url "Account_Setting" %}">Account Settings</a>
+        <a class="nav-link" >Sell House</a>
       </li>
-      
       <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-        <a class="nav-link"href="{% url "Arrange_Meeting" %}">Sell/Rent</a>
+        <a class="nav-link" >Rent House</a>
       </li>
       <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
         <a class="nav-link" href="#">Events</a>

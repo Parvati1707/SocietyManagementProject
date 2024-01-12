@@ -16,7 +16,7 @@ urlpatterns = [
     path("Security_Profile_Page",Security_Profile_Page,name="Security_Profile_Page"),
 
                                        #  Citizen Related Urls
-    path("Account_Setting",Account_Setting_Page,name="Account_Setting"),
+    path("Citizen_Account_Setting_Page",Citizen_Account_Setting_Page,name="Citizen_Account_Setting_Page"),
 
                                        #  Committee Related Urls
 

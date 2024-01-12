@@ -31,7 +31,7 @@ OTP_Page_Link="validation/OTP_Page.html"
 
 Citizen_Registration_Page_Link="Citizen/Citizen_Registration.html"
 Citizen_Profile_Page_Link="Citizen/Citizen_Profile.html"
-Account_Setting_Page_Link="Citizen/Acount_Setting.html"
+Citizen_Account_Setting_Page_Link="Citizen/Acount_Setting.html"
 Booking_Request_Page_Link="Citizen/Booking_Request.html"
 Complain_Page_Link="Citizen/Complain.html"
 Sell_Rent_House_Page_Link="Citizen/Sell_Rent_House.html"
@@ -43,6 +43,7 @@ View_Notice_Page_Link="Citizen/View_Notice.html"
 Committee_Registration_Page_Link="Committee/Committee_Registration.html"
 Committee_Profile_Page_Link="Committee/Committee_Profile.html"
 Arrange_Meeting_Page_Link="Committee/Arrange_Meeting.html"
+Committee_Account_Setting_Page_Link="Citizen/Acount_Setting.html"
 Add_Event_Page_Link="Committee/Add_Event.html"
 Add_Notice_Page_Link="Committee/Add_Notice.html"
 Manage_complain_Page_Link="Committee/Manage_complain.html"
@@ -54,7 +55,8 @@ Raise_Fund_Request_Page_Link="Committee/Raise_Fund_Request.html"
 
 Security_Registration_Page_Link="Security/Security_Registration.html"
 Security_Profile_Page_Link="Security/Security_Profile.html"
-Guest_entry_Page_Link="Security/Guest_entry.html"
+Security_Guest_entry_Page_Link="Security/Guest_entry.html"
+Account_Setting_Page_Link="Citizen/Acount_Setting.html"
 Make_Complain_Page_Link="Security/Complain.html"
 
 
@@ -100,21 +102,22 @@ def Security_Profile_Page(request):
 
                                         #Start: Citizen Related Page ...     
 def Citizen_Profile_Page(request):
-    if 'Login_Name' in request.session:
-        Load_Profile(request)
-        print("Username",default_Dict)
-        return render(request,Citizen_Profile_Page_Link,default_Dict)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    Contaxt={
+        "citizen":citizen
+    }
 
-    return render(request,Citizen_Profile_Page_Link)
+    return render(request,Citizen_Profile_Page_Link,Contaxt)
                                                                  
-def Account_Setting_Page(request):
+def Citizen_Account_Setting_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     citizen=Citizen_Registration.objects.get(singup=login)
     Contaxt={
         "citizen":citizen
     }
     print(Contaxt)
-    return render(request,Account_Setting_Page_Link,Contaxt)
+    return render(request,Citizen_Account_Setting_Page_Link,Contaxt)
 
 def Sell_Rent_House_Page(request):
     return render(request,Sell_Rent_House_Page_Link)
