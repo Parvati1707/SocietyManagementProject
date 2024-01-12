@@ -102,7 +102,13 @@ def Citizen_Profile_Page(request):
     return render(request,Citizen_Profile_Page_Link)
                                                                  
 def Account_Setting_Page(request):
-    return render(request,Account_Setting_Page_Link)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    Contaxt={
+        "citizen":citizen
+    }
+    print(Contaxt)
+    return render(request,Account_Setting_Page_Link,Contaxt)
 
 def Sell_Rent_House_Page(request):
     return render(request,Sell_Rent_House_Page_Link)
@@ -143,15 +149,19 @@ def Login_Validation(request):
             if login.Is_Admin==True:
                 request.session['Login_Name']=login.Username
                 return render(request,"Admin.html")
+
             elif login.Is_Citizen==True:
-                request.session['Login_Name']=login.Username
+                request.session['Login_Name']=login.Username       
                 return redirect(Citizen_Profile_Page)
+
             elif login.Is_Committee==True:
                 request.session['Login_Name']=login.Username
                 return redirect(Committee_Profile_Page)
+
             elif login.Is_Security==True:
                 request.session['Login_Name']=login.Username
-                return redirect(Security_Profile_Page)        
+                return redirect(Security_Profile_Page)
+
             else:
                 print("You are Not Register ")
                 return redirect(Login_Page)
@@ -165,7 +175,7 @@ def Login_Validation(request):
     return render(request,Login_Page)
 
 def Logout(request):
-    del request.session['Username']
+    del request.session['Login_Name']
     return redirect(Login_Page)
 
 def Registration_Validation(request):
@@ -187,23 +197,23 @@ def Registration_Validation(request):
             pass
         
         if Role==['Admin']:
-            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Is_Admin=True)
+            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Email=request.POST["Email"],Is_Admin=True)
             #return redirect(Login_page)
             print("Role is Admin") 
         elif Role==['Committee']:
-            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Is_Committee=True)
+            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Email=request.POST["Email"],Is_Committee=True)
             Committee_Registration.objects.create(singup=Register)
             request.session["Register"]=Register.Username
             print("Role is Committee")
             return redirect(Committee_Registration_Page)
         elif Role==['Citizen']:
-            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Is_Citizen=True)
+            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Email=request.POST["Email"],Is_Citizen=True)
             Citizen_Registration.objects.create(singup=Register)
             request.session["Register"]=Register.Username
             print("Role is Citizen")
             return redirect(Citizen_Registration_Page)            
         elif Role==['Security']:
-            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Is_Security=True)
+            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Email=request.POST["Email"],Is_Security=True)
             Security_Registration.objects.create(singup=Register)
             request.session["Register"]=Register.Username
             print("Role is Security")
@@ -215,23 +225,10 @@ def Registration_Validation(request):
 
 def Forgate_Password_Validation(request):
     try:
-        login=SingUp.objects.get(Username=request.POST["Username"])
-        request.session['Username']=login.Username
-        if login.Is_Citizen==True:
-            citizen=Citizen_Registration.objects.get(singup=login,Email=request.POST["email"])
-            request.session['email']=citizen.Email
-            Send_OTP(request)
-            return redirect(OTP_Page)
-        elif login.Is_Committee==True:
-            committee=Committee_Registration.objects.get(singup=login,Email=request.POST["email"])
-            request.session['email']=committee.Email
-            Send_OTP(request)
-            return redirect(OTP_Page)
-        elif login.Is_Security==True:
-            security=Security_Registration.objects.get(singup=login,Email=request.POST["email"])
-            request.session['email']=security.Email
-            Send_OTP(request)
-            return redirect(OTP_Page)                  
+        login=SingUp.objects.get(Email=request.POST["email"])        
+        request.session['email']=login.Email
+        Send_OTP(request)
+        return redirect(OTP_Page)                  
     except:
         messages.warning(request,"Incorrect Username")
         return redirect(Forgate_Password_Page)
@@ -241,7 +238,7 @@ def Forgate_Password_Validation(request):
 def OTP_varification(request):
     print("MEass",request.session["otp"])
     if int(request.POST["OTP"])==request.session["otp"]:
-        login=SingUp.objects.get(Username=request.session['Username'])
+        login=SingUp.objects.get(Email=request.session['email'])
         if login.Is_Citizen:
             return redirect(Citizen_Profile_Page)
         elif login.Is_Committee:
@@ -270,7 +267,6 @@ def Citizen_Validation(request):
     citizen.Address=request.POST["address"]
     citizen.FirstName=request.POST["fname"]
     citizen.LastName=request.POST["lname"]
-    citizen.Email=request.POST["email"]
     citizen.Gender=request.POST["gender"]
     citizen.Profession=request.POST["Prof"]
     citizen.Resident_Type=request.POST["Resident"]
@@ -283,7 +279,6 @@ def Citizen_Validation(request):
 def Committee_Validation(request):
     register=SingUp.objects.get(Username=request.session["Register"])
     committee=Committee_Registration.objects.get(singup=register)
-    committee.Email=request.POST["email"]
     committee.AdharNumber=request.POST["Adhar"]
     committee.BirthDate=request.POST["DOB"]
     committee.Contact=request.POST["phone"]
@@ -294,8 +289,7 @@ def Committee_Validation(request):
 
 def Security_Validation(request):
     register=SingUp.objects.get(Username=request.session["Register"])
-    security=Security_Registration.objects.get(singup=register)
-    security.Email=request.POST["email"]
+    security=Security_Registration.objects.get(singup=register)    
     security.AdharNumber=request.POST["Adhar"]
     security.BirthDate=request.POST["DOB"]
     security.Contact=request.POST["phone"]
