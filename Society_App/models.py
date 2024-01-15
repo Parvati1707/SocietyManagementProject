@@ -14,7 +14,7 @@ Gender_choice=(
 class SingUp(models.Model):
     Username=models.CharField(max_length=50,default="",unique=True)
     Password=models.CharField(max_length=15,default="")
-    Email=models.EmailField(default="",max_length=30)#
+    Email=models.EmailField(default="",max_length=30)
     Is_Admin=models.BooleanField(default=False)
     Is_Citizen=models.BooleanField(default=False)
     Is_Committee=models.BooleanField(default=False)
@@ -38,7 +38,7 @@ class Citizen_Registration(models.Model):
     Profession=models.CharField(max_length=50,default="")#
     Contact=models.CharField(max_length=10,default="")#
     Contac2t=models.CharField(max_length=10,default="")#
-    Address=models.CharField(max_length=40,default="")#
+    Address=models.TextField(default="",max_length=40)
 
     def __str__(self):
         return self.singup.Username
@@ -66,10 +66,43 @@ class Security_Registration(models.Model):
     def __str__(self):
         return self.singup.Username
 
+          
 
 
-    
+#--------------------------------------------------------------------------------------------------------------
+#                                         
+                                        #Admin Related Tables
 
+#--------------------------------------------------------------------------------------------------------------
+class Add_Society(models.Model):
+    Society_Name=models.CharField(default="",max_length=20,unique=True)
+    Address=models.TextField(max_length=50)
+    City=models.CharField(default="",max_length=100)
+    PinCode=models.IntegerField(default="")
+    NoHouse=models.IntegerField(default="")
+    Society_Image=models.ImageField(upload_to="static/Society_images", height_field=None, width_field=None, max_length=None)
+    Entry_Date=models.DateField(auto_created=True,default="1990/23/12")
+
+    def __str__(self):
+        return self.Society_Name
+
+House_Choice={
+    ("1bhk","1BHK"),
+    ("2bhk","2BHK"),
+    ("3bhk","3BHK")
+}
+
+class Add_House(models.Model):
+    Society=models.ForeignKey(Add_Society, on_delete=models.CASCADE)
+    House_No=models.IntegerField(default=100)
+    Block_No=models.CharField(default="",max_length=50)
+    House_Type=models.CharField(choices=House_Choice,max_length=50)
+    Detail=models.TextField(default="")
+    Image=models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    Entry_Date=models.DateField(auto_created=True,default="1990/23/12")
+
+    def __str__(self):
+        return self.House_No
 
 
 

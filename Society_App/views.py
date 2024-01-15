@@ -61,7 +61,7 @@ Security_Account_Setting_Page_Link="Security/Security_Account_Setting.html"
 Make_Complain_Page_Link="Security/Security_Complain.html"
 
 
-#Admin Pages..
+
 
 #--------------------------------------------------------------------------------------------------------------                                    
 
