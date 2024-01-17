@@ -98,7 +98,7 @@ House_Choice={
 
 class Add_House(models.Model):
     Society_Name=models.ForeignKey(Add_Society, on_delete=models.CASCADE)
-    House_No=models.IntegerField(default=100)
+    House_No=models.IntegerField(default="")
     Block_No=models.ForeignKey(Add_New_Block, on_delete=models.CASCADE)
     House_Type=models.CharField(choices=House_Choice,max_length=50)
     Detail=models.TextField(default="")
@@ -113,14 +113,130 @@ class Add_House(models.Model):
 
 #--------------------------------------------------------------------------------------------------------------
    
+class Fund_Type(models.Model):
+    Fund_Name=models.CharField(default="", max_length=50)
+    def __str__(self):
+        return self.Fund_Name
+    
+
+class Raise_Fund(models.Model):
+    Fund_Type=models.ForeignKey(Fund_Type, on_delete=models.CASCADE)
+    DateTime=models.DateField(auto_created=True,default="2018-12-12")
+
 
 class Arrange_Meeting(models.Model):
-    Meet_Agenda=models.TextField(default=True)
+    Meet_Agenda=models.TextField(default="")
     DateTime=models.DateField(auto_created=True,default="2018-12-12")
     Meet_conclusion=models.TextField(default="")
 
+    def __str__(self):
+        return self.Meet_Agenda
+
+class Notice_Type(models.Model):
+    Notice_Name=models.CharField(default="", max_length=50)
+
+    def __str__(self):
+        return self.Notice_Name
+    
+class Notice(models.Model):
+    Notice=models.ForeignKey(Notice_Type, on_delete=models.CASCADE)
+    Subject=models.TextField(default="")
+    DateTime=models.DateField(auto_created=True,default="2018-12-12")
+
+    def __str__(self):
+        return self.Notice
+    
+class Event_Type(models.Model):
+    Event_Name=models.CharField(default="", max_length=50)
+
+    def __str__(self):
+        return self.Event_Name
+    
 
 
+class Society_Event(models.Model):
+    Event_Type=models.ForeignKey(Event_Type, on_delete=models.CASCADE)
+    DateTime=models.DateField(auto_created=True,default="2018-12-12")
 
+    def __str__(self):
+        return self.Event_Name
+    
+    
+#--------------------------------------------------------------------------------------------------------------
+                                     
+                                        #Start:Citizen Related Tables
+
+#--------------------------------------------------------------------------------------------------------------
+
+class Complain_Type(models.Model):
+    Complain_Name=models.CharField(default="", max_length=50)
+
+    def __str__(self):
+        return self.Complain_Name
+    
+class Complain(models.Model):
+    Citizen_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
+    Subject=models.TextField(default="")
+    Relpay=models.TextField(default="")
+    Status=models.CharField(default="Pending", max_length=50)
+    Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
+    Complain=models.ForeignKey(Complain_Type, on_delete=models.CASCADE)
+    
+
+class Sell_House(models.Model):
+    House_Id=models.ForeignKey(Add_House, on_delete=models.CASCADE)
+    Society_Id=models.ForeignKey(Add_Society, on_delete=models.CASCADE)
+    Citizen_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
+    Sell_Price=models.FloatField(default="",max_length=10)
+    Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
 
     
+class Rent_House(models.Model):
+    House_Id=models.ForeignKey(Add_House, on_delete=models.CASCADE)
+    Society_Id=models.ForeignKey(Add_Society, on_delete=models.CASCADE)
+    Citizen_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
+    Rent_Price=models.FloatField(default="",max_length=20)
+    Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
+
+
+class Personal_Event_Booking(models.Model):
+    House_Id=models.ForeignKey(Add_House, on_delete=models.CASCADE)
+    Society_Id=models.ForeignKey(Add_Society, on_delete=models.CASCADE)
+    Citizen_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
+    Event_Name=models.CharField(default="",max_length=50)
+    No_Of_Guest=models.IntegerField(default="")
+    Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
+    
+
+#--------------------------------------------------------------------------------------------------------------
+                                     
+                                        #End:Citizen Related Tables
+
+#--------------------------------------------------------------------------------------------------------------
+
+
+#--------------------------------------------------------------------------------------------------------------
+                                     
+                                        #Start:Security Related Tables
+
+#--------------------------------------------------------------------------------------------------------------
+
+
+class Guest_Entry(models.Model):
+    Security_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
+    Citizen_Name=models.ForeignKey(Citizen_Registration, on_delete=models.CASCADE)
+    Guest_Name=models.CharField(default="",max_length=50)
+    Reason_for_Comming=models.TextField(default="")
+    Contact=models.CharField(default="", max_length=50)
+    DateTime=models.DateField(auto_created=True,default="2018-12-12")
+
+    def __str__(self):
+        return self.Guest_Name
+    
+
+
+#--------------------------------------------------------------------------------------------------------------
+                                     
+                                        #End:Security Related Tables
+
+#--------------------------------------------------------------------------------------------------------------
