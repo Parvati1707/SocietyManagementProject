@@ -9,13 +9,8 @@ class Migration(migrations.Migration):
         ('Society_App', '0012_add_society_address_alter_add_society_society_name'),
     ]
 
-    operations = [
-        migrations.DeleteModel(
-            name='Add_Block',
-        ),
-        migrations.DeleteModel(
-            name='Add_House',
-        ),
+    operations = [      
+        
         migrations.AlterField(
             model_name='add_society',
             name='Society_Image',

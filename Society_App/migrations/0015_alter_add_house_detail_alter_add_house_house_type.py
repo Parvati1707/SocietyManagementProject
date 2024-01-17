@@ -15,9 +15,5 @@ class Migration(migrations.Migration):
             name='Detail',
             field=models.TextField(default=''),
         ),
-        migrations.AlterField(
-            model_name='add_house',
-            name='House_Type',
-            field=models.CharField(choices=[('2bhk', '2BHK'), ('1bhk', '1BHK'), ('3bhk', '3BHK')], max_length=50),
-        ),
+        
     ]

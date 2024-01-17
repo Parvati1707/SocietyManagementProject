@@ -10,11 +10,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='add_house',
-            name='House_Type',
-            field=models.CharField(choices=[('3bhk', '3BHK'), ('1bhk', '1BHK'), ('2bhk', '2BHK')], max_length=50),
-        ),
+        
         migrations.AlterField(
             model_name='add_society',
             name='Address',

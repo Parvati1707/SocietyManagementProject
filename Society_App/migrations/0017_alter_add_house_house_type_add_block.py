@@ -11,18 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='add_house',
-            name='House_Type',
-            field=models.CharField(choices=[('2bhk', '2BHK'), ('3bhk', '3BHK'), ('1bhk', '1BHK')], max_length=50),
-        ),
-        migrations.CreateModel(
-            name='Add_Block',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Block_No', models.IntegerField(default='')),
-                ('No_Of_Floors', models.IntegerField(default='')),
-                ('Society', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Society_App.add_society')),
-            ],
-        ),
+       
+        
     ]

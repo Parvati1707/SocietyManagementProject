@@ -14,11 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='add_house',
             name='Block_No',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Society_App.add_block'),
+            field=models.CharField(default="",max_length=50),
         ),
-        migrations.AlterField(
-            model_name='add_house',
-            name='House_Type',
-            field=models.CharField(choices=[('3bhk', '3BHK'), ('2bhk', '2BHK'), ('1bhk', '1BHK')], max_length=50),
-        ),
+        
     ]
