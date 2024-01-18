@@ -268,6 +268,7 @@ def Security_Complain(request):
 def Login_Validation(request):   
     try:
         login=SingUp.objects.get(Username=request.POST["Username"])
+        
         if login.Password==request.POST["password"]:
             if login.Is_Admin==True:
                 request.session['Login_Name']=login.Username
@@ -364,12 +365,17 @@ def Registration_Validation(request):
 
 def Forgate_Password_Validation(request):
     try:
-        login=SingUp.objects.get(Email=request.POST["email"])        
-        request.session['email']=login.Email
-        Send_OTP(request)
-        return redirect(OTP_Page)                  
+        login=SingUp.objects.get(Username=request.POST["Username"])  
+        request.session['Login_Name']=login.Username 
+        if login.Email == request.POST["email"]:   
+            request.session['email']=login.Email
+            Send_OTP(request)
+            return redirect(OTP_Page)   
+        else:
+            messages.warning(request,"Please Enter a valid email")
+            return redirect(Forgate_Password_Page)          
     except:
-        messages.warning(request,"Please Enter a valid email")
+        messages.warning(request,"Username Not Exist")
         return redirect(Forgate_Password_Page)
 
     return redirect(Forgate_Password_Page)
@@ -390,8 +396,75 @@ def OTP_varification(request):
 
     return redirect(OTP_Page)
 
-def Change_Password_Validation(request):
-    pass
+def Change_Password_Of_Citizen(request):
+    try:
+        login=SingUp.objects.get(Username=request.session['Login_Name'])
+        
+        if login.Password == request.POST["current_Password"]:
+            
+            if request.POST["new_password"] == request.POST["confirm_password"]:
+                print(login.Password)
+                login.Password = request.POST["new_password"]
+                login.save()
+                messages.warning(request,"Password Change Succssfully")
+                return redirect(Citizen_Account_Setting_Page)
+            else:
+                messages.warning(request,"Both Password Not Match....")
+                return redirect(Citizen_Account_Setting_Page)
+        else:
+            messages.warning(request,"Invalid Password")
+            return redirect(Citizen_Account_Setting_Page)
+
+        return redirect(Citizen_Account_Setting_Page)
+    except:
+        pass
+
+def Change_Password_Of_Committee(request):
+    try:
+        login=SingUp.objects.get(Username=request.session['Login_Name'])
+        
+        if login.Password == request.POST["current_Password"]:
+            
+            if request.POST["new_password"] == request.POST["confirm_password"]:
+                print(login.Password)
+                login.Password = request.POST["new_password"]
+                login.save()
+                messages.warning(request,"Password Change Succssfully")
+                return redirect(Committee_Account_Setting)
+            else:
+                messages.warning(request,"Both Password Not Match....")
+                return redirect(Committee_Account_Setting)
+        else:
+            messages.warning(request,"Invalid Password")
+            return redirect(Committee_Account_Setting)
+
+        return redirect(Committee_Account_Setting)
+    except:
+        pass
+
+def Change_Password_Of_Security(request):
+    try:
+        login=SingUp.objects.get(Username=request.session['Login_Name'])
+        
+        if login.Password == request.POST["current_Password"]:
+            
+            if request.POST["new_password"] == request.POST["confirm_password"]:
+                print(login.Password)
+                login.Password = request.POST["new_password"]
+                login.save()
+                messages.warning(request,"Password Change Succssfully")
+                return redirect(Security_Account_Setting_Page)
+            else:
+                messages.warning(request,"Both Password Not Match....")
+                return redirect(Security_Account_Setting_Page)
+        else:
+            messages.warning(request,"Invalid Password")
+            return redirect(Security_Account_Setting_Page)
+
+        return redirect(Security_Account_Setting_Page)
+    except:
+        pass
+
 
 def Citizen_Validation(request):
     register=SingUp.objects.get(Username=request.session["Register"])

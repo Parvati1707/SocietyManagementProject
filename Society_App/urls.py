@@ -48,6 +48,8 @@ urlpatterns = [
     path("Security_Validation",Security_Validation,name="Security_Validation"),
     path("Forgate_Password_Validation",Forgate_Password_Validation,name="Forgate_Password_Validation"),
     path("OTP_varification",OTP_varification,name="OTP_varification"),
-
+    path("Change_Password_Of_Citizen",Change_Password_Of_Citizen,name="Change_Password_Of_Citizen"),
+    path("Change_Password_Of_Security",Change_Password_Of_Security,name="Change_Password_Of_Security"),
+    path("Change_Password_Of_Committee",Change_Password_Of_Committee,name="Change_Password_Of_Committee"),
     
 ]
