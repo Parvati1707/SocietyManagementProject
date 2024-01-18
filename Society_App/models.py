@@ -33,6 +33,7 @@ class Citizen_Registration(models.Model):
     LastName=models.CharField(max_length=20,default="")#
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
+    Profession=models.CharField(default="", max_length=50)
     AdharNumber=models.CharField(max_length=20,default="")#
     Contact=models.CharField(max_length=10,default="")#
     Contac2t=models.CharField(max_length=10,default="")#

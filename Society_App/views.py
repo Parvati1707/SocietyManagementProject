@@ -118,6 +118,7 @@ def Citizen_Profile_Page(request):
 def Citizen_Account_Setting_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     citizen=Citizen_Registration.objects.get(singup=login)
+    citizen.BirthDate=citizen.BirthDate.strftime('%Y-%m-%d')
     Contaxt={
         "citizen":citizen
     }
@@ -184,6 +185,7 @@ def Committee_Profile_Page(request):
 def Committee_Account_Setting(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     committee=Committee_Registration.objects.get(singup=login)
+    committee.BirthDate=committee.BirthDate.strftime('%Y-%m-%d')
     Contaxt={
         "committee":committee
     }
@@ -233,6 +235,7 @@ def Add_Event_Page(request):
 def Security_Account_Setting_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     security=Security_Registration.objects.get(singup=login)
+    security.BirthDate=security.BirthDate.strftime('%Y-%m-%d')
     Contaxt={
         "security":security
     }
