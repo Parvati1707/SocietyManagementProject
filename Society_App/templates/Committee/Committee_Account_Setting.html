@@ -33,31 +33,35 @@
                                 <p class="card-subtitle mb-4">To change your password please confirm here</p>
 
                                 {% comment %} Change Password {% endcomment %}
-                                {% for message in messages  %}
+                                {% for message in messages %}
                                 <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-                                  <strong>OOPS!</strong> {{message}}
-                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <strong>OOPS!</strong> {{message}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>{% endfor %}
                                 <form action="{% url "Change_Password_Of_Committee" %}" method="post">
                                     {% csrf_token %}
                                     <div class="mb-4">
                                         <label for="current_Password" class="form-label fw-semibold">Current
                                             Password</label>
-                                        <input type="password" name="current_Password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" name="current_Password" class="form-control"
+                                            id="exampleInputPassword1">
                                     </div>
                                     <div class="mb-4">
                                         <label for="new_password" class="form-label fw-semibold">New
                                             Password</label>
-                                        <input type="password" name="new_password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" name="new_password" class="form-control"
+                                            id="exampleInputPassword1">
                                     </div>
                                     <div class="">
                                         <label for="confirm_password" class="form-label fw-semibold">Confirm
                                             Password</label>
-                                        <input type="password" name="confirm_password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" name="confirm_password" class="form-control"
+                                            id="exampleInputPassword1">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
-                                            <input type="submit" name="submit" class="btn btn-primary" value="Change" >
+                                            <input type="submit" name="submit" class="btn btn-primary" value="Change">
                                         </div>
                                     </div>
                                 </form>
@@ -70,47 +74,48 @@
                                 <h5 class="card-title fw-semibold">Personal Details</h5>
                                 <p class="card-subtitle mb-4">To change your personal detail , edit and save from here
                                 </p>
-                                
+
                                 {% comment %} Profile change {% endcomment %}
 
-                                
-                                <form method="post">
+
+                                <form method="post" action="{% url "Update_Committee_Profile" %}">
                                     {% csrf_token %}
                                     <div class="row">
-                                        <div class="col-lg-5"> 
+                                        <div class="col-lg-5">
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="username"
                                                     class="form-label fw-semibold">Username</label>
-                                                <input type="email" class="form-control" id="exampleInputtext"
-                                                    placeholder="info@modernize.com" value={{committee.singup.Username}}>
-                                            </div> 
-                                            <div class="mb-4">
-                                                <label for="exampleInputPassword1"
-                                                    class="form-label fw-semibold">Email</label>
-                                                <input type="email" class="form-control" id="exampleInputtext"
-                                                    placeholder="info@modernize.com" value={{committee.singup.Email}}>
+                                                <input type="text" class="form-control" id="username" name="username"
+                                                    placeholder="info@modernize.com"
+                                                    value={{committee.singup.Username}}>
                                             </div>
-                                            <div class="mb-4">                                                
+                                            <div class="mb-4">
+                                                <label for="email"
+                                                    class="form-label fw-semibold">Email</label>
+                                                <input type="email" class="form-control" id="email" name="email"
+                                                    placeholder="info@modernize.com" value={{committee.Email}}>
+                                            </div>
+                                            <div class="mb-4">
                                                 <div class="mb-4">
-                                                    <label for="exampleInputPassword1"
+                                                    <label for="contact"
                                                         class="form-label fw-semibold">Contact No.</label>
-                                                    <input type="text" class="form-control" id="exampleInputtext"
+                                                    <input type="text" class="form-control" id="contact" name="contact"
                                                         placeholder="+91 12345 65478" value={{committee.Contact}}>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="col-lg-6">
-                                           
-                                            
+
+
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="birthdate"
                                                     class="form-label fw-semibold">BirthDate</label>
-                                                <input type="date" class="form-control" id="exampleInputtext"
+                                                <input type="date" class="form-control" name="birthdate" id="birthdate"
                                                     placeholder="1999/12/15" value={{committee.BirthDate}}>
                                             </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="gender"
                                                     class="form-label fw-semibold">Gender</label>
                                                 <div class="mb-4">
                                                     <div class="input-group">
@@ -125,18 +130,18 @@
 
                                             </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="adharnumber"
                                                     class="form-label fw-semibold">AdharNumber</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
+                                                <input type="text" class="form-control" name="adharnumber" id="adharnumber"
                                                     placeholder="12345 65478" value={{committee.AdharNumber}}>
                                             </div>
-                                            
-                                            
-                                            
+
+
+
 
                                         </div>
-                                        
-                                        
+
+
                                         <div class="col-12">
                                             <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
                                                 <button class="btn btn-primary">Save</button>

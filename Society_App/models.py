@@ -14,7 +14,7 @@ Gender_choice=(
 class SingUp(models.Model):
     Username=models.CharField(max_length=50,default="",unique=True)
     Password=models.CharField(max_length=15,default="")
-    Email=models.EmailField(default="",max_length=30)
+    #Email=models.EmailField(default="",max_length=30)
     Is_Admin=models.BooleanField(default=False)
     Is_Citizen=models.BooleanField(default=False)
     Is_Committee=models.BooleanField(default=False)
@@ -31,6 +31,7 @@ class Citizen_Registration(models.Model):
     Resident_Type=models.CharField(choices=Resident_Choice,max_length=20,default="")
     FirstName=models.CharField(max_length=20,default="")#
     LastName=models.CharField(max_length=20,default="")#
+    Email=models.EmailField(default="",max_length=30)
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
     Profession=models.CharField(default="", max_length=50)
@@ -45,6 +46,7 @@ class Citizen_Registration(models.Model):
 class Committee_Registration(models.Model):
     singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Contact=models.CharField(max_length=10,default="")
+    Email=models.EmailField(default="",max_length=30)
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
     AdharNumber=models.CharField(max_length=20,default="")
@@ -56,6 +58,7 @@ class Committee_Registration(models.Model):
 class Security_Registration(models.Model):
     singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Contact=models.CharField(max_length=10,default="")
+    Email=models.EmailField(default="",max_length=30)
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
     AdharNumber=models.CharField(max_length=20,default="")

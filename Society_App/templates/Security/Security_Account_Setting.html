@@ -74,28 +74,28 @@
                                 {% comment %} Profile change {% endcomment %}
 
                                 
-                                <form method="post">
+                                <form method="post" action="{% url "Update_Security_Profile" %}">
                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-lg-5"> 
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="Username"
                                                     class="form-label fw-semibold">Username</label>
-                                                <input type="email" class="form-control" id="exampleInputtext"
-                                                    placeholder="info@modernize.com" value={{security.singup.Username}}>
+                                                <input type="text" class="form-control" id="Username" name="Username"
+                                                     value={{security.singup.Username}}>
                                             </div> 
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="Email"
                                                     class="form-label fw-semibold">Email</label>
-                                                <input type="email" class="form-control" id="exampleInputtext"
-                                                    placeholder="info@modernize.com" value={{security.singup.Email}}>
+                                                <input type="email" class="form-control" id="Email" name="Email"
+                                                     value={{security.Email}}>
                                             </div>
                                             <div class="mb-4">                                                
                                                 <div class="mb-4">
-                                                    <label for="exampleInputPassword1"
+                                                    <label for="Contact"
                                                         class="form-label fw-semibold">Contact No.</label>
-                                                    <input type="text" class="form-control" id="exampleInputtext"
-                                                        placeholder="+91 12345 65478" value={{security.Contact}}>
+                                                    <input type="text" class="form-control" id="Contact" name="Contact"
+                                                         value={{security.Contact}}>
                                                 </div>
                                             </div>
                                             
@@ -104,10 +104,10 @@
                                            
                                             
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="BirthDate"
                                                     class="form-label fw-semibold">BirthDate</label>
-                                                <input type="date" class="form-control" id="exampleInputtext"
-                                                    placeholder="1999/12/15" value={{security.BirthDate}}>
+                                                <input type="date" class="form-control" id="BirthDate" name="BirthDate"
+                                                 value={{security.BirthDate}}>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="exampleInputPassword1"
@@ -119,24 +119,17 @@
                                                             name="gender" id="male" value='m'> Male
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            Name="gender" id="female" value='f'> Female
+                                                            Name="gender" id="female" value='f' checked> Female
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="AdharNumber"
                                                     class="form-label fw-semibold">AdharNumber</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
-                                                    placeholder="12345 65478" value={{security.AdharNumber}}>
+                                                <input type="text" class="form-control" id="AdharNumber" name="AdharNumber"
+                                                     value={{security.AdharNumber}}>
                                             </div>
-                                            
-                                            
-                                            
-
                                         </div>
-                                        
-                                        
                                         <div class="col-12">
                                             <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
                                                 <button class="btn btn-primary">Save</button>

@@ -124,6 +124,29 @@ def Citizen_Account_Setting_Page(request):
     print(Contaxt)
     return render(request,Citizen_Account_Setting_Page_Link,Contaxt)
 
+def Update_citizen_Profile(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    citizen.TotalMembers=BlockNo=request.POST["TotalMembers"]
+    citizen.BlockNo=request.POST["BlockNo"]
+    citizen.HouseNo=request.POST["HouseNo"]
+    citizen.Contact=request.POST["Phone"]
+    citizen.Contac2t=request.POST["Phone2"]
+    citizen.AdharNumber=request.POST["AdharNumber"]
+    citizen.BirthDate=request.POST["birthday"]
+    citizen.Email=request.POST["email"]
+    citizen.Address=request.POST["Address"]
+    citizen.FirstName=request.POST["FirstName"]
+    citizen.LastName=request.POST["LastName"]
+    citizen.Gender=request.POST["gender"]
+    citizen.Profession=request.POST["Profession"]
+    citizen.Resident_Type=request.POST["Resident_Type"]
+
+    citizen.save()
+
+    return redirect(Citizen_Account_Setting_Page)
+
+
 def Rent_House_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     citizen=Citizen_Registration.objects.get(singup=login)
@@ -190,6 +213,18 @@ def Committee_Account_Setting(request):
     }
     return render(request,Committee_Account_Setting_Page_Link,Contaxt)
 
+def Update_Committee_Profile(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    committee.AdharNumber=request.POST["adharnumber"]
+    committee.BirthDate=request.POST["birthdate"]
+    committee.Contact=request.POST["contact"]
+    committee.Gender=request.POST["gender"]
+    committee.Email=request.POST["email"]
+    committee.save()
+    
+    return redirect(Committee_Account_Setting)
+
 def Arrange_Meeting(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     committee=Committee_Registration.objects.get(singup=login)
@@ -239,6 +274,19 @@ def Security_Account_Setting_Page(request):
         "security":security
     }
     return render(request,Security_Account_Setting_Page_Link,Contaxt)
+
+def Update_Security_Profile(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    security=Security_Registration.objects.get(singup=login)    
+    security.AdharNumber=request.POST["AdharNumber"]
+    security.BirthDate=request.POST["BirthDate"]
+    security.Contact=request.POST["Contact"]
+    security.Gender=request.POST["gender"]
+    security.Email=request.POST["Email"]
+    security.save()
+
+    return redirect(Security_Account_Setting_Page)                                   
+
 
 def Guest_Entry_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])

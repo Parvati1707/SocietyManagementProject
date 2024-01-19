@@ -70,83 +70,79 @@
                                 <p class="card-subtitle mb-4">To change your personal detail , edit and save from here
                                 </p>
                                 
-                                {% comment %} Profile change {% endcomment %}
-
-                                
-                                <form method="post">
+                                {% comment %} Profile change {% endcomment %}                                
+                                <form method="post" action="{% url "Update_citizen_Profile" %}">
                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-lg-5">
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1" class="form-label fw-semibold">First
+                                                <label for="FirstName" class="form-label fw-semibold">First
                                                     Name</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
+                                                <input type="text" class="form-control" id="FirstName" name="FirstName"
                                                      value={{citizen.FirstName}}>
                                             </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="Resident_Type"
                                                     class="form-label fw-semibold">Resident Type</label>
-                                                    <input type="text" class="form-control" id="exampleInputtext"
-                                                    placeholder="Resident_Type" value={{citizen.Resident_Type}}>
+                                                    <input type="text" class="form-control" id="Resident_Type" name="Resident_Type"
+                                                     value={{citizen.Resident_Type}}>
                                             </div>
-
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1" class="form-label fw-semibold">Block
+                                                <label for="BlockNo" class="form-label fw-semibold">Block
                                                     No.</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
-                                                    placeholder="blockno A" value={{citizen.BlockNo}}>
+                                                <input type="text" class="form-control" id="BlockNo" name="BlockNo"
+                                                    value={{citizen.BlockNo}}>
                                             </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1" class="form-label fw-semibold">House
+                                                <label for="HouseNo" class="form-label fw-semibold">House
                                                     No.</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
-                                                    placeholder="houseno 34" value={{citizen.HouseNo}}>
+                                                <input type="text" class="form-control" id="HouseNo" name="HouseNo"
+                                                     value={{citizen.HouseNo}}>
                                             </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="email"
                                                     class="form-label fw-semibold">Email</label>
-                                                <input type="email" class="form-control" id="exampleInputtext"
-                                                    placeholder="info@modernize.com" value={{citizen.singup.Email}}>
+                                                <input type="email" class="form-control" id="email" name="email"
+                                                     value={{citizen.Email}}>
                                             </div>
                                             <div class="mb-4">
                                                 <div class="mb-3">
-                                                    <label for="exampleInputPassword1"
+                                                    <label for="Address"
                                                         class="form-label fw-semibold">Address</label>
-                                                    <input type="text" class="form-control" id="exampleInputtext"
-                                                        placeholder="814 Howard Street, 120065, India" value={{citizen.Address}}>
+                                                    <input type="text" class="form-control" id="Address" name="Address"
+                                                         value={{citizen.Address}}>
                                                 </div>
                                                 <div class="mb-4">
-                                                    <label for="exampleInputPassword1"
+                                                    <label for="Phone2"
                                                         class="form-label fw-semibold">Phone2</label>
-                                                    <input type="text" class="form-control" id="exampleInputtext"
-                                                        placeholder="+91 12345 65478" value={{citizen.Contac2t}}>
+                                                    <input type="text" class="form-control" id="Phone2" name="Phone2"
+                                                        value={{citizen.Contac2t}}>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1" class="form-label fw-semibold">Last
+                                                <label for="LastName" class="form-label fw-semibold">Last
                                                     Name</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
-                                                    placeholder="Maxima Studio" value={{citizen.LastName}}>
+                                                <input type="text" class="form-control" id="LastName" name="LastName"
+                                                     value={{citizen.LastName}}>
                                             </div>
                                             <div class="mb-4 row align-items-center">
-                                                <label for="exampleInputPassword1" class="form-label fw-semibold">Profession</label>
-                                                <input type="text" class="form-control" id="exampleInputPassword1"
-                                                     value={{citizen.Profession}}>
-                                                
+                                                <label for="Profession" class="form-label fw-semibold">Profession</label>
+                                                <input type="text" class="form-control" id="Profession" name="Profession"
+                                                     value={{citizen.Profession}}>                                                    
                                               </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1" class="form-label fw-semibold">Total
+                                                <label for="TotalMembers" class="form-label fw-semibold">Total
                                                     Family Mambers</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
-                                                    placeholder="5" value={{citizen.TotalMembers}}>
+                                                <input type="text" class="form-control" id="TotalMembers" name="TotalMembers"
+                                                     value={{citizen.TotalMembers}}>
                                             </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="birthday"
                                                     class="form-label fw-semibold">BirthDate</label>
-                                                <input type="date" class="form-control" id="exampleInputtext"
-                                                    placeholder="1999/12/15" value={{citizen.BirthDate}}>
+                                                <input type="date" class="form-control" id="birthday" name="birthday"
+                                                     value={{citizen.BirthDate}}>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="exampleInputPassword1"
@@ -155,31 +151,26 @@
                                                     <div class="input-group">
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            name="gender" id="male" value={{citizen.Gender}}> Male
+                                                            name="gender" id="male" value="m" > Male
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            Name="gender" id="female" value={{citizen.Gender}}> Female
+                                                            Name="gender" id="female" value="f" checked=""> Female
                                                     </div>
                                                 </div>
                                             </div>
-                                            
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="AdharNumber"
                                                     class="form-label fw-semibold">AdharNumber</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
-                                                    placeholder="12345 65478" value={{citizen.AdharNumber}}>
+                                                <input type="text" class="form-control" id="AdharNumber" name="AdharNumber"
+                                                    value={{citizen.AdharNumber}}>
                                             </div>
                                             <div class="mb-4">
-                                                <label for="exampleInputPassword1"
+                                                <label for="Phone"
                                                     class="form-label fw-semibold">Phone</label>
-                                                <input type="text" class="form-control" id="exampleInputtext"
-                                                    placeholder="+91 12345 65478" value={{citizen.Contact}}>
+                                                <input type="text" class="form-control" id="Phone" name="Phone"
+                                                     value={{citizen.Contact}}>
                                             </div>
-                                            
-
                                         </div>
-                                        
-                                        
                                         <div class="col-12">
                                             <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
                                                 <button class="btn btn-primary">Save</button>
