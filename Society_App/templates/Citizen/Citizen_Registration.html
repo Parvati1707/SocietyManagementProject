@@ -22,7 +22,36 @@
       <div class="px-4 py-3 border-bottom">
         <h5 class="card-title fw-semibold mb-0">Citizen Extra Detail</h5>
       </div>
-     
+      <div class="card-body p-4">
+        <h5 class="fs-4 fw-semibold mb-4">Society Information</h5>
+        <div class="mb-4 row align-items-center">
+          <label for="blockno" class="form-label fw-semibold col-sm-3 col-form-label text-end">Block No
+            </label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="blockno" id="blockno" placeholder="">
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="houseno" class="form-label fw-semibold col-sm-3 col-form-label text-end">House No
+            </label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="houseno" id="houseno" placeholder="">
+          </div>
+        </div>
+        <div class="mb-4 row align-items-center">
+          <label for="Resident" class="form-label fw-semibold col-sm-3 col-form-label text-end">Resident type
+            </label>
+            <div class="col-sm-9">
+              <div class="input-group">
+            <select name="Resident" id="Resident" class="form-control">
+              <option value="owner">Owner</option>
+              <option value="tenant">Tenant</option>
+              
+            </select>
+            </div>
+            </div>  
+        </div>
+      </div>
       <div class="card-body p-4">
         <h5 class="fs-4 fw-semibold mb-4">Personal Info</h5>
         <div class="mb-4 row align-items-center">
@@ -39,12 +68,7 @@
             <input type="text" class="form-control" name="lname" id="lname" placeholder="">
           </div>
         </div>
-        <div class="mb-4 row align-items-center">
-          <label for="email" class="form-label fw-semibold col-sm-3 col-form-label text-end">Email</label>
-          <div class="col-sm-9">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email ">
-          </div>
-        </div>
+        
         <div class="mb-4 row align-items-center">
           <label for="TotalFamilyMembers" class="form-label fw-semibold col-sm-3 col-form-label text-end">Total Family
             Mambers

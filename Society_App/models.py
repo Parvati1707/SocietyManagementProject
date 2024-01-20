@@ -14,7 +14,7 @@ Gender_choice=(
 class SingUp(models.Model):
     Username=models.CharField(max_length=50,default="",unique=True)
     Password=models.CharField(max_length=15,default="")
-    #Email=models.EmailField(default="",max_length=30)
+    Email=models.EmailField(default="",max_length=30)
     Is_Admin=models.BooleanField(default=False)
     Is_Citizen=models.BooleanField(default=False)
     Is_Committee=models.BooleanField(default=False)
@@ -31,7 +31,7 @@ class Citizen_Registration(models.Model):
     Resident_Type=models.CharField(choices=Resident_Choice,max_length=20,default="")
     FirstName=models.CharField(max_length=20,default="")#
     LastName=models.CharField(max_length=20,default="")#
-    Email=models.EmailField(default="",max_length=30)
+    #Email=models.EmailField(default="",max_length=30)
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
     Profession=models.CharField(default="", max_length=50)
@@ -46,7 +46,7 @@ class Citizen_Registration(models.Model):
 class Committee_Registration(models.Model):
     singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Contact=models.CharField(max_length=10,default="")
-    Email=models.EmailField(default="",max_length=30)
+    #Email=models.EmailField(default="",max_length=30)
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
     AdharNumber=models.CharField(max_length=20,default="")
@@ -58,7 +58,7 @@ class Committee_Registration(models.Model):
 class Security_Registration(models.Model):
     singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Contact=models.CharField(max_length=10,default="")
-    Email=models.EmailField(default="",max_length=30)
+    #Email=models.EmailField(default="",max_length=30)
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
     AdharNumber=models.CharField(max_length=20,default="")
@@ -79,7 +79,7 @@ class Add_Society(models.Model):
     Address=models.TextField(max_length=50)
     City=models.CharField(default="",max_length=100)
     PinCode=models.IntegerField(default="")
-    NoHouse=models.IntegerField(default="")
+    No_Of_House=models.IntegerField(default="")
     Society_Image=models.ImageField(upload_to="static/Society_images", height_field=None, width_field=None, max_length=None)
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
 

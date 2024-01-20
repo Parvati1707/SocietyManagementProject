@@ -134,7 +134,6 @@ def Update_citizen_Profile(request):
     citizen.Contac2t=request.POST["Phone2"]
     citizen.AdharNumber=request.POST["AdharNumber"]
     citizen.BirthDate=request.POST["birthday"]
-    citizen.Email=request.POST["email"]
     citizen.Address=request.POST["Address"]
     citizen.FirstName=request.POST["FirstName"]
     citizen.LastName=request.POST["LastName"]
@@ -145,7 +144,6 @@ def Update_citizen_Profile(request):
     citizen.save()
 
     return redirect(Citizen_Account_Setting_Page)
-
 
 def Rent_House_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
@@ -162,6 +160,31 @@ def Sell_House_Page(request):
         "citizen":citizen
     }
     return render(request,Sell_House_Page_Link,Contaxt)
+
+def Insert_Sell_House(request):
+    try:
+        if Add_Society.objects.get(Society_Name=request.POST["Society_Name"]):
+            try:
+                if Add_House.objects.get(House_No=request.POST["House_No"]):
+
+                    login=SingUp.objects.get(Username=request.session['Login_Name'])
+                    Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])
+                    House=Add_House.objects.get(House_No=request.POST["House_No"])
+                    
+                    
+                    Sell=Sell_House.objects.create(Citizen_Id=login,Society_Id=Society,House_Id=House,Sell_Price=request.POST["Price"],Entry_Date=request.POST["Entry_Date"])
+                    
+                    print("Saved")
+
+            except:
+                messages.warning(request,"House Not Exist")
+                return redirect(Sell_House_Page) 
+    except:
+        messages.warning(request,"Society Not Exist")
+        return redirect(Sell_House_Page) 
+                
+
+    return redirect(Sell_House_Page)
 
 def Citizen_Complain(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
@@ -220,7 +243,6 @@ def Update_Committee_Profile(request):
     committee.BirthDate=request.POST["birthdate"]
     committee.Contact=request.POST["contact"]
     committee.Gender=request.POST["gender"]
-    committee.Email=request.POST["email"]
     committee.save()
     
     return redirect(Committee_Account_Setting)
@@ -233,7 +255,6 @@ def Arrange_Meeting(request):
     }
     return render(request,Arrange_Meeting_Page_Link,Contaxt)
  
-
 def Raise_fund_Request_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     committee=Committee_Registration.objects.get(singup=login)
@@ -282,11 +303,9 @@ def Update_Security_Profile(request):
     security.BirthDate=request.POST["BirthDate"]
     security.Contact=request.POST["Contact"]
     security.Gender=request.POST["gender"]
-    security.Email=request.POST["Email"]
     security.save()
 
     return redirect(Security_Account_Setting_Page)                                   
-
 
 def Guest_Entry_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
@@ -303,9 +322,6 @@ def Security_Complain(request):
         "security":security
     }
     return render(request,Make_Complain_Page_Link,Contaxt)
-
-
-
 
 #-------------------------------------------------------------------------------------------------------------- 
                                     # Start: Security Related Page..
@@ -513,7 +529,6 @@ def Change_Password_Of_Security(request):
     except:
         pass
 
-
 def Citizen_Validation(request):
     register=SingUp.objects.get(Username=request.session["Register"])
     citizen=Citizen_Registration.objects.get(singup=register)
@@ -535,7 +550,6 @@ def Citizen_Validation(request):
 
     return redirect(Login_Page)
 
-
 def Committee_Validation(request):
     register=SingUp.objects.get(Username=request.session["Register"])
     committee=Committee_Registration.objects.get(singup=register)
@@ -544,7 +558,6 @@ def Committee_Validation(request):
     committee.Contact=request.POST["phone"]
     committee.Gender=request.POST["gender"]
     committee.save()
-    
     return redirect(Login_Page)
 
 def Security_Validation(request):
@@ -557,10 +570,6 @@ def Security_Validation(request):
     security.save()
 
     return redirect(Login_Page)                                   
-
-
-
-
 
 
 #--------------------------------------------------------------------------------------------------------------                                      

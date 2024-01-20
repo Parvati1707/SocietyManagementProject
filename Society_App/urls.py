@@ -20,6 +20,7 @@ urlpatterns = [
     path("Update_citizen_Profile",Update_citizen_Profile,name="Update_citizen_Profile"),
     path("Rent_House_Page",Rent_House_Page,name="Rent_House_Page"),
     path("Sell_House_Page",Sell_House_Page,name="Sell_House_Page"),
+    path("Insert_Sell_House",Insert_Sell_House,name="Insert_Sell_House"),
     path("Citizen_Complain",Citizen_Complain,name="Citizen_Complain"),
     path("Booking_Request_Page",Booking_Request_Page,name="Booking_Request_Page"),
 
