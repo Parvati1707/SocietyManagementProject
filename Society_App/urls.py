@@ -15,7 +15,10 @@ urlpatterns = [
     path("Committee_Profile_Page",Committee_Profile_Page,name="Committee_Profile_Page"),
     path("Security_Profile_Page",Security_Profile_Page,name="Security_Profile_Page"),
 
+                                        # Admin Related Urls
+
     path("Admin_Profile_Page",Admin_Profile_Page,name="Admin_Profile_Page"),
+    path("Admin_Account_Setting_Page",Admin_Account_Setting_Page,name="Admin_Account_Setting_Page"),
     
                                        #  Citizen Related Urls
     path("Citizen_Account_Setting_Page",Citizen_Account_Setting_Page,name="Citizen_Account_Setting_Page"),
@@ -30,23 +33,29 @@ urlpatterns = [
     path("Insert_Sell_House",Insert_Sell_House,name="Insert_Sell_House"),
 
     path("Citizen_Complain",Citizen_Complain,name="Citizen_Complain"),
+
     path("Booking_Request_Page",Booking_Request_Page,name="Booking_Request_Page"),
 
                                        #  Committee Related Urls
 
-    path("Arrange_Meeting",Arrange_Meeting,name="Arrange_Meeting"),
     path("Committee_Account_Setting",Committee_Account_Setting,name="Committee_Account_Setting"),
     path("Update_Committee_Profile",Update_Committee_Profile,name="Update_Committee_Profile"),
+
     path("Arrange_Meeting",Arrange_Meeting,name="Arrange_Meeting"),
+
     path("Raise_fund_Request_Page",Raise_fund_Request_Page,name="Raise_fund_Request_Page"),
+
     path("Add_Notice_Page",Add_Notice_Page,name="Add_Notice_Page"),
+
     path("Add_Event_Page",Add_Event_Page,name="Add_Event_Page"),
 
                                        #  Security Related Urls
 
     path("Security_Account_Setting_Page",Security_Account_Setting_Page,name="Security_Account_Setting_Page"),
     path("Update_Security_Profile",Update_Security_Profile,name="Update_Security_Profile"),
+
     path("Guest_Entry_Page",Guest_Entry_Page,name="Guest_Entry_Page"),
+
     path("Security_Complain",Security_Complain,name="Security_Complain"),
 
                                        #  Validations Urls
@@ -63,5 +72,6 @@ urlpatterns = [
     path("Change_Password_Of_Citizen",Change_Password_Of_Citizen,name="Change_Password_Of_Citizen"),
     path("Change_Password_Of_Security",Change_Password_Of_Security,name="Change_Password_Of_Security"),
     path("Change_Password_Of_Committee",Change_Password_Of_Committee,name="Change_Password_Of_Committee"),
+    path("Change_Password_Of_Admin",Change_Password_Of_Admin,name="Change_Password_Of_Admin"),
     
 ]
