@@ -28,25 +28,30 @@
         <div class="col-xl-5 col-xxl-4">
           <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
             <div class="col-sm-8 col-md-6 col-xl-9">
-              <a class="navbar-brand me-0 py-0"> 
-                <img src="{% static 'mainpage/images/logos/Society.jpg' %}" height="100" alt="img-fluid" style="border-radius: 45%;">
+              <a class="navbar-brand me-0 py-0">
+                <img src="{% static 'mainpage/images/logos/Society.jpg' %}" height="100" alt="img-fluid"
+                  style="border-radius: 45%;">
               </a>
               <div class="position-relative text-center my-4">
                 {% comment %}<span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
                 {% endcomment %}
               </div>
-              {% for message in messages  %}
+
+              {% for message in messages %}
+              
               <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
                 <strong>OOPS!</strong> {{message}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>{% endfor %}
-              <form method="post" action="Registration_Validation">
+              </div>
+              
+              {% endfor %}
+              <form method="post" action="{% url "Registration_Validation" %}">
                 {% csrf_token %}
                 <div class="mb-3">
                   <label for="UserName" class="form-label">UserName</label>
                   <input type="text" class="form-control" name="UserName" id="UserName" aria-describedby="textHelp">
                 </div>
-                
+
                 <div class="mb-4">
                   <label for="exampleInputEmail" class="form-label">Email</label>
                   <input type="email" name="Email" class="form-control" id="exampleInputEmail">
@@ -63,7 +68,7 @@
                 <div class="mb-2">
                   <label for="exampleInputPassword1" class="form-label">Resident Type</label>
                 </div>
-                
+
                 <div class="form_check">
                   <input type="checkbox" name="role" id="Citizen" value="Citizen">
                   <label for="Citizen">Citizen</label><br><br>
@@ -72,11 +77,6 @@
                 <div class="form_check">
                   <input type="checkbox" name="role" id="Security" value="Security">
                   <label for="Security">Security</label><br><br>
-                </div>
-
-                <div class="form_check">
-                  <input type="checkbox" name="role" id="Admin" value="Admin">
-                  <label for="Admin">Admin</label><br><br>
                 </div>
 
                 <div class="form_check">

@@ -108,8 +108,19 @@ def Security_Profile_Page(request):
                                         # End: Website Pages..
 
 
+                                     #Start: Admin Related Page ...     
+#-------------------------------------------------------------------------------------------------------------- 
+
+
 def Admin_Profile_Page(request):
     return render(request,Admin_Profile_Page_Link)
+
+
+#-------------------------------------------------------------------------------------------------------------- 
+
+                                         #End: Admin Related Page ...  
+
+
                                         #Start: Citizen Related Page ...     
 #-------------------------------------------------------------------------------------------------------------- 
 
@@ -246,7 +257,7 @@ def View_Events_Page(request):
                                         # End: Citizen Related Page..
 
 
-                                        #Start: Committee Related Page ...
+                                    #Start: Committee Related Page ...
 #-------------------------------------------------------------------------------------------------------------- 
 
 
@@ -368,7 +379,7 @@ def Login_Validation(request):
         if login.Password==request.POST["password"]:
             if login.Is_Admin==True:
                 request.session['Login_Name']=login.Username
-                return render(request,"Admin.html")
+                return redirect(Admin_Profile_Page)
 
             elif login.Is_Citizen==True:
                 request.session['Login_Name']=login.Username       
@@ -430,13 +441,9 @@ def Registration_Validation(request):
                 messages.warning(request,"Username Already Exist")
                 return redirect(Registration_Page)
         except:
-            pass
+            pass        
         
-        if Role==['Admin']:
-            Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Email=request.POST["Email"],Is_Admin=True)
-            #return redirect(Login_page)
-            print("Role is Admin") 
-        elif Role==['Committee']:
+        if Role==['Committee']:
             Register=SingUp.objects.create(Username=request.POST["UserName"],Password=request.POST["password"],Email=request.POST["Email"],Is_Committee=True)
             Committee_Registration.objects.create(singup=Register)
             request.session["Register"]=Register.Username
@@ -486,6 +493,9 @@ def OTP_varification(request):
             return redirect(Committee_Profile_Page)
         elif login.Is_Security:
             return redirect(Security_Profile_Page)
+        elif login.Is_Admin:
+            return redirect(Admin_Profile_Page)
+       
     else:
         messages.warning(request,"Incorrect OTP")
         return redirect(OTP_Page)
