@@ -27,6 +27,11 @@ Registration_Page_Link="validation/Registration_Page.html"
 Forgate_Password_Page_Link="validation/Forgate_Password_Page.html"
 OTP_Page_Link="validation/OTP_Page.html"
 
+
+                                #Admin Pages..
+
+Admin_Profile_Page_Link="Admin/Admin.html"                  
+
                                 #Citizen Pages..
 
 Citizen_Registration_Page_Link="Citizen/Citizen_Registration.html"
@@ -59,6 +64,7 @@ Security_Profile_Page_Link="Security/Security_Profile.html"
 Guest_entry_Page_Link="Security/Guest_entry.html"
 Security_Account_Setting_Page_Link="Security/Security_Account_Setting.html"
 Make_Complain_Page_Link="Security/Security_Complain.html"
+
 
 
 
@@ -102,6 +108,8 @@ def Security_Profile_Page(request):
                                         # End: Website Pages..
 
 
+def Admin_Profile_Page(request):
+    return render(request,Admin_Profile_Page_Link)
                                         #Start: Citizen Related Page ...     
 #-------------------------------------------------------------------------------------------------------------- 
 
