@@ -30,7 +30,7 @@ OTP_Page_Link="validation/OTP_Page.html"
 
                                 #Admin Pages..
 
-Admin_Profile_Page_Link="Admin/Admin.html"                  
+Admin_Profile_Page_Link="Admin/Admin_Profile.html"                  
 
                                 #Citizen Pages..
 
