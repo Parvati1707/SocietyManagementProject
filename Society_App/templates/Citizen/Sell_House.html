@@ -16,7 +16,7 @@
                 <strong>OOPS!</strong> {{message}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>{% endfor %}
-        <form action="Insert_Sell_House" method="post">
+        <form action="{% url "Insert_Sell_House" %}" method="post">
             {% csrf_token %}
             <div>
                 <div class="col-md-6">
@@ -52,7 +52,7 @@
                 <div class="col-md-6">
                     <div class="d-md-flex align-items-center mt-3">
                        
-                        <div class="ms-auto mt-3 mt-md-0">
+                        <div class="ms-auto mt-3 mt-md-0">    
                             <button type="submit" class="btn btn-info font-medium rounded-pill px-4">
                                 <div class="d-flex align-items-center">                                    
                                     Sell House

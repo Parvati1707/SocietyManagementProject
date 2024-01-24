@@ -153,6 +153,32 @@ def Rent_House_Page(request):
     }
     return render(request,Rent_House_Page_Link,Contaxt)
 
+def Insert_Rent_House(request):
+    try:
+        if Add_Society.objects.get(Society_Name=request.POST["Society_Name"]):
+            try:
+                if Add_House.objects.get(House_No=request.POST["House_No"]):
+
+                    login=SingUp.objects.get(Username=request.session['Login_Name'])
+                    Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])
+                    House=Add_House.objects.get(House_No=request.POST["House_No"])
+                                        
+                    Rent=Rent_House.objects.create(Citizen_Id=login,Society_Id=Society,House_Id=House,Rent_Price=request.POST["Price"],Entry_Date=request.POST["Entry_Date"])
+                    
+                    messages.warning(request,"Succssfully Registered")
+                    return redirect(Rent_House_Page) 
+
+            except:
+                messages.warning(request,"House Not Exist")
+                return redirect(Rent_House_Page) 
+    except:
+        messages.warning(request,"Society Not Exist")
+        return redirect(Rent_House_Page) 
+                
+
+    return redirect(Rent_House_Page)
+
+
 def Sell_House_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     citizen=Citizen_Registration.objects.get(singup=login)
@@ -170,12 +196,10 @@ def Insert_Sell_House(request):
                     login=SingUp.objects.get(Username=request.session['Login_Name'])
                     Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])
                     House=Add_House.objects.get(House_No=request.POST["House_No"])
-                    
-                    
+                                        
                     Sell=Sell_House.objects.create(Citizen_Id=login,Society_Id=Society,House_Id=House,Sell_Price=request.POST["Price"],Entry_Date=request.POST["Entry_Date"])
                     
                     print("Saved")
-
             except:
                 messages.warning(request,"House Not Exist")
                 return redirect(Sell_House_Page) 

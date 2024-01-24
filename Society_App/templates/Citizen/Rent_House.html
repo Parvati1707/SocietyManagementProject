@@ -11,7 +11,13 @@
 <div class="card">
     <div class="card-body" style="margin-left:35%;">
         <h5 class="mb-4">Rent House</h5>
-        <form>
+        {% for message in messages  %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong>OOPS!</strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>{% endfor %}
+        <form method="post" action="{% url "Insert_Rent_House" %}">
+            {% csrf_token %}
             <div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
@@ -27,7 +33,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="tb-email" name="House_No" placeholder="name@example.com" />
+                        <input type="text" class="form-control" id="tb-email" value={{citizen.HouseNo}} name="House_No" placeholder="name@example.com" />
                         <label for="House_No">House No</label>
                     </div>
                 </div>
@@ -39,7 +45,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="datetime" class="form-control" id="tb-cpwd" name="Entry_Date" placeholder="Password" />
+                        <input type="date" class="form-control" id="tb-cpwd" name="Entry_Date" placeholder="Password" />
                         <label for="Entry_Date">Entry Date</label>
                     </div>
                 </div>
@@ -47,6 +53,11 @@
                     <div class="d-md-flex align-items-center mt-3">
                        
                         <div class="ms-auto mt-3 mt-md-0">
+                            <button type="submit" class="btn btn-info font-medium rounded-pill px-4">
+                                <div class="d-flex align-items-center">                                    
+                                    Update
+                                </div>
+                            </button>
                             <button type="submit" class="btn btn-info font-medium rounded-pill px-4">
                                 <div class="d-flex align-items-center">                                    
                                     Rent House

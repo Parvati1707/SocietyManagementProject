@@ -193,6 +193,7 @@ class Sell_House(models.Model):
     Citizen_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Sell_Price=models.FloatField(default="",max_length=10)
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
+    
 
     
 class Rent_House(models.Model):
