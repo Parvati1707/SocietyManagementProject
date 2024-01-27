@@ -19,37 +19,37 @@
         <form method="post" action="{% url "Insert_Rent_House" %}">
             {% csrf_token %}
             <div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="tb-fname" value={{citizen}} name="Name" placeholder="Enter complainer Name" />
                         <label for="Name">Citizen Name</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="tb-fname" name="Society_Name" placeholder="Enter Society Name" />
                         <label for="Society_Name">Society Name</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="tb-email" value={{citizen.HouseNo}} name="House_No" placeholder="name@example.com" />
                         <label for="House_No">House No</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="tb-pwd" name="Price" placeholder="Password" />
                         <label for="Price">Renting Price</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="date" class="form-control" id="tb-cpwd" name="Entry_Date" placeholder="Password" />
                         <label for="Entry_Date">Entry Date</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="d-md-flex align-items-center mt-3">
                        
                         <div class="ms-auto mt-3 mt-md-0">

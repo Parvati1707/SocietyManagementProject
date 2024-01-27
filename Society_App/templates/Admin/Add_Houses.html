@@ -1,0 +1,86 @@
+{% extends "Admin/Admin_Profile.html" %}
+
+{% load static %}
+
+{% block AdminContant %}
+
+<div class="card">
+    <div class="card-body" style="margin-left:25%;">
+        <h5 class="mb-4">Add House</h5>
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>OOPS!</strong> {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>{% endfor %}
+        <form action="{% url "Insert_Sell_House" %}" method="post">
+            {% csrf_token %}
+            <div>
+                <div class="col-md-8">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="Society_Name" name="Society_Name"
+                            placeholder="Enter Society Name" />
+                        <label for="Society_Name">Society Name</label>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="Block_No" name="Block_No"
+                            placeholder="Enter Block No." />
+                        <label for="Block_No">Block No.</label>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="House_No" name="House_No"
+                            placeholder="Enter House No." />
+                        <label for="House_No">House No.</label>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-floating mb-4">
+                        <select class="form-select" name="House_Type" id="House_Type">
+                            <option selected>Choose...</option>
+                            <option value="1bhk">1bhk</option>
+                            <option value="2bhk">2bhk</option>
+                            <option value="3bhk">3bhk</option>
+                        </select>
+                        <label for="House_Type">House Type</label>
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="Details" id="Details"  cols="70" rows="2"
+                            placeholder="Enter A Valid address"></textarea>
+                        <label for="Details"> House Details</label>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-floating mb-3">
+                        <input type="file" class="form-control" id="Upload_image" name="Upload_image"
+                            placeholder="Password" />
+                            <label for="Upload_image">House Image</label>   
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="d-md-flex align-items-center mt-3">
+
+                        <div class="ms-auto mt-3 mt-md-0">
+                            <button type="submit" class="btn btn-info font-medium rounded-pill px-4">
+                                <div class="d-flex align-items-center">
+                                    Submit
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock AdminContant %}

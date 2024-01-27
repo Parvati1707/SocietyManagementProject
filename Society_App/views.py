@@ -31,7 +31,10 @@ OTP_Page_Link="validation/OTP_Page.html"
                                 #Admin Pages..
 
 Admin_Profile_Page_Link="Admin/Admin_Profile.html"
-Admin_Account_Setting_Page_Link="Admin/Admin_Account_Settings.html"                  
+Admin_Account_Setting_Page_Link="Admin/Admin_Account_Settings.html"
+Add_Society_Page_Link="Admin/Add_Society.html"
+Add_Block_Page_Link="Admin/Add_Blocks.html"
+Add_Houses_Page_Link="Admin/Add_Houses.html"              
 
                                 #Citizen Pages..
 
@@ -53,7 +56,7 @@ Arrange_Meeting_Page_Link="Committee/Arrange_Meeting.html"
 Committee_Account_Setting_Page_Link="Committee/Committee_Account_Setting.html"
 Add_Event_Page_Link="Committee/Add_Event.html"
 Add_Notice_Page_Link="Committee/Add_Notice.html"
-Manage_complain_Page_Link="Committee/Manage_complain.html"
+Manage_complain_Page_Link="Committee/Manage_Complain.html"
 Display_Owner_Information_Page_Link="Committee/Owner_info.html"
 Raise_Fund_Request_Page_Link="Committee/Raise_Fund_Request.html"
 
@@ -128,13 +131,25 @@ def Admin_Account_Setting_Page(request):
     return render(request,Admin_Account_Setting_Page_Link,context)
 
 def Add_Society_Page(request):
-    pass
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    context={
+        "Login":login
+    }
+    return render(request,Add_Society_Page_Link,context)
 
 def Add_New_Block_Page(request):
-    pass
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    context={
+        "Login":login
+    }
+    return render(request,Add_Block_Page_Link,context)
 
 def Add_Houses_Page(request):
-    pass
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    context={
+        "Login":login
+    }
+    return render(request,Add_Houses_Page_Link,context)
 
 
 #-------------------------------------------------------------------------------------------------------------- 
