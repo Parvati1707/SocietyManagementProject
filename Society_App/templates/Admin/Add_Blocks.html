@@ -11,7 +11,7 @@
             <strong>OOPS!</strong> {{message}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>{% endfor %}
-        <form action="{% url "Insert_Sell_House" %}" method="post">
+        <form action="{% url "Add_Block" %}" method="post">
             {% csrf_token %}
             <div>
                 <div class="col-md-8">

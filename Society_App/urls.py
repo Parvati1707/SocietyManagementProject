@@ -21,10 +21,13 @@ urlpatterns = [
     path("Admin_Account_Setting_Page",Admin_Account_Setting_Page,name="Admin_Account_Setting_Page"),
 
     path("Add_Society_Page",Add_Society_Page,name="Add_Society_Page"),
+    path("Add_New_Society",Add_New_Society,name="Add_New_Society"),
 
     path("Add_New_Block_Page",Add_New_Block_Page,name="Add_New_Block_Page"),
+    path("Add_Block",Add_Block,name="Add_Block"),
 
     path("Add_Houses_Page",Add_Houses_Page,name="Add_Houses_Page"),
+    path("Add_house",Add_house,name="Add_house"),
     
                                        #  Citizen Related Urls
     path("Citizen_Account_Setting_Page",Citizen_Account_Setting_Page,name="Citizen_Account_Setting_Page"),

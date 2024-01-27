@@ -12,7 +12,7 @@
             <strong>OOPS!</strong> {{message}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>{% endfor %}
-        <form action="{% url "Insert_Sell_House" %}" method="post">
+        <form action="{% url "Add_house" %}" method="post">
             {% csrf_token %}
             <div>
                 <div class="col-md-8">
@@ -57,6 +57,13 @@
                         <textarea class="form-control" name="Details" id="Details"  cols="70" rows="2"
                             placeholder="Enter A Valid address"></textarea>
                         <label for="Details"> House Details</label>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control" id="Entry_Date" name="Entry_Date" placeholder="Password" />
+                        <label for="Entry_Date">Entry Date</label>
                     </div>
                 </div>
 

@@ -137,12 +137,56 @@ def Add_Society_Page(request):
     }
     return render(request,Add_Society_Page_Link,context)
 
+def Add_New_Society(request):
+    try:
+        if Add_Society.objects.get(Society_Name=request.POST["Society_Name"]):
+            messages.warning(request,"Society Already Exist.....")
+            return redirect(Add_Society_Page)        
+    except:
+        Society=Add_Society()
+        Society.Society_Name=request.POST["Society_Name"]
+        Society.Address=request.POST["Address"]
+        Society.City=request.POST["City"]
+        Society.PinCode=request.POST["Pincode"]
+        Society.No_Of_House=request.POST["TotalHouses"]
+        Society.Society_Image=request.POST["Upload_image"]
+        Society.Entry_Date=request.POST["Entry_Date"]
+
+        Society.save()
+
+
+    return render(request,Add_Society_Page_Link)
+
 def Add_New_Block_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     context={
         "Login":login
     }
     return render(request,Add_Block_Page_Link,context)
+
+def Add_Block(request):
+    try:
+        if Add_Society.objects.get(Society_Name=request.POST["Society_Name"]):
+
+            try:
+                Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])
+
+                if Add_New_Block.objects.get(Society_Name=Society,Block_No=request.POST["Block_No"]):
+
+                    messages.warning(request,"Block Already Exist")
+                    return redirect(Add_New_Block_Page)                
+
+            except:
+                Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])
+                Block=Add_New_Block.objects.create(Society_Name=Society,Block_No=request.POST["Block_No"],NO_Of_Floors=request.POST["No_of_Floors"],No_Of_Flats=request.POST["No_of_Flats"])   
+
+    except:
+        messages.warning(request,"Entered Society Not Found")
+        return redirect(Add_New_Block_Page)
+    
+    
+
+    return redirect(Add_New_Block_Page)
 
 def Add_Houses_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
@@ -151,7 +195,36 @@ def Add_Houses_Page(request):
     }
     return render(request,Add_Houses_Page_Link,context)
 
+def Add_house(request):
+    try:
+        if Add_Society.objects.get(Society_Name=request.POST["Society_Name"]):
 
+            try:
+
+                Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])    
+                if Add_New_Block.objects.get(Society_Name=Society,Block_No=request.POST["Block_No"]):
+
+                    try:
+                        
+                        Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])    
+                        Block=Add_New_Block.objects.get(Society_Name=Society,Block_No=request.POST["Block_No"])
+                        
+                        if Add_House.objects.get(Block_No=Block,House_No=request.POST["House_No"]):
+                        
+                            messages.warning(request,"House No. Already Exist...")
+                            return redirect(Add_Houses_Page)  
+
+                    except:
+                        pass
+
+            except:
+                messages.warning(request,"Block Not Fount..")
+                return redirect(Add_Houses_Page)  
+    except:
+        messages.warning(request,"Entered Society Not Found")
+        return redirect(Add_Houses_Page) 
+
+    return redirect(Add_Houses_Page) 
 #-------------------------------------------------------------------------------------------------------------- 
 
                                          #End: Admin Related Page ...  

@@ -93,6 +93,7 @@ class Add_New_Block(models.Model):
     NO_Of_Floors=models.IntegerField(default="")
     No_Of_Flats=models.IntegerField(default="")
     
+    
 
 House_Choice={
     ("1bhk","1BHK"),
