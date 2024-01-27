@@ -21,6 +21,9 @@ urlpatterns = [
     path("Admin_Account_Setting_Page",Admin_Account_Setting_Page,name="Admin_Account_Setting_Page"),
 
     path("Add_Society_Page",Add_Society_Page,name="Add_Society_Page"),
+
+    path("Add_New_Block_Page",Add_New_Block_Page,name="Add_New_Block_Page"),
+
     path("Add_Houses_Page",Add_Houses_Page,name="Add_Houses_Page"),
     
                                        #  Citizen Related Urls
