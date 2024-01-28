@@ -80,7 +80,7 @@ class Add_Society(models.Model):
     City=models.CharField(default="",max_length=100)
     PinCode=models.IntegerField(default="")
     No_Of_House=models.IntegerField(default="")
-    Society_Image=models.ImageField(upload_to="static/Society_images", height_field=None, width_field=None, max_length=None)
+    Society_Image=models.FileField(upload_to='Society_Images/',default="Avatar.png")
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
 
     def __str__(self):
@@ -107,7 +107,7 @@ class Add_House(models.Model):
     Block_No=models.ForeignKey(Add_New_Block, on_delete=models.CASCADE)
     House_Type=models.CharField(choices=House_Choice,max_length=50)
     Detail=models.TextField(default="")
-    Image=models.ImageField(upload_to="static/Society_images", height_field=None, width_field=None, max_length=None)
+    Image=models.FileField(upload_to='House_Images/',default="Avatar.png")
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
 
     

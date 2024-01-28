@@ -160,7 +160,7 @@ def Add_New_Society(request):
         Society.City=request.POST["City"]
         Society.PinCode=request.POST["Pincode"]
         Society.No_Of_House=request.POST["TotalHouses"]
-        Society.Society_Image=request.POST["Upload_image"]
+        Society.Society_Image=request.FILES['Upload_image']
         Society.Entry_Date=request.POST["Entry_Date"]
 
         Society.save()
@@ -227,7 +227,7 @@ def Add_house(request):
                     except:
                         Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])    
                         Block=Add_New_Block.objects.get(Society_Name=Society,Block_No=request.POST["Block_No"])
-                        House=Add_House.objects.create(Society_Name=Society,Block_No=Block,House_No=request.POST["House_No"],Detail=request.POST["Details"],House_Type=request.POST["House_Type"],Image=request.POST["Upload_image"],Entry_Date=request.POST["Entry_Date"])
+                        House=Add_House.objects.create(Society_Name=Society,Block_No=Block,House_No=request.POST["House_No"],Detail=request.POST["Details"],House_Type=request.POST["House_Type"],Image=request.FILES["Upload_image"],Entry_Date=request.POST["Entry_Date"])
     
             except:
                 messages.warning(request,"Block Not Fount..")
