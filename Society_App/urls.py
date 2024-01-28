@@ -18,7 +18,9 @@ urlpatterns = [
                                         # Admin Related Urls
 
     path("Admin_Profile_Page",Admin_Profile_Page,name="Admin_Profile_Page"),
+
     path("Admin_Account_Setting_Page",Admin_Account_Setting_Page,name="Admin_Account_Setting_Page"),
+    path("Update_Admin_Profile",Update_Admin_Profile,name="Update_Admin_Profile"),
 
     path("Add_Society_Page",Add_Society_Page,name="Add_Society_Page"),
     path("Add_New_Society",Add_New_Society,name="Add_New_Society"),
@@ -28,6 +30,8 @@ urlpatterns = [
 
     path("Add_Houses_Page",Add_Houses_Page,name="Add_Houses_Page"),
     path("Add_house",Add_house,name="Add_house"),
+
+    path("Manage_Complain_Page",Manage_Complain_Page,name="Manage_Complain_Page"),
     
                                        #  Citizen Related Urls
     path("Citizen_Account_Setting_Page",Citizen_Account_Setting_Page,name="Citizen_Account_Setting_Page"),

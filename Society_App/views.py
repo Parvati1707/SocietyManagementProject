@@ -34,7 +34,8 @@ Admin_Profile_Page_Link="Admin/Admin_Profile.html"
 Admin_Account_Setting_Page_Link="Admin/Admin_Account_Settings.html"
 Add_Society_Page_Link="Admin/Add_Society.html"
 Add_Block_Page_Link="Admin/Add_Blocks.html"
-Add_Houses_Page_Link="Admin/Add_Houses.html"              
+Add_Houses_Page_Link="Admin/Add_Houses.html" 
+Manage_Complain_Page_Link="Admin/Manage_Complain.html"
 
                                 #Citizen Pages..
 
@@ -130,6 +131,16 @@ def Admin_Account_Setting_Page(request):
     }
     return render(request,Admin_Account_Setting_Page_Link,context)
 
+def Update_Admin_Profile(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+
+    login.Username=request.POST["Username"]
+    login.Email=request.POST["Email"]
+
+    login.save()
+
+    return redirect(Login_Page)
+
 def Add_Society_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     context={
@@ -153,7 +164,6 @@ def Add_New_Society(request):
         Society.Entry_Date=request.POST["Entry_Date"]
 
         Society.save()
-
 
     return render(request,Add_Society_Page_Link)
 
@@ -215,8 +225,10 @@ def Add_house(request):
                             return redirect(Add_Houses_Page)  
 
                     except:
-                        pass
-
+                        Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])    
+                        Block=Add_New_Block.objects.get(Society_Name=Society,Block_No=request.POST["Block_No"])
+                        House=Add_House.objects.create(Society_Name=Society,Block_No=Block,House_No=request.POST["House_No"],Detail=request.POST["Details"],House_Type=request.POST["House_Type"],Image=request.POST["Upload_image"],Entry_Date=request.POST["Entry_Date"])
+    
             except:
                 messages.warning(request,"Block Not Fount..")
                 return redirect(Add_Houses_Page)  
@@ -224,13 +236,14 @@ def Add_house(request):
         messages.warning(request,"Entered Society Not Found")
         return redirect(Add_Houses_Page) 
 
-    Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])    
-    Block=Add_New_Block.objects.get(Society_Name=Society,Block_No=request.POST["Block_No"])
-
-    House=Add_House.objects.create(Society_Name=Society,Block_No=Block,House_No=request.POST["House_No"],Detail=request.POST["Details"],House_Type=request.POST["House_Type"],Image=request.POST["Upload_image"],Entry_Date=request.POST["Entry_Date"])
-    
-
     return redirect(Add_Houses_Page) 
+
+def Manage_Complain_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    context={
+        "Login":login
+    }
+    return render(request,Manage_Complain_Page_Link,context)
 #-------------------------------------------------------------------------------------------------------------- 
 
                                          #End: Admin Related Page ...  
