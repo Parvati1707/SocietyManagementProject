@@ -107,7 +107,7 @@ class Add_House(models.Model):
     Block_No=models.ForeignKey(Add_New_Block, on_delete=models.CASCADE)
     House_Type=models.CharField(choices=House_Choice,max_length=50)
     Detail=models.TextField(default="")
-    Image=models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    Image=models.ImageField(upload_to="static/Society_images", height_field=None, width_field=None, max_length=None)
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
 
     

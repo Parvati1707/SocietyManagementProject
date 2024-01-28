@@ -210,7 +210,7 @@ def Add_house(request):
                         Block=Add_New_Block.objects.get(Society_Name=Society,Block_No=request.POST["Block_No"])
                         
                         if Add_House.objects.get(Block_No=Block,House_No=request.POST["House_No"]):
-                        
+                           
                             messages.warning(request,"House No. Already Exist...")
                             return redirect(Add_Houses_Page)  
 
@@ -223,6 +223,12 @@ def Add_house(request):
     except:
         messages.warning(request,"Entered Society Not Found")
         return redirect(Add_Houses_Page) 
+
+    Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])    
+    Block=Add_New_Block.objects.get(Society_Name=Society,Block_No=request.POST["Block_No"])
+
+    House=Add_House.objects.create(Society_Name=Society,Block_No=Block,House_No=request.POST["House_No"],Detail=request.POST["Details"],House_Type=request.POST["House_Type"],Image=request.POST["Upload_image"],Entry_Date=request.POST["Entry_Date"])
+    
 
     return redirect(Add_Houses_Page) 
 #-------------------------------------------------------------------------------------------------------------- 
