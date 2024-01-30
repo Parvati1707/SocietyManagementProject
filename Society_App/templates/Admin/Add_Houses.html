@@ -18,7 +18,8 @@
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="Society_Name" name="Society_Name"
-                            placeholder="Enter Society Name" />
+                            placeholder="Enter Society Name" required
+                            data-validation-required-message="This field is required"/>
                         <label for="Society_Name">Society Name</label>
                     </div>
                 </div>
@@ -26,7 +27,7 @@
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="Block_No" name="Block_No"
-                            placeholder="Enter Block No." />
+                            placeholder="Enter Block No." required />
                         <label for="Block_No">Block No.</label>
                     </div>
                 </div>
@@ -34,14 +35,14 @@
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="House_No" name="House_No"
-                            placeholder="Enter House No." />
+                            placeholder="Enter House No." required/>
                         <label for="House_No">House No.</label>
                     </div>
                 </div>
 
                 <div class="col-md-8">
                     <div class="form-floating mb-4">
-                        <select class="form-select" name="House_Type" id="House_Type">
+                        <select class="form-select" name="House_Type" id="House_Type" required>
                             <option selected>Choose...</option>
                             <option value="1bhk">1bhk</option>
                             <option value="2bhk">2bhk</option>
@@ -54,7 +55,7 @@
 
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" name="Details" id="Details"  cols="70" rows="2"
+                        <textarea class="form-control" name="Details" id="Details" required  cols="70" rows="2"
                             placeholder="Enter A Valid address"></textarea>
                         <label for="Details"> House Details</label>
                     </div>
@@ -62,14 +63,14 @@
 
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
-                        <input type="date" class="form-control" id="Entry_Date" name="Entry_Date" placeholder="Password" />
+                        <input type="date" class="form-control" required id="Entry_Date" name="Entry_Date" placeholder="Password" />
                         <label for="Entry_Date">Entry Date</label>
                     </div>
                 </div>
 
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
-                        <input type="file" class="form-control" id="Upload_image" name="Upload_image"
+                        <input type="file" class="form-control" required id="Upload_image" name="Upload_image"
                             placeholder="Password" />
                             <label for="Upload_image">House Image</label>   
                     </div>
