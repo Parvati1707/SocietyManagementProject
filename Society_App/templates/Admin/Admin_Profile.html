@@ -310,7 +310,19 @@
 {% block js %}<!-- ---------------------------------------------- -->
 <!-- current page js files -->
 <!-- ---------------------------------------------- -->
-<script src="../../dist/js/apps/chat.js"></script>{% endblock js %}
+<script src="{% static 'mainpage/js/apps/chat.js' %}"></script>
+
+{% comment %} <!-- ---------------------------------------------- -->
+<!-- current page js files -->
+<!-- ---------------------------------------------- -->
+<script src="{% static 'assets/extra-libs/jqbootstrapvalidation/validation.js'%}"></script>
+<script>
+  !(function (window, document, $) {
+    "use strict";
+    $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+  })(window, document, jQuery);
+</script> {% endcomment %}
+{% endblock js %}
 
 
 {% endblock main_block %}

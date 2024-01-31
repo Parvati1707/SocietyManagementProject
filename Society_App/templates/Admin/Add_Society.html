@@ -1,5 +1,6 @@
 {% extends "Admin/Admin_Profile.html" %}
 
+
 {% load static %}
 
 {% block AdminContant %}
@@ -22,7 +23,7 @@
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="Society_Name"  name="Society_Name" placeholder="Enter Society Name" required
-                        data-validation-required-message="This field is required"/>
+                       />
                         <label for="Society_Name">Society Name</label>
                     </div>
                 </div>
@@ -78,3 +79,20 @@
     </div>
 </div>
 {% endblock AdminContant %}
+
+{% block Js %}
+<!-- ---------------------------------------------- -->
+<!-- current page js files -->
+<!-- ---------------------------------------------- -->
+<script src="{% static 'assets/extra-libs/jqbootstrapvalidation/validation.js'%}"></script>
+<script>
+  !(function (window, document, $) {
+    "use strict";
+    $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+  })(window, document, jQuery);
+</script>
+{% endblock Js %}
+
+
+
+
