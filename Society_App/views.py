@@ -103,8 +103,7 @@ def Committee_Registration_Page(request):
 def Security_Registration_Page(request):
     return render(request,Security_Registration_Page_Link)
 
-def Security_Profile_Page(request):
-    return render(request,Security_Profile_Page_Link)
+
 
 
 
@@ -457,6 +456,13 @@ def Add_Event_Page(request):
 
                                     # Start: Security Related Page..
 #-------------------------------------------------------------------------------------------------------------- 
+def Security_Profile_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    security=Security_Registration.objects.get(singup=login)
+    Contaxt={
+        "security":security
+    }
+    return render(request,Security_Profile_Page_Link,Contaxt)
 
 def Security_Account_Setting_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])

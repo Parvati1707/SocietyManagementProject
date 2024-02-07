@@ -142,10 +142,10 @@
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
                           <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" class="rounded-circle" width="80" height="80" alt="" />
                           <div class="ms-3">
-                            <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                            <span class="mb-1 d-block text-dark">Designer</span>
+                            <h5 class="mb-1 fs-3">{{security}}</h5>
+                            <span class="mb-1 d-block text-dark">Security</span>
                             <p class="mb-0 d-flex text-dark align-items-center gap-2">
-                              <i class="ti ti-mail fs-4"></i> info@modernize.com
+                              <i class="ti ti-mail fs-4"></i> {{security.singup.Email}}
                             </p>
                           </div>
                         </div>
@@ -187,19 +187,19 @@
                 <div class="col-lg-4 order-lg-1 order-2">
                   <div class="d-flex align-items-center justify-content-around m-4">
                     <div class="text-center">
-                      <i class="ti ti-file-description fs-6 d-block mb-2"></i>
-                      <h4 class="mb-0 fw-semibold lh-1">938</h4>
-                      <p class="mb-0 fs-4">Posts</p>
+                      <i class="fa fa-building"></i>
+                      <h4 class="mb-0 fw-semibold lh-1">5</h4>
+                      <p class="mb-0 fs-4">Society</p>
                     </div>
                     <div class="text-center">
-                      <i class="ti ti-user-circle fs-6 d-block mb-2"></i>
-                      <h4 class="mb-0 fw-semibold lh-1">3,586</h4>
-                      <p class="mb-0 fs-4">Followers</p>
+                      <i class="fa fa-cubes"></i>
+                      <h4 class="mb-0 fw-semibold lh-1">25</h4>
+                      <p class="mb-0 fs-4">Blocks</p>
                     </div>
                     <div class="text-center">
-                      <i class="ti ti-user-check fs-6 d-block mb-2"></i>
-                      <h4 class="mb-0 fw-semibold lh-1">2,659</h4>
-                      <p class="mb-0 fs-4">Following</p>
+                      <i class="fa fa-home"></i>
+                      <h4 class="mb-0 fw-semibold lh-1">500</h4>
+                      <p class="mb-0 fs-4">Houses</p>
                     </div>
                   </div>
                 </div>
@@ -220,45 +220,174 @@
                 </div>
                 <div class="col-lg-4 order-last">
                   <ul class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-start my-3 gap-3">
-                    <li class="position-relative">
-                      <a class="text-white d-flex align-items-center justify-content-center bg-primary p-2 fs-4 rounded-circle" href="javascript:void(0)" width="30" height="30">
-                        <i class="ti ti-brand-facebook"></i>
-                      </a>
-                    </li>
-                    <li class="position-relative">
-                      <a class="text-white bg-secondary d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle " href="javascript:void(0)">
-                        <i class="ti ti-brand-twitter"></i>
-                      </a>
-                    </li>
-                    <li class="position-relative">
-                      <a class="text-white bg-secondary d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle " href="javascript:void(0)">
-                        <i class="ti ti-brand-dribbble"></i>
-                      </a>
-                    </li>
-                    <li class="position-relative">
-                      <a class="text-white bg-danger d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle " href="javascript:void(0)">
-                        <i class="ti ti-brand-youtube"></i>
-                      </a>
-                    </li>
+                    
                     <li><button class="btn btn-primary">Add To Story</button></li>
                   </ul>
                 </div>
               </div>              
             </div>
+            <ul class="nav nav-pills user-profile-tab justify-content-end mt-2 bg-light-info rounded-2">
+              <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
+                <a class="nav-link active" aria-current="page" id="Arrange" href="{% url "Guest_Entry_Page" %}">Guest Entry</a>
+              </li>          
+             
+              <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6 ">
+                <a class="nav-link" href="{% url "Security_Complain" %}">Complain</a>
+              </li>
+             
+            </ul>
+        
+            {% block SecuritynAV %}
+            
+<div class="tab-pane fade show active" id="pills-Account-Settings" role="tabpanel"
+aria-labelledby="pills-Account-Settings-tab" tabindex="0">
+<div class="card-body">
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-Account-Settings" role="tabpanel"
+            aria-labelledby="pills-Account-Settings-tab" tabindex="0">
+            <div class="row">
+                <div class="col-lg-6 d-flex align-items-stretch">
+                    <div class="card w-100 position-relative overflow-hidden">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-semibold">Change Profile</h5>
+                            <p class="card-subtitle mb-4">Change your profile picture from here</p>
+                            <div class="text-center">
+                                <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" alt=""
+                                    class="img-fluid rounded-circle" width="120" height="120">
+                                <div class="d-flex align-items-center justify-content-center my-4 gap-3">
+                                    <button class="btn btn-primary">Upload</button>
+                                    <button class="btn btn-outline-danger">Reset</button>
+                                </div>
+                                <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex align-items-stretch">
+                    <div class="card w-100 position-relative overflow-hidden">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-semibold">Change Password</h5>
+                            <p class="card-subtitle mb-4">To change your password please confirm here</p>
+
+                            {% comment %} Change Password {% endcomment %}
+
+                            {% for message in messages  %}
+                            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                              <strong>OOPS!</strong> {{message}}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>{% endfor %}
+                            <form action="{% url "Change_Password_Of_Security" %}" method="post">
+                                {% csrf_token %}
+                                <div class="mb-4">
+                                    <label for="current_Password" class="form-label fw-semibold">Current
+                                        Password</label>
+                                    <input type="password" name="current_Password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="new_password" class="form-label fw-semibold">New
+                                        Password</label>
+                                    <input type="password" name="new_password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="">
+                                    <label for="confirm_password" class="form-label fw-semibold">Confirm
+                                        Password</label>
+                                    <input type="password" name="confirm_password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
+                                        <input type="submit" name="submit" class="btn btn-primary" value="Change" >
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card w-100 position-relative overflow-hidden mb-0">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-semibold">Personal Details</h5>
+                            <p class="card-subtitle mb-4">To change your personal detail , edit and save from here
+                            </p>
+                            
+                            {% comment %} Profile change {% endcomment %}
+
+                            
+                            <form method="post" action="{% url "Update_Security_Profile" %}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-5"> 
+                                        <div class="mb-4">
+                                            <label for="Username"
+                                                class="form-label fw-semibold">Username</label>
+                                            <input type="text" class="form-control" id="Username" name="Username"
+                                                 value={{security.singup.Username}}>
+                                        </div> 
+                                        <div class="mb-4">
+                                            <label for="Email"
+                                                class="form-label fw-semibold">Email</label>
+                                            <input type="email" class="form-control" id="Email" name="Email"
+                                                 value={{security.singup.Email}}>
+                                        </div>
+                                        <div class="mb-4">                                                
+                                            <div class="mb-4">
+                                                <label for="Contact"
+                                                    class="form-label fw-semibold">Contact No.</label>
+                                                <input type="text" class="form-control" id="Contact" name="Contact"
+                                                     value={{security.Contact}}>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-lg-6">
+                                       
+                                        
+                                        <div class="mb-4">
+                                            <label for="BirthDate"
+                                                class="form-label fw-semibold">BirthDate</label>
+                                            <input type="date" class="form-control" id="BirthDate" name="BirthDate"
+                                             value={{security.BirthDate}}>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="exampleInputPassword1"
+                                                class="form-label fw-semibold">Gender</label>
+                                            <div class="mb-4">
+                                                <div class="input-group">
+                                                    <input type="radio"
+                                                        class="form-label fw-semibold col-sm-3 col-form-label text-end"
+                                                        name="gender" id="male" value='m'> Male
+                                                    <input type="radio"
+                                                        class="form-label fw-semibold col-sm-3 col-form-label text-end"
+                                                        Name="gender" id="female" value='f' checked> Female
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="AdharNumber"
+                                                class="form-label fw-semibold">AdharNumber</label>
+                                            <input type="text" class="form-control" id="AdharNumber" name="AdharNumber"
+                                                 value={{security.AdharNumber}}>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
+                                            <button class="btn btn-primary">Save</button>
+                                            <button class="btn btn-light-danger text-danger">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+            {% endblock SecuritynAV %}
           </div>        
         </div>
-        <ul class="nav nav-pills user-profile-tab justify-content-end mt-2 bg-light-info rounded-2">
-          <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-            <a class="nav-link active" aria-current="page" id="Arrange" href="{% url "Guest_Entry_Page" %}">Guest Entry</a>
-          </li>          
-         
-          <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6 ">
-            <a class="nav-link" href="{% url "Security_Complain" %}">Complain</a>
-          </li>
-         
-        </ul>
-    
-        {% block SecuritynAV %}{% endblock SecuritynAV %}
+        
       </div>
     <div class="dark-transparent sidebartoggler"></div>
     <div class="dark-transparent sidebartoggler"></div>
