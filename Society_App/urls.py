@@ -32,6 +32,8 @@ urlpatterns = [
     path("Add_house",Add_house,name="Add_house"),
 
     path("Manage_Complain_Page",Manage_Complain_Page,name="Manage_Complain_Page"),
+
+    path("Report_Page",Report_Page,name="Report_Page"),
     
                                        #  Citizen Related Urls
     path("Citizen_Account_Setting_Page",Citizen_Account_Setting_Page,name="Citizen_Account_Setting_Page"),

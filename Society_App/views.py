@@ -27,6 +27,10 @@ Registration_Page_Link="validation/Registration_Page.html"
 Forgate_Password_Page_Link="validation/Forgate_Password_Page.html"
 OTP_Page_Link="validation/OTP_Page.html"
 
+                                #Report Pages..
+
+Report_Page_Link="ReportPages/Report_Page.html"
+
 
                                 #Admin Pages..
 
@@ -36,6 +40,7 @@ Add_Society_Page_Link="Admin/Add_Society.html"
 Add_Block_Page_Link="Admin/Add_Blocks.html"
 Add_Houses_Page_Link="Admin/Add_Houses.html" 
 Manage_Complain_Page_Link="Admin/Manage_Complain.html"
+
 
                                 #Citizen Pages..
 
@@ -243,6 +248,10 @@ def Manage_Complain_Page(request):
         "Login":login
     }
     return render(request,Manage_Complain_Page_Link,context)
+
+def Report_Page(request):
+    return render(request,Report_Page_Link)
+
 #-------------------------------------------------------------------------------------------------------------- 
 
                                          #End: Admin Related Page ...  
