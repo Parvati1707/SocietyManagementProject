@@ -49,20 +49,20 @@
                 {% csrf_token %}
                 <div class="mb-3">
                   <label for="UserName" class="form-label">UserName</label>
-                  <input type="text" class="form-control" name="UserName" id="UserName" aria-describedby="textHelp">
+                  <input type="text" class="form-control" required  name="UserName" id="UserName" aria-describedby="textHelp">
                 </div>
 
                 <div class="mb-4">
                   <label for="exampleInputEmail" class="form-label">Email</label>
-                  <input type="email" name="Email" class="form-control" id="exampleInputEmail">
+                  <input type="email" name="Email" required  class="form-control" id="exampleInputEmail">
                 </div>
                 <div class="mb-4">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                  <input type="password" name="password" required  class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="mb-4">
                   <label for="exampleInputPassword1" class="form-label">Coinfirm Password</label>
-                  <input type="password" name="Coinfirmpassword" class="form-control" id="exampleInputPassword1">
+                  <input type="password" name="Coinfirmpassword" required  class="form-control" id="exampleInputPassword1">
                 </div>
 
                 <div class="mb-2">

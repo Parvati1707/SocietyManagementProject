@@ -21,7 +21,7 @@ def Send_OTP(request):
 
 default_Dict={}
 # Create your views here.
-Home_Page_Link="Home_Page.html"
+Home_Page_Link="LandingPage.html"
 Login_Page_Link="validation/Login_Page.html"
 Registration_Page_Link="validation/Registration_Page.html"
 Forgate_Password_Page_Link="validation/Forgate_Password_Page.html"

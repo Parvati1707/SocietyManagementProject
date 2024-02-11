@@ -42,21 +42,21 @@
                                     <div class="mb-4">
                                         <label for="current_Password" class="form-label fw-semibold">Current
                                             Password</label>
-                                        <input type="password" name="current_Password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" required name="current_Password" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="mb-4">
                                         <label for="new_password" class="form-label fw-semibold">New
                                             Password</label>
-                                        <input type="password" name="new_password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" required name="new_password" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="">
                                         <label for="confirm_password" class="form-label fw-semibold">Confirm
                                             Password</label>
-                                        <input type="password" name="confirm_password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" required name="confirm_password" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
-                                            <input type="submit" name="submit" class="btn btn-primary" value="Change" >
+                                            <input type="submit" required name="submit" class="btn btn-primary" value="Change" >
                                         </div>
                                     </div>
                                 </form>
@@ -78,44 +78,44 @@
                                             <div class="mb-4">
                                                 <label for="FirstName" class="form-label fw-semibold">First
                                                     Name</label>
-                                                <input type="text" class="form-control" id="FirstName" name="FirstName"
+                                                <input type="text" required class="form-control" id="FirstName" name="FirstName"
                                                      value={{citizen.FirstName}}>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="Resident_Type"
                                                     class="form-label fw-semibold">Resident Type</label>
-                                                    <input type="text" class="form-control" id="Resident_Type" name="Resident_Type"
+                                                    <input type="text" required class="form-control" id="Resident_Type" name="Resident_Type"
                                                      value={{citizen.Resident_Type}}>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="BlockNo" class="form-label fw-semibold">Block
                                                     No.</label>
-                                                <input type="text" class="form-control" id="BlockNo" name="BlockNo"
+                                                <input type="text" required class="form-control" id="BlockNo" name="BlockNo"
                                                     value={{citizen.BlockNo}}>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="HouseNo" class="form-label fw-semibold">House
                                                     No.</label>
-                                                <input type="text" class="form-control" id="HouseNo" name="HouseNo"
+                                                <input type="text" required class="form-control" id="HouseNo" name="HouseNo"
                                                      value={{citizen.HouseNo}}>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="email"
                                                     class="form-label fw-semibold">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email"
+                                                <input type="email" required class="form-control" id="email" name="email"
                                                      value={{citizen.singup.Email}}>
                                             </div>
                                             <div class="mb-4">
                                                 <div class="mb-3">
                                                     <label for="Address"
                                                         class="form-label fw-semibold">Address</label>
-                                                    <input type="text" class="form-control" id="Address" name="Address"
+                                                    <input type="text" required class="form-control" id="Address" name="Address"
                                                          value={{citizen.Address}}>
                                                 </div>
                                                 <div class="mb-4">
                                                     <label for="Phone2"
                                                         class="form-label fw-semibold">Phone2</label>
-                                                    <input type="text" class="form-control" id="Phone2" name="Phone2"
+                                                    <input type="text" required class="form-control" id="Phone2" name="Phone2"
                                                         value={{citizen.Contac2t}}>
                                                 </div>
                                             </div>
@@ -124,24 +124,24 @@
                                             <div class="mb-4">
                                                 <label for="LastName" class="form-label fw-semibold">Last
                                                     Name</label>
-                                                <input type="text" class="form-control" id="LastName" name="LastName"
+                                                <input type="text" required class="form-control" id="LastName" name="LastName"
                                                      value={{citizen.LastName}}>
                                             </div>
                                             <div class="mb-4 row align-items-center">
                                                 <label for="Profession" class="form-label fw-semibold">Profession</label>
-                                                <input type="text" class="form-control" id="Profession" name="Profession"
+                                                <input type="text" required class="form-control" id="Profession" name="Profession"
                                                      value={{citizen.Profession}}>                                                    
                                               </div>
                                             <div class="mb-4">
                                                 <label for="TotalMembers" class="form-label fw-semibold">Total
                                                     Family Mambers</label>
-                                                <input type="text" class="form-control" id="TotalMembers" name="TotalMembers"
+                                                <input type="text" required class="form-control" id="TotalMembers" name="TotalMembers"
                                                      value={{citizen.TotalMembers}}>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="birthday"
                                                     class="form-label fw-semibold">BirthDate</label>
-                                                <input type="date" class="form-control" id="birthday" name="birthday"
+                                                <input type="date" required class="form-control" id="birthday" name="birthday"
                                                      value={{citizen.BirthDate}}>
                                             </div>
                                             <div class="mb-4">
@@ -152,23 +152,23 @@
                                                     <div class="input-group">
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            name="gender" id="male" value="m" > Male
+                                                            name="gender" id="male" required  value="m" > Male
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            Name="gender" id="female" value="f" checked=""> Female
+                                                            Name="gender" id="female"  required value="f" checked=""> Female
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="AdharNumber"
                                                     class="form-label fw-semibold">AdharNumber</label>
-                                                <input type="text" class="form-control" id="AdharNumber" name="AdharNumber"
+                                                <input type="text" required class="form-control" id="AdharNumber" name="AdharNumber"
                                                     value={{citizen.AdharNumber}}>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="Phone"
                                                     class="form-label fw-semibold">Phone</label>
-                                                <input type="text" class="form-control" id="Phone" name="Phone"
+                                                <input type="text" required class="form-control" id="Phone" name="Phone"
                                                      value={{citizen.Contact}}>
                                             </div>
                                         </div>

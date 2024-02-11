@@ -10,37 +10,37 @@
             <div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="tb-fname" name="Name" placeholder="Enter complainer Name" />
+                        <input type="text" class="form-control" required id="tb-fname" name="Name" placeholder="Enter complainer Name" />
                         <label for="Name">Citizen Name</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="tb-email" name="House_No" placeholder="House_No" />
+                        <input type="text" class="form-control" required id="tb-email" onkeypress="return event.charCode >=48 && event.charCode <= 78 " name="House_No" placeholder="House_No" />
                         <label for="House_No">HouseNo</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="tb-pwd" name="Society_Name" placeholder="Society_Name" />
+                        <input type="text" class="form-control" required id="tb-pwd" name="Society_Name" placeholder="Society_Name" />
                         <label for="Society_Name">Society Name</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="tb-cpwd" name="Event_Name" placeholder="Event_Name" />
+                        <input type="text" class="form-control" required id="tb-cpwd" name="Event_Name" placeholder="Event_Name" />
                         <label for="Event_Name">Event Name</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="tb-cpwd" name="Guest" placeholder="Guest" />
+                        <input type="text" class="form-control" required id="tb-cpwd" onkeypress="return event.charCode >=48 && event.charCode <= 78 " name="Guest" placeholder="Guest" />
                         <label for="Guest">No of Guest</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="datetime" class="form-control" id="tb-cpwd" name="DateTime" placeholder="DateTime" />
+                        <input type="datetime" class="form-control" required id="tb-cpwd" name="DateTime" placeholder="DateTime" />
                         <label for="DateTime">Date & Time</label>
                     </div>
                 </div>
