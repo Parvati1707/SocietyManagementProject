@@ -31,6 +31,8 @@ OTP_Page_Link="validation/OTP_Page.html"
 
 Report_Page_Link="ReportPages/Report_Page.html"
 
+Sell_Rent_List_Page_Link="ReportPages/SellAndRentList.html"
+
 
                                 #Admin Pages..
 
@@ -251,6 +253,9 @@ def Manage_Complain_Page(request):
 
 def Report_Page(request):
     return render(request,Report_Page_Link)
+
+def Sell_Rent_List_Page(request):
+    return render(request,Sell_Rent_List_Page_Link)
 
 #-------------------------------------------------------------------------------------------------------------- 
 
