@@ -31,8 +31,17 @@ OTP_Page_Link="validation/OTP_Page.html"
 
 Report_Page_Link="ReportPages/Report_Page.html"
 
-Sell_Rent_List_Page_Link="ReportPages/SellAndRentList.html"
+Society_Report_Page_Link="ReportPages/Society_Report.html"
 
+Block_Report_Page_Link="ReportPages/Block_Report.html"
+
+House_Report_Page_Link="ReportPages/House_Report.html"
+
+Complain_Report_Page_Link="ReportPages/Complain_Report.html"
+
+Personal_Event_Booking_Page_Link="ReportPages/Booking_Request_Report.html"
+
+Sell_Rent_Report_Page_Link="ReportPages/Sell_Rent_Report.html"
 
                                 #Admin Pages..
 
@@ -251,15 +260,78 @@ def Manage_Complain_Page(request):
     }
     return render(request,Manage_Complain_Page_Link,context)
 
-def Report_Page(request):
-    return render(request,Report_Page_Link)
 
-def Sell_Rent_List_Page(request):
-    return render(request,Sell_Rent_List_Page_Link)
 
 #-------------------------------------------------------------------------------------------------------------- 
 
                                          #End: Admin Related Page ...  
+
+
+                                        #Start: Report Related Page ...     
+#-------------------------------------------------------------------------------------------------------------- 
+
+
+
+def Report_Page(request):
+    Booking_Report=Personal_Event_Booking.objects.all()
+    context={
+        'Booking_Report':Booking_Report,
+    }
+    return render(request,Personal_Event_Booking_Page_Link,context)
+    return render(request,Report_Page_Link)
+
+def Society_Report_Page(request):
+    Society_Report=Add_Society.objects.all().values()
+    context={
+        'Society_Report':Society_Report,
+
+    }
+    return render(request,Society_Report_Page_Link,context)
+
+def Block_Report_Page(request):
+    Block_Report=Add_New_Block.objects.all()
+    context={
+        'Block_Report':Block_Report,        
+    }
+    return render(request,Block_Report_Page_Link,context)
+
+def House_Report_Page(request):
+    House_Report=Add_House.objects.all()
+    context={
+        'House_Report':House_Report,
+    }
+    return render(request,House_Report_Page_Link,context)
+
+def Complain_Report_Page(request):
+    Complain_Report=Complain.objects.all()
+    context={
+        'Complain_Report':Complain_Report,
+    }
+    return render(request,Complain_Report_Page_Link,context)
+
+def Personal_Event_Booking_Report_Page(request):
+    Booking_Report=Personal_Event_Booking.objects.all()
+    context={
+        'Booking_Report':Booking_Report,
+    }
+    return render(request,Personal_Event_Booking_Page_Link,context)
+
+def Sell_Rent_Report_Page(request):
+    Sell_Report=Sell_House.objects.all()
+    Rent_Report=Rent_House.objects.all()
+    context={
+        'Sell_Report':Sell_Report,
+        'Rent_Report':Rent_Report
+    }
+    return render(request,Sell_Rent_Report_Page_Link,context)
+
+
+
+
+
+#-------------------------------------------------------------------------------------------------------------- 
+
+                                         #End: Report Related Page ...  
 
 
                                         #Start: Citizen Related Page ...     
@@ -745,8 +817,6 @@ def Change_Password_Of_Security(request):
         return redirect(Security_Account_Setting_Page)
     except:
         pass
-
-
 
 def Citizen_Validation(request):
     register=SingUp.objects.get(Username=request.session["Register"])

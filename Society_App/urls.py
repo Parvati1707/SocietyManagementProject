@@ -34,7 +34,14 @@ urlpatterns = [
     path("Manage_Complain_Page",Manage_Complain_Page,name="Manage_Complain_Page"),
 
     path("Report_Page",Report_Page,name="Report_Page"),
-    path("Sell_Rent_List_Page",Sell_Rent_List_Page,name="Sell_Rent_List_Page"),
+    path("Society_Report_Page",Society_Report_Page,name="Society_Report_Page"),
+    path("Block_Report_Page",Block_Report_Page,name="Block_Report_Page"),
+    path("House_Report_Page",House_Report_Page,name="House_Report_Page"),
+    path("Complain_Report_Page",Complain_Report_Page,name="Complain_Report_Page"),
+    path("Personal_Event_Booking_Report_Page",Personal_Event_Booking_Report_Page,name="Personal_Event_Booking_Report_Page"),
+    path("Sell_Rent_Report_Page",Sell_Rent_Report_Page,name="Sell_Rent_Report_Page"),
+    
+    
     
                                        #  Citizen Related Urls
     path("Citizen_Account_Setting_Page",Citizen_Account_Setting_Page,name="Citizen_Account_Setting_Page"),

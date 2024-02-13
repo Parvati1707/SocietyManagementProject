@@ -1,0 +1,31 @@
+{% extends "ReportPages/Report_Page.html" %}
+
+{% load static %}
+
+
+{% block ReportContant %}
+
+<div class="table-responsive">
+    <table class="table border-info table-bordered">
+      <thead class="bg-info text-white">
+        <tr>
+          <th>Society_Name</th>
+          <th>Block_No</th>
+          <th>NO_Of_Floors</th>
+          <th>No_Of_Flats</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in Block_Report %}
+          <tr>
+            <td>{{x.Society_Name}}</td>
+            <td>{{x.Block_No}}</td>
+            <td>{{x.NO_Of_Floors}}</td>
+            <td>{{x.No_Of_Flats}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock ReportContant %}

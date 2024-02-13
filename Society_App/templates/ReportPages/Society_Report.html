@@ -1,0 +1,35 @@
+{% extends "ReportPages/Report_Page.html" %}
+
+{% load static %}
+
+
+{% block ReportContant %}
+
+<div class="table-responsive">
+    <table class="table border-info table-bordered">
+      <thead class="bg-info text-white">
+        <tr>
+          <th>Society_Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>PinCode</th>
+          <th>No_Of_House</th>
+          <th>Entry_Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in Society_Report %}
+          <tr>
+            <td>{{x.Society_Name}}</td>
+            <td>{{x.Address}}</td>
+            <td>{{x.City}}</td>
+            <td>{{x.PinCode}}</td>
+            <td>{{x.No_Of_House}}</td>
+            <td>{{x.Entry_Date}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock ReportContant %}

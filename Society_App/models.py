@@ -103,12 +103,15 @@ House_Choice={
 
 class Add_House(models.Model):
     Society_Name=models.ForeignKey(Add_Society, on_delete=models.CASCADE)
-    House_No=models.IntegerField(default="")
+    House_No=models.CharField(default="",max_length=50)
     Block_No=models.ForeignKey(Add_New_Block, on_delete=models.CASCADE)
     House_Type=models.CharField(choices=House_Choice,max_length=50)
     Detail=models.TextField(default="")
     Image=models.FileField(upload_to='House_Images/',default="Avatar.png")
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
+
+    def __str__(self):
+        return self.House_No
 
     
 
