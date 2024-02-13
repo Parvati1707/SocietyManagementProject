@@ -37,6 +37,7 @@ urlpatterns = [
     path("Society_Report_Page",Society_Report_Page,name="Society_Report_Page"),
     path("Block_Report_Page",Block_Report_Page,name="Block_Report_Page"),
     path("House_Report_Page",House_Report_Page,name="House_Report_Page"),
+    path("Citizen_Report_Page",Citizen_Report_Page,name="Citizen_Report_Page"),
     path("Complain_Report_Page",Complain_Report_Page,name="Complain_Report_Page"),
     path("Personal_Event_Booking_Report_Page",Personal_Event_Booking_Report_Page,name="Personal_Event_Booking_Report_Page"),
     path("Sell_Rent_Report_Page",Sell_Rent_Report_Page,name="Sell_Rent_Report_Page"),

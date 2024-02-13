@@ -37,6 +37,8 @@ Block_Report_Page_Link="ReportPages/Block_Report.html"
 
 House_Report_Page_Link="ReportPages/House_Report.html"
 
+Citizen_Report_Page_Link="ReportPages/Citizen_Report.html"
+
 Complain_Report_Page_Link="ReportPages/Complain_Report.html"
 
 Personal_Event_Booking_Page_Link="ReportPages/Booking_Request_Report.html"
@@ -324,6 +326,13 @@ def Sell_Rent_Report_Page(request):
         'Rent_Report':Rent_Report
     }
     return render(request,Sell_Rent_Report_Page_Link,context)
+
+def Citizen_Report_Page(request):
+    Citizen_Report=Citizen_Registration.objects.all()
+    context={
+        'Citizen_Report':Citizen_Report,
+    }
+    return render(request,Citizen_Report_Page_Link,context)
 
 
 
