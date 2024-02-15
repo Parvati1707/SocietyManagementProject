@@ -78,15 +78,17 @@ urlpatterns = [
     path("Add_Notice_Page",Add_Notice_Page,name="Add_Notice_Page"),
 
     path("Add_Event_Page",Add_Event_Page,name="Add_Event_Page"),
-
                                        #  Security Related Urls
 
     path("Security_Account_Setting_Page",Security_Account_Setting_Page,name="Security_Account_Setting_Page"),
     path("Update_Security_Profile",Update_Security_Profile,name="Update_Security_Profile"),
 
     path("Guest_Entry_Page",Guest_Entry_Page,name="Guest_Entry_Page"),
+    path("Insert_Guest_Entry",Insert_Guest_Entry,name="Insert_Guest_Entry"),
+    path("Entry_List",Entry_List,name="Entry_List"),
 
     path("Security_Complain",Security_Complain,name="Security_Complain"),
+    path("Insert_Security_Complain",Insert_Security_Complain,name="Insert_Security_Complain"),
 
                                        #  Validations Urls
                                     

@@ -1,0 +1,32 @@
+{% extends "Security/Security_Profile.html" %}
+{% load static %}
+{% block SecuritynAV %}
+<div class="table-responsive">
+    <table class="table border-info table-bordered">
+      <thead class="bg-info text-white">
+        <tr>
+          <th>Security_Id</th>
+          <th>Citizen_Name</th>
+          <th>Guest_Name</th>
+          <th>Reason_for_Comming</th>
+          <th>Contact</th>
+          <th>DateTime</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in guest_entry %}
+          <tr>
+            <td>{{x.Security_Id}}</td>
+            <td>{{x.Citizen_Name}}</td>
+            <td>{{x.Guest_Name}}</td>
+            <td>{{x.Reason_for_Comming}}</td>
+            <td>{{x.Contact}}</td>
+            <td>{{x.DateTime}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock SecuritynAV %}

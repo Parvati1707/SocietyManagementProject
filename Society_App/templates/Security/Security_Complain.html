@@ -4,7 +4,16 @@
 <div class="card">
     <div class="card-body" style="margin-left:35%;">
         <h5 class="mb-4"> Society Complain Form</h5>
-        <form>
+        {% for message in messages  %}
+
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong></strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        {% endfor %}
+        <form method="post" action="{% url "Insert_Security_Complain" %}">
+            {% csrf_token %}
             <div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
@@ -14,26 +23,27 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <textarea name="" required class="form-control" id="Subject" cols="30" rows="10" name="Subject" placeholder="Subject"></textarea>
+                        <div class="input-group">
+                            <textarea class="form-control" required  name="Subject" id="Subject" cols="70" rows="2" ></textarea>
+                        </div>
                         <label for="Subject">Subject of Complain</label>
                     </div>
                     
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" required class="form-control" id="tb-pwd" name="Complain_type" placeholder="Complain type" />
+                        <select name="Complain_type" id="Complain_type" class="form-control">
+                            <option value="Water Supply">Water Supply</option>
+                            <option value="Parking Issues">Parking Issues</option>
+                            <option value="Electricity Issues">Electricity Issues</option>
+                          </select>
                         <label for="Complain_type">Complain Type</label>
                     </div>
                 </div>
+                
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" required class="form-control" id="tb-cpwd" name="Status" placeholder="Status" />
-                        <label for="Status">Status Complaint</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating mb-3">
-                        <input type="datetime" required class="form-control" id="tb-cpwd" name="Entry_Date" placeholder="Entry Date" />
+                        <input type="date" required class="form-control" id="tb-cpwd" name="Entry_Date" placeholder="Entry Date" />
                         <label for="Entry Date">Date of Complaint</label>
                     </div>
                 </div>

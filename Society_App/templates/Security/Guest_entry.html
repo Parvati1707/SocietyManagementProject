@@ -6,7 +6,8 @@
                         start Complaint Form
                     ---------------- -->
     <div class="card w-100">
-        <form>
+        <form method="post" action="{% url "Insert_Guest_Entry" %}">
+            {% csrf_token %}
             <div class="card-body">
                 <div class="d-flex no-block align-items-center">
                     <h5 class="mb-3">Society Meeting Arangement Form</h5>
@@ -14,20 +15,20 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="com1" class="control-label col-form-label">Society Name</label>
-                            <input type="text" required class="form-control" id="com1" name="agenda" placeholder=" Enter Society Name" />
+                            <label for="Society_Name" class="control-label col-form-label">Society Name</label>
+                            <input type="text" required class="form-control" id="Society_Name" name="Society_Name" placeholder=" Enter Society Name" />
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="com1" class="control-label col-form-label">Citizen Name</label>
-                            <input type="text" required class="form-control" id="com1" name="agenda" placeholder=" Enter Citizen Name" />
+                            <label for="Citizen_Name" class="control-label col-form-label">Citizen Name</label>
+                            <input type="text" required class="form-control" id="Citizen_Name" name="Citizen_Name" placeholder=" Enter Citizen Name" />
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="com1" class="control-label col-form-label">Guest Name</label>
-                            <input type="text" required class="form-control" id="com1" name="agenda" placeholder=" Enter Guest Name" />
+                            <label for="Guest_Name" class="control-label col-form-label">Guest Name</label>
+                            <input type="text" required class="form-control" id="Guest_Name" name="Guest_Name" placeholder=" Enter Guest Name" />
                         </div>
                     </div>
                     
@@ -35,24 +36,24 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="datec" class="control-label col-form-label">Contact No</label>
-                            <input type="text" required name="meetingdatetime" class="form-control" id="datec" placeholder="5468392078"/>
+                            <label for="Contect_No" class="control-label col-form-label">Contact No</label>
+                            <input type="text" required name="Contect_No" class="form-control" id="Contect_No" placeholder="5468392078"/>
                         </div>
                     </div>                    
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="datec" class="control-label col-form-label">Date Time of Meeting </label>
-                            <input type="date" required name="meetingdatetime" class="form-control" id="datec" />
+                            <label for="datetime" class="control-label col-form-label">Date Time of Meeting </label>
+                            <input type="date" required name="datetime" class="form-control" id="datetime" />
                         </div>
                     </div>                    
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-3">
-                            <label class="control-label col-form-label">Reason</label>
-                            <textarea class="form-control" id="exampleTextarea2" rows="2" name="Conclusion"
+                            <label class="control-label col-form-label" for="Reason">Reason</label>
+                            <textarea class="form-control" id="Reason" rows="2" name="Reason"
                                 placeholder="Enter Reason For Comming"></textarea>
                         </div>
                     </div>                    
@@ -76,4 +77,5 @@
                         end Complaint Form
                     ---------------- -->
 </div>
+
 {% endblock SecuritynAV %}

@@ -234,7 +234,7 @@ class Personal_Event_Booking(models.Model):
 
 class Guest_Entry(models.Model):
     Security_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
-    Citizen_Name=models.ForeignKey(Citizen_Registration, on_delete=models.CASCADE)
+    Citizen_Name=models.CharField(default="",max_length=50)
     Guest_Name=models.CharField(default="",max_length=50)
     Reason_for_Comming=models.TextField(default="")
     Contact=models.CharField(default="", max_length=50)

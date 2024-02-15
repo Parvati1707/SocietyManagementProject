@@ -219,9 +219,9 @@
                   </div>
                 </div>
                 <div class="col-lg-4 order-last">
-                  <ul class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-start my-3 gap-3">
+                  <ul class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-start my-3 gap-3" style="margin-left: 50%;">
                     
-                    <li><button class="btn btn-primary">Entry List</button></li>
+                <li><a class="btn btn-primary" href="{% url "Entry_List" %}">Guest Entry List</a></li>
                   </ul>
                 </div>
               </div>              
@@ -236,156 +236,158 @@
               </li>
              
             </ul>
+          </div>    
+          
+          
         
-            {% block SecuritynAV %}
+          {% block SecuritynAV %}
             
-<div class="tab-pane fade show active" id="pills-Account-Settings" role="tabpanel"
-aria-labelledby="pills-Account-Settings-tab" tabindex="0">
-<div class="card-body">
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-Account-Settings" role="tabpanel"
-            aria-labelledby="pills-Account-Settings-tab" tabindex="0">
-            <div class="row">
-                <div class="col-lg-6 d-flex align-items-stretch">
-                    <div class="card w-100 position-relative overflow-hidden">
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-semibold">Change Profile</h5>
-                            <p class="card-subtitle mb-4">Change your profile picture from here</p>
-                            <div class="text-center">
-                                <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" alt=""
-                                    class="img-fluid rounded-circle" width="120" height="120">
-                                <div class="d-flex align-items-center justify-content-center my-4 gap-3">
-                                    <button class="btn btn-primary">Upload</button>
-                                    <button class="btn btn-outline-danger">Reset</button>
-                                </div>
-                                <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 d-flex align-items-stretch">
-                    <div class="card w-100 position-relative overflow-hidden">
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-semibold">Change Password</h5>
-                            <p class="card-subtitle mb-4">To change your password please confirm here</p>
-
-                            {% comment %} Change Password {% endcomment %}
-
-                            {% for message in messages  %}
-                            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-                              <strong>OOPS!</strong> {{message}}
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>{% endfor %}
-                            <form action="{% url "Change_Password_Of_Security" %}" method="post">
-                                {% csrf_token %}
-                                <div class="mb-4">
-                                    <label for="current_Password" class="form-label fw-semibold">Current
-                                        Password</label>
-                                    <input type="password" required name="current_Password" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="new_password" class="form-label fw-semibold">New
-                                        Password</label>
-                                    <input type="password" required name="new_password" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="">
-                                    <label for="confirm_password" class="form-label fw-semibold">Confirm
-                                        Password</label>
-                                    <input type="password" required name="confirm_password" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
-                                        <input type="submit" name="submit" class="btn btn-primary" value="Change" >
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card w-100 position-relative overflow-hidden mb-0">
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-semibold">Personal Details</h5>
-                            <p class="card-subtitle mb-4">To change your personal detail , edit and save from here
-                            </p>
-                            
-                            {% comment %} Profile change {% endcomment %}
-
-                            
-                            <form method="post" action="{% url "Update_Security_Profile" %}">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-lg-5"> 
-                                        <div class="mb-4">
-                                            <label for="Username"
-                                                class="form-label fw-semibold">Username</label>
-                                            <input type="text" required class="form-control" id="Username" name="Username"
-                                                 value={{security.singup.Username}}>
-                                        </div> 
-                                        <div class="mb-4">
-                                            <label for="Email"
-                                                class="form-label fw-semibold">Email</label>
-                                            <input type="email" required class="form-control" id="Email" name="Email"
-                                                 value={{security.singup.Email}}>
-                                        </div>
-                                        <div class="mb-4">                                                
-                                            <div class="mb-4">
-                                                <label for="Contact"
-                                                    class="form-label fw-semibold">Contact No.</label>
-                                                <input type="text" required class="form-control" id="Contact" name="Contact"
-                                                     value={{security.Contact}}>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-6">
-                                       
-                                        
-                                        <div class="mb-4">
-                                            <label for="BirthDate"
-                                                class="form-label fw-semibold">BirthDate</label>
-                                            <input type="date" required class="form-control" id="BirthDate" name="BirthDate"
-                                             value={{security.BirthDate}}>
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="exampleInputPassword1"
-                                                class="form-label fw-semibold">Gender</label>
-                                            <div class="mb-4">
-                                                <div class="input-group">
-                                                    <input type="radio"
-                                                        class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                        name="gender" required id="male" value='m'> Male
-                                                    <input type="radio"
-                                                        class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                        Name="gender" required id="female" value='f' checked> Female
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="AdharNumber"
-                                                class="form-label fw-semibold">AdharNumber</label>
-                                            <input type="text" required class="form-control" id="AdharNumber" name="AdharNumber"
-                                                 value={{security.AdharNumber}}>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
-                                            <button class="btn btn-primary">Save</button>
-                                            <button class="btn btn-light-danger text-danger">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-            {% endblock SecuritynAV %}
-          </div>        
+          <div class="tab-pane fade show active" id="pills-Account-Settings" role="tabpanel"
+          aria-labelledby="pills-Account-Settings-tab" tabindex="0">
+          <div class="card-body">
+              <div class="tab-content" id="pills-tabContent">
+                  <div class="tab-pane fade show active" id="pills-Account-Settings" role="tabpanel"
+                      aria-labelledby="pills-Account-Settings-tab" tabindex="0">
+                      <div class="row">
+                          <div class="col-lg-6 d-flex align-items-stretch">
+                              <div class="card w-100 position-relative overflow-hidden">
+                                  <div class="card-body p-4">
+                                      <h5 class="card-title fw-semibold">Change Profile</h5>
+                                      <p class="card-subtitle mb-4">Change your profile picture from here</p>
+                                      <div class="text-center">
+                                          <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" alt=""
+                                              class="img-fluid rounded-circle" width="120" height="120">
+                                          <div class="d-flex align-items-center justify-content-center my-4 gap-3">
+                                              <button class="btn btn-primary">Upload</button>
+                                              <button class="btn btn-outline-danger">Reset</button>
+                                          </div>
+                                          <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 d-flex align-items-stretch">
+                              <div class="card w-100 position-relative overflow-hidden">
+                                  <div class="card-body p-4">
+                                      <h5 class="card-title fw-semibold">Change Password</h5>
+                                      <p class="card-subtitle mb-4">To change your password please confirm here</p>
+          
+                                      {% comment %} Change Password {% endcomment %}
+          
+                                      {% for message in messages  %}
+                                      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                                        <strong>OOPS!</strong> {{message}}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                      </div>{% endfor %}
+                                      <form action="{% url "Change_Password_Of_Security" %}" method="post">
+                                          {% csrf_token %}
+                                          <div class="mb-4">
+                                              <label for="current_Password" class="form-label fw-semibold">Current
+                                                  Password</label>
+                                              <input type="password" required name="current_Password" class="form-control" id="exampleInputPassword1">
+                                          </div>
+                                          <div class="mb-4">
+                                              <label for="new_password" class="form-label fw-semibold">New
+                                                  Password</label>
+                                              <input type="password" required name="new_password" class="form-control" id="exampleInputPassword1">
+                                          </div>
+                                          <div class="">
+                                              <label for="confirm_password" class="form-label fw-semibold">Confirm
+                                                  Password</label>
+                                              <input type="password" required name="confirm_password" class="form-control" id="exampleInputPassword1">
+                                          </div>
+                                          <div class="col-12">
+                                              <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
+                                                  <input type="submit" name="submit" class="btn btn-primary" value="Change" >
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-12">
+                              <div class="card w-100 position-relative overflow-hidden mb-0">
+                                  <div class="card-body p-4">
+                                      <h5 class="card-title fw-semibold">Personal Details</h5>
+                                      <p class="card-subtitle mb-4">To change your personal detail , edit and save from here
+                                      </p>
+                                      
+                                      {% comment %} Profile change {% endcomment %}
+          
+                                      
+                                      <form method="post" action="{% url "Update_Security_Profile" %}">
+                                          {% csrf_token %}
+                                          <div class="row">
+                                              <div class="col-lg-5"> 
+                                                  <div class="mb-4">
+                                                      <label for="Username"
+                                                          class="form-label fw-semibold">Username</label>
+                                                      <input type="text" required class="form-control" id="Username" name="Username"
+                                                           value={{security.singup.Username}}>
+                                                  </div> 
+                                                  <div class="mb-4">
+                                                      <label for="Email"
+                                                          class="form-label fw-semibold">Email</label>
+                                                      <input type="email" required class="form-control" id="Email" name="Email"
+                                                           value={{security.singup.Email}}>
+                                                  </div>
+                                                  <div class="mb-4">                                                
+                                                      <div class="mb-4">
+                                                          <label for="Contact"
+                                                              class="form-label fw-semibold">Contact No.</label>
+                                                          <input type="text" required class="form-control" id="Contact" name="Contact"
+                                                               value={{security.Contact}}>
+                                                      </div>
+                                                  </div>
+                                                  
+                                              </div>
+                                              <div class="col-lg-6">
+                                                 
+                                                  
+                                                  <div class="mb-4">
+                                                      <label for="BirthDate"
+                                                          class="form-label fw-semibold">BirthDate</label>
+                                                      <input type="date" required class="form-control" id="BirthDate" name="BirthDate"
+                                                       value={{security.BirthDate}}>
+                                                  </div>
+                                                  <div class="mb-4">
+                                                      <label for="exampleInputPassword1"
+                                                          class="form-label fw-semibold">Gender</label>
+                                                      <div class="mb-4">
+                                                          <div class="input-group">
+                                                              <input type="radio"
+                                                                  class="form-label fw-semibold col-sm-3 col-form-label text-end"
+                                                                  name="gender" required id="male" value='m'> Male
+                                                              <input type="radio"
+                                                                  class="form-label fw-semibold col-sm-3 col-form-label text-end"
+                                                                  Name="gender" required id="female" value='f' checked> Female
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="mb-4">
+                                                      <label for="AdharNumber"
+                                                          class="form-label fw-semibold">AdharNumber</label>
+                                                      <input type="text" required class="form-control" id="AdharNumber" name="AdharNumber"
+                                                           value={{security.AdharNumber}}>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12">
+                                                  <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
+                                                      <button class="btn btn-primary">Save</button>
+                                                      <button class="btn btn-light-danger text-danger">Cancel</button>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+                      {% endblock SecuritynAV %}
         </div>
         
       </div>

@@ -87,7 +87,7 @@ Security_Profile_Page_Link="Security/Security_Profile.html"
 Guest_entry_Page_Link="Security/Guest_entry.html"
 Security_Account_Setting_Page_Link="Security/Security_Account_Setting.html"
 Make_Complain_Page_Link="Security/Security_Complain.html"
-
+Guest_Entry_List_Page_Link="Security/Entry_List.html"
 
 
 
@@ -635,6 +635,37 @@ def Guest_Entry_Page(request):
     }
     return render(request,Guest_entry_Page_Link,Contaxt)
 
+def Insert_Guest_Entry(request):
+    try:
+        if Add_Society.objects.get(Society_Name=request.POST["Society_Name"]):
+            login=SingUp.objects.get(Username=request.session['Login_Name'])
+            New_Entry=Guest_Entry.objects.create(Security_Id=login,Citizen_Name=request.POST["Citizen_Name"],Guest_Name=request.POST["Guest_Name"],Reason_for_Comming=request.POST["Reason"],Contact=request.POST["Contect_No"],DateTime=request.POST["datetime"])
+            
+            messages.warning(request,"Entry Done")
+    except:
+        messages.warning(request,"Society Not Exist")
+        return redirect(Guest_Entry_Page)                 
+
+    return redirect(Guest_Entry_Page)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    security=Security_Registration.objects.get(singup=login)
+    Contaxt={
+        "security":security
+    }
+    return render(request,Guest_entry_Page_Link,Contaxt)
+
+def Entry_List(request):
+    Guest_Entry_List_Page_Link
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    security=Security_Registration.objects.get(singup=login)
+    guest_entry=Guest_Entry.objects.all()
+    Contaxt={
+        "security":security,
+        "guest_entry":guest_entry,
+    }
+    return render(request,Guest_Entry_List_Page_Link,Contaxt)
+
+
 def Security_Complain(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     security=Security_Registration.objects.get(singup=login)
@@ -643,6 +674,15 @@ def Security_Complain(request):
     }
     return render(request,Make_Complain_Page_Link,Contaxt)
 
+def Insert_Security_Complain(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    Type=Complain_Type.objects.get(Complain_Name=request.POST["Complain_type"])
+    New_Complain=Complain.objects.create(Citizen_Id=login,Subject=request.POST["Subject"],Complain=Type,Entry_Date=request.POST["Entry_Date"])
+    print(request.POST)
+    print("Save")
+    messages.warning(request,"Complain Registered ")
+
+    return redirect(Security_Complain) 
 #-------------------------------------------------------------------------------------------------------------- 
                                     # Start: Security Related Page..
                                     
