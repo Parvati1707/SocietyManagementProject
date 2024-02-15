@@ -44,19 +44,19 @@
                                     <div class="mb-4">
                                         <label for="current_Password" class="form-label fw-semibold">Current
                                             Password</label>
-                                        <input type="password" name="current_Password" class="form-control"
+                                        <input type="password" required  name="current_Password" class="form-control"
                                             id="exampleInputPassword1">
                                     </div>
                                     <div class="mb-4">
                                         <label for="new_password" class="form-label fw-semibold">New
                                             Password</label>
-                                        <input type="password" name="new_password" class="form-control"
+                                        <input type="password" required  name="new_password" class="form-control"
                                             id="exampleInputPassword1">
                                     </div>
                                     <div class="">
                                         <label for="confirm_password" class="form-label fw-semibold">Confirm
                                             Password</label>
-                                        <input type="password" name="confirm_password" class="form-control"
+                                        <input type="password" required  name="confirm_password" class="form-control"
                                             id="exampleInputPassword1">
                                     </div>
                                     <div class="col-12">
@@ -92,14 +92,14 @@
                                             <div class="mb-4">
                                                 <label for="email"
                                                     class="form-label fw-semibold">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email"
+                                                <input type="email" required  class="form-control" id="email" name="email"
                                                     placeholder="info@modernize.com" value={{committee.singup.Email}}>
                                             </div>
                                             <div class="mb-4">
                                                 <div class="mb-4">
                                                     <label for="contact"
                                                         class="form-label fw-semibold">Contact No.</label>
-                                                    <input type="text" class="form-control" id="contact" name="contact"
+                                                    <input type="text" required  class="form-control" id="contact" name="contact"
                                                         placeholder="+91 12345 65478" value={{committee.Contact}}>
                                                 </div>
                                             </div>
@@ -111,7 +111,7 @@
                                             <div class="mb-4">
                                                 <label for="birthdate"
                                                     class="form-label fw-semibold">BirthDate</label>
-                                                <input type="date" class="form-control" name="birthdate" id="birthdate"
+                                                <input type="date" required  class="form-control" name="birthdate" id="birthdate"
                                                     placeholder="1999/12/15" value={{committee.BirthDate}}>
                                             </div>
                                             <div class="mb-4">
@@ -122,10 +122,10 @@
                                                     <div class="input-group">
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            name="gender" id="male" value='m'> Male
+                                                            name="gender" id="male" required  value='m'> Male
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            Name="gender" id="female" value='f'> Female
+                                                            Name="gender" required  id="female" value='f'> Female
                                                     </div>
                                                 </div>
 
@@ -133,7 +133,7 @@
                                             <div class="mb-4">
                                                 <label for="adharnumber"
                                                     class="form-label fw-semibold">AdharNumber</label>
-                                                <input type="text" class="form-control" name="adharnumber" id="adharnumber"
+                                                <input type="text" required  class="form-control" name="adharnumber" id="adharnumber"
                                                     placeholder="12345 65478" value={{committee.AdharNumber}}>
                                             </div>
 
@@ -146,7 +146,6 @@
                                         <div class="col-12">
                                             <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
                                                 <button class="btn btn-primary">Save</button>
-                                                <button class="btn btn-light-danger text-danger">Cancel</button>
                                             </div>
                                         </div>
                                     </div>

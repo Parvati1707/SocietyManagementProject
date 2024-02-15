@@ -43,15 +43,15 @@
                                     <div class="mb-4">
                                         <label for="current_Password" class="form-label fw-semibold">Current
                                             Password</label>
-                                        <input type="password" name="current_Password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" required name="current_Password" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="mb-4">
                                         <label for="new_password" class="form-label fw-semibold">New
                                             Password</label>
-                                        <input type="password" name="new_password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" required name="new_password" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="">
-                                        <label for="confirm_password" class="form-label fw-semibold">Confirm
+                                        <label for="confirm_password" required class="form-label fw-semibold">Confirm
                                             Password</label>
                                         <input type="password" name="confirm_password" class="form-control" id="exampleInputPassword1">
                                     </div>
@@ -81,20 +81,20 @@
                                             <div class="mb-4">
                                                 <label for="Username"
                                                     class="form-label fw-semibold">Username</label>
-                                                <input type="text" class="form-control" id="Username" name="Username"
+                                                <input type="text" required class="form-control" id="Username" name="Username"
                                                      value={{security.singup.Username}}>
                                             </div> 
                                             <div class="mb-4">
                                                 <label for="Email"
                                                     class="form-label fw-semibold">Email</label>
-                                                <input type="email" class="form-control" id="Email" name="Email"
+                                                <input type="email" required class="form-control" id="Email" name="Email"
                                                      value={{security.singup.Email}}>
                                             </div>
                                             <div class="mb-4">                                                
                                                 <div class="mb-4">
                                                     <label for="Contact"
                                                         class="form-label fw-semibold">Contact No.</label>
-                                                    <input type="text" class="form-control" id="Contact" name="Contact"
+                                                    <input type="text" required class="form-control" id="Contact" name="Contact"
                                                          value={{security.Contact}}>
                                                 </div>
                                             </div>
@@ -106,7 +106,7 @@
                                             <div class="mb-4">
                                                 <label for="BirthDate"
                                                     class="form-label fw-semibold">BirthDate</label>
-                                                <input type="date" class="form-control" id="BirthDate" name="BirthDate"
+                                                <input type="date" required class="form-control" id="BirthDate" name="BirthDate"
                                                  value={{security.BirthDate}}>
                                             </div>
                                             <div class="mb-4">
@@ -116,17 +116,17 @@
                                                     <div class="input-group">
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            name="gender" id="male" value='m'> Male
+                                                            name="gender" required id="male" value='m'> Male
                                                         <input type="radio"
                                                             class="form-label fw-semibold col-sm-3 col-form-label text-end"
-                                                            Name="gender" id="female" value='f' checked> Female
+                                                            Name="gender" required id="female" value='f' checked> Female
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="AdharNumber"
                                                     class="form-label fw-semibold">AdharNumber</label>
-                                                <input type="text" class="form-control" id="AdharNumber" name="AdharNumber"
+                                                <input type="text" required class="form-control" id="AdharNumber" name="AdharNumber"
                                                      value={{security.AdharNumber}}>
                                             </div>
                                         </div>
