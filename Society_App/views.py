@@ -459,6 +459,16 @@ def Citizen_Complain(request):
     }
     return render(request,Complain_Page_Link,Contaxt)
 
+def Insert_Complain(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    Type=Complain_Type.objects.get(Complain_Name=request.POST["Complain_type"])
+    New_Complain=Complain.objects.create(Citizen_Id=login,Subject=request.POST["Subject"],Complain=Type,Entry_Date=request.POST["Entry_Date"])
+    print(request.POST)
+    print("Save")
+    messages.warning(request,"Complain Registered ")
+
+    return redirect(Citizen_Complain) 
+
 def Booking_Request_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     citizen=Citizen_Registration.objects.get(singup=login)
@@ -467,11 +477,49 @@ def Booking_Request_Page(request):
     }
     return render(request,Booking_Request_Page_Link,Contaxt)
 
+def Insert_New_Request(request):
+    try:
+        if Add_Society.objects.get(Society_Name=request.POST["Society_Name"]):
+            try:
+
+                if Add_House.objects.get(House_No=request.POST["House_No"]):
+                    login=SingUp.objects.get(Username=request.session['Login_Name'])
+                    Society=Add_Society.objects.get(Society_Name=request.POST["Society_Name"])
+                    House=Add_House.objects.get(House_No=request.POST["House_No"])
+
+                    New_Request=Personal_Event_Booking.objects.create(House_Id=House,Society_Id=Society,Citizen_Id=login,Event_Name=request.POST["Event_Name"],No_Of_Guest=request.POST["Guest"],Entry_Date=request.POST["DateTime"])
+                    
+                    messages.warning(request,"Request Submited")
+                    return redirect(Booking_Request_Page) 
+            except:
+                messages.warning(request,"House Not Exist")
+                return redirect(Booking_Request_Page) 
+    except:
+        messages.warning(request,"Society Not Exist")
+        return redirect(Booking_Request_Page)
+
+    return redirect(Booking_Request_Page) 
+                
+
 def View_Notice_Page(request):
-    return render(request,View_Notice_Page_Link)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    notice=Notice.objects.all()
+    Contaxt={
+        "citizen":citizen,
+        "notice":notice,
+    }
+    return render(request,View_Notice_Page_Link,Contaxt)
 
 def View_Events_Page(request):
-    return render(request,View_Events_Page_Link)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    society_event=Society_Event.objects.all()
+    Contaxt={
+        "citizen":citizen,
+        "society_event":society_event,
+    }
+    return render(request,View_Events_Page_Link,Contaxt)
 
 
 

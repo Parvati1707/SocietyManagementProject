@@ -1,0 +1,27 @@
+{% extends "Citizen/Citizen_Profile.html" %}
+
+{% load static %}
+{% block CitizenNav %}
+
+<div class="table-responsive">
+    <table class="table border-info table-bordered">
+      <thead class="bg-info text-white">
+        <tr>
+          <th>Event_Type</th>
+          <th>DateTime</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in society_event %}
+          <tr>
+            <td>{{x.Event_Type}}</td>
+
+            <td>{{x.DateTime}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock CitizenNav %}

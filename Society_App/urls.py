@@ -57,8 +57,14 @@ urlpatterns = [
     path("Insert_Sell_House",Insert_Sell_House,name="Insert_Sell_House"),
 
     path("Citizen_Complain",Citizen_Complain,name="Citizen_Complain"),
+    path("Insert_Complain",Insert_Complain,name="Insert_Complain"),
 
     path("Booking_Request_Page",Booking_Request_Page,name="Booking_Request_Page"),
+    path("Insert_New_Request",Insert_New_Request,name="Insert_New_Request"),
+
+    path("View_Notice_Page",View_Notice_Page,name="View_Notice_Page"),
+
+    path("View_Events_Page",View_Events_Page,name="View_Events_Page"),
 
                                        #  Committee Related Urls
 

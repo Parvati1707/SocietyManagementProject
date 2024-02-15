@@ -250,9 +250,9 @@
             </div>
             <div class="col-lg-4 order-last">
               <ul
-                class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-start my-3 gap-3">
+                class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-start my-8 gap-6" style="margin-left: 50%;">
                 
-                <li><button class="btn btn-primary">Sell/Rent List</button></li>
+                <li><a class="btn btn-primary" href="{% url "Report_Page" %}">Report</a></li>
               </ul>
             </div>
           </div>          
@@ -266,23 +266,22 @@
             <a class="nav-link" href="{% url "Rent_House_Page" %}" >Rent House</a>
           </li>
           <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-            <a class="nav-link" >Events</a>
+            <a class="nav-link" href="{% url "View_Events_Page" %}">Events</a>
           </li>
           <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-            <a class="nav-link" href="#">Notices</a>
+            <a class="nav-link" href="{% url "View_Notice_Page" %}">Notices</a>
           </li>
           <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
             <a class="nav-link" href="{% url "Citizen_Complain" %}">Complain</a>
           </li>
           <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
             <a class="nav-link" href="{% url "Booking_Request_Page" %}">Booking Request</a>
-          </li>            
-          <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-            <a class="nav-link" href="{% url "Report_Page" %}">Report</a>
-          </li>
+          </li> 
         </ul>
     
-        {% block CitizenNav %}
+        
+      </div> 
+      {% block CitizenNav %}
         
 <div class="tab-pane fade show active" id="pills-Account-Settings" role="tabpanel"
 aria-labelledby="pills-Account-Settings-tab" tabindex="0">
@@ -471,8 +470,7 @@ aria-labelledby="pills-Account-Settings-tab" tabindex="0">
     </div>
 </div>
 </div>
-        {% endblock CitizenNav %}
-      </div>     
+        {% endblock CitizenNav %}    
     </div>
 
     

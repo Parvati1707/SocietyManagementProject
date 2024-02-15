@@ -151,8 +151,7 @@ class Notice(models.Model):
     Subject=models.TextField(default="")
     DateTime=models.DateField(auto_created=True,default="2018-12-12")
 
-    def __str__(self):
-        return self.Notice
+    
     
 class Event_Type(models.Model):
     Event_Name=models.CharField(default="", max_length=50)
@@ -166,8 +165,6 @@ class Society_Event(models.Model):
     Event_Type=models.ForeignKey(Event_Type, on_delete=models.CASCADE)
     DateTime=models.DateField(auto_created=True,default="2018-12-12")
 
-    def __str__(self):
-        return self.Event_Name
     
     
 #--------------------------------------------------------------------------------------------------------------
@@ -185,10 +182,11 @@ class Complain_Type(models.Model):
 class Complain(models.Model):
     Citizen_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Subject=models.TextField(default="")
-    Relpay=models.TextField(default="")
     Status=models.CharField(default="Pending", max_length=50)
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
     Complain=models.ForeignKey(Complain_Type, on_delete=models.CASCADE)
+
+     
     
 
 class Sell_House(models.Model):
@@ -216,6 +214,9 @@ class Personal_Event_Booking(models.Model):
     No_Of_Guest=models.IntegerField(default="")
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
     
+    
+    def __str__(self):
+        return self.Event_Name
 
 #--------------------------------------------------------------------------------------------------------------
                                      

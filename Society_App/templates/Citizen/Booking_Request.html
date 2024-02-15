@@ -6,11 +6,20 @@
 <div class="card">
     <div class="card-body" style="margin-left:35%;">
         <h5 class="mb-4">Personal Event Booking Form</h5>
-        <form>
+        {% for message in messages  %}
+
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong></strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        {% endfor %}
+        <form method="post" action="{% url "Insert_New_Request" %}">
+            {% csrf_token %}
             <div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" required id="tb-fname" name="Name" placeholder="Enter complainer Name" />
+                        <input type="text" class="form-control" required id="tb-fname" name="Name" value={{citizen}} placeholder="Enter complainer Name" />
                         <label for="Name">Citizen Name</label>
                     </div>
                 </div>
@@ -40,7 +49,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="datetime" class="form-control" required id="tb-cpwd" name="DateTime" placeholder="DateTime" />
+                        <input type="date" class="form-control" required id="tb-cpwd" name="DateTime" placeholder="DateTime" />
                         <label for="DateTime">Date & Time</label>
                     </div>
                 </div>
