@@ -82,7 +82,8 @@
                                                 <label for="Username"
                                                     class="form-label fw-semibold">Username</label>
                                                 <input type="text" required class="form-control" id="Username" name="Username"
-                                                     value={{security.singup.Username}}>
+                                                     value={{security.singup.Username}}
+                                                     onkeypress="return /^[a-zA-Z]+$/.test(event.key)">
                                             </div> 
                                             <div class="mb-4">
                                                 <label for="Email"
