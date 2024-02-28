@@ -50,17 +50,17 @@
                                     <div class="mb-4">
                                         <label for="current_Password" class="form-label fw-semibold">Current
                                             Password</label>
-                                        <input type="password" name="current_Password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" name="current_Password" class="form-control" id="exampleInputPassword1" required>
                                     </div>
                                     <div class="mb-4">
                                         <label for="new_password" class="form-label fw-semibold">New
                                             Password</label>
-                                        <input type="password" name="new_password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" name="new_password" class="form-control" id="exampleInputPassword1" required>
                                     </div>
                                     <div class="">
                                         <label for="confirm_password" class="form-label fw-semibold">Confirm
                                             Password</label>
-                                        <input type="password" name="confirm_password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" name="confirm_password" class="form-control" id="exampleInputPassword1" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex align-items-center justify-content-end mt-4 gap-3">
@@ -89,7 +89,8 @@
                                                 <label for="Username"
                                                     class="form-label fw-semibold">Username</label>
                                                 <input type="text" class="form-control" id="Username" name="Username"
-                                                     value={{Login.Username}}>
+                                                     value={{Login.Username}}
+                                                     onkeypress="return /^[a-zA-Z]+$/.test(event.key)">
                                             </div> 
                                             <div class="mb-4">
                                                 <label for="Email"

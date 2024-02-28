@@ -21,7 +21,7 @@
             <div>
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="Society_Name"  name="Society_Name" placeholder="Enter Society Name" required/>
+                        <input type="text" class="form-control" id="Society_Name" onkeypress="return /^[a-zA-Z]+$/.test(event.key)" name="Society_Name" placeholder="Enter Society Name" required/>
                         <label for="Society_Name">Society Name</label>
                     </div>
                 </div>
@@ -33,13 +33,19 @@
                 </div>
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" required id="PinCode" name="Pincode" placeholder="Enter PinCode" />
+                        <input type="text" class="form-control" required id="PinCode" onkeypress="return event.charCode >=48 && event.charCode <= 78 " name="Pincode" placeholder="Enter PinCode" />
                         <label for="Pincode">Pincode</label>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" required id="City"  name="City" placeholder="Enter City Name" />
+                        <select class="form-select" required id="City"  name="City" placeholder="Enter City Name">
+                            <option selected>Choose...</option>
+                            <option value="Ahemdabad">Ahemdabad</option>
+                            <option value="Surat">Surat</option>
+                            <option value="Rajkot">Rajkot</option>
+                            <option value="Bhavnager">Bhavnager</option>
+                        </select>
                         <label for="City">City</label>
                     </div>
                 </div>

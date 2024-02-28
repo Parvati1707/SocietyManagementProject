@@ -17,7 +17,8 @@
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="Society_Name" name="Society_Name"
-                            placeholder="Enter Society Name" required/>
+                            placeholder="Enter Society Name" required
+                            onkeypress="return /^[a-zA-Z]+$/.test(event.key)"/>
                         <label for="Society_Name">Society Name</label>
                     </div>
                 </div>

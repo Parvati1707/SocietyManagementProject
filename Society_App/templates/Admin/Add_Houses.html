@@ -19,7 +19,8 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="Society_Name" name="Society_Name"
                             placeholder="Enter Society Name" required
-                            data-validation-required-message="This field is required"/>
+                            data-validation-required-message="This field is required"
+                            onkeypress="return /^[a-zA-Z]+$/.test(event.key)"/>
                         <label for="Society_Name">Society Name</label>
                     </div>
                 </div>
