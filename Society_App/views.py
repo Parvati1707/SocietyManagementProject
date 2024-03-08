@@ -498,8 +498,8 @@ def Insert_New_Request(request):
         messages.warning(request,"Society Not Exist")
         return redirect(Booking_Request_Page)
 
-    return redirect(Booking_Request_Page) 
-                
+    return redirect(Booking_Request_Page)             
+
 
 def View_Notice_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
