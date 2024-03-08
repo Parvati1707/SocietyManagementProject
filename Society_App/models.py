@@ -151,8 +151,9 @@ class Notice(models.Model):
     Subject=models.TextField(default="")
     DateTime=models.DateField(auto_created=True,default="2018-12-12")
 
-    
-    
+    def __str__(self):
+        return self.Notice
+            
 class Event_Type(models.Model):
     Event_Name=models.CharField(default="", max_length=50)
 

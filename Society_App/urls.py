@@ -71,13 +71,18 @@ urlpatterns = [
     path("Committee_Account_Setting",Committee_Account_Setting,name="Committee_Account_Setting"),
     path("Update_Committee_Profile",Update_Committee_Profile,name="Update_Committee_Profile"),
 
-    path("Arrange_Meeting",Arrange_Meeting,name="Arrange_Meeting"),
+    path("Arrange_Meeting_Page",Arrange_Meeting_Page,name="Arrange_Meeting_Page"),
+    path("Insert_In_Arreage_Meeting",Insert_In_Arreage_Meeting,name="Insert_In_Arreage_Meeting"),
 
     path("Raise_fund_Request_Page",Raise_fund_Request_Page,name="Raise_fund_Request_Page"),
+    path("Insert_Raise_Fund_Request",Insert_Raise_Fund_Request,name="Insert_Raise_Fund_Request"),
 
     path("Add_Notice_Page",Add_Notice_Page,name="Add_Notice_Page"),
+    path("Insert_Notice",Insert_Notice,name="Insert_Notice"),
 
     path("Add_Event_Page",Add_Event_Page,name="Add_Event_Page"),
+    path("Insert_Event",Insert_Event,name="Insert_Event"),
+
                                        #  Security Related Urls
 
     path("Security_Account_Setting_Page",Security_Account_Setting_Page,name="Security_Account_Setting_Page"),

@@ -7,7 +7,16 @@
                         start Complaint Form
                     ---------------- -->
     <div class="card w-100">
-        <form>
+        {% for message in messages  %}
+
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong>OOPS!</strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endfor %}
+        <form method="post" action="{% url "Insert_Raise_Fund_Request" %}">
+            {% csrf_token %}
             <div class="card-body">
                 <div class="d-flex no-block align-items-center">
                     <h5 class="mb-3">Society Fund Raise Form</h5>
@@ -15,8 +24,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="com1" class="control-label col-form-label">Fund Type</label>
-                            <input type="text" required  class="form-control" id="com1" name="agenda" placeholder="Select Fund Type" />
+                            <label for="Fund_Type" class="control-label col-form-label">Fund Type</label>
+                            <select class="form-select" required id="Fund_Type"  name="Fund_Type" placeholder="Enter fund Type Name">
+                                <option selected>Choose...</option>
+                                <option value="Society">Society</option>
+                                <option value="Maintanance">Maintanance</option>
+                            </select>
                         </div>
                     </div>
                     
@@ -24,8 +37,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="datec" class="control-label col-form-label">Date Time of Meeting </label>
-                            <input type="date" required  name="meetingdatetime" class="form-control" id="datec" />
+                            <label for="datetime" class="control-label col-form-label">Entry Date </label>
+                            <input type="date" required  name="datetime" class="form-control" id="datetime" />
                         </div>
                     </div>                    
                 </div>

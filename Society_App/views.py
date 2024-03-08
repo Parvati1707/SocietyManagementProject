@@ -560,7 +560,7 @@ def Update_Committee_Profile(request):
     
     return redirect(Committee_Account_Setting)
 
-def Arrange_Meeting(request):
+def Arrange_Meeting_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     committee=Committee_Registration.objects.get(singup=login)
     Contaxt={
@@ -568,6 +568,13 @@ def Arrange_Meeting(request):
     }
     return render(request,Arrange_Meeting_Page_Link,Contaxt)
  
+def Insert_In_Arreage_Meeting(request):
+    insert_arrange_meeting=Arrange_Meeting.objects.create(Meet_Agenda=request.POST["meeting_agenda"],DateTime=request.POST["meetingdatetime"],Meet_conclusion=request.POST["meeting_Conclusion"])
+    
+    messages.warning(request,"Data Successfully Saved....")
+
+    return redirect(Arrange_Meeting_Page)
+
 def Raise_fund_Request_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     committee=Committee_Registration.objects.get(singup=login)
@@ -575,6 +582,15 @@ def Raise_fund_Request_Page(request):
         "committee":committee
     }
     return render(request,Raise_Fund_Request_Page_Link,Contaxt)
+
+def Insert_Raise_Fund_Request(request):
+    Type=Fund_Type.objects.get(Fund_Name=request.POST["Fund_Type"])
+    
+    Insert_Fund_request=Raise_Fund.objects.create(Fund_Type=Type,DateTime=request.POST["datetime"])
+    
+    messages.warning(request,"Data Successfully Saved....")
+
+    return redirect(Raise_fund_Request_Page)
 
 def Add_Notice_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
@@ -584,6 +600,15 @@ def Add_Notice_Page(request):
     }
     return render(request,Add_Notice_Page_Link,Contaxt)
 
+def Insert_Notice(request):
+    Type=Notice_Type.objects.get(Notice_Name=request.POST["Notice_Type"])
+
+    insert_notice=Notice.objects.create(Notice=Type,Subject=request.POST["Notice_Subject"],DateTime=request.POST["notice_datetime"])
+
+    messages.warning(request,"Data Successfully Saved....")
+
+    return redirect(Add_Notice_Page)
+
 def Add_Event_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     committee=Committee_Registration.objects.get(singup=login)
@@ -592,6 +617,14 @@ def Add_Event_Page(request):
     }
     return render(request,Add_Event_Page_Link,Contaxt)
 
+def Insert_Event(request):
+    Type=Event_Type.objects.get(Event_Name=request.POST["Event_Type"])
+
+    insert_Event=Society_Event.objects.create(Event_Type=Type,DateTime=request.POST["Eventdatetime"])
+
+    messages.warning(request,"Data Successfully Saved....")
+
+    return redirect(Add_Event_Page)
 
 #--------------------------------------------------------------------------------------------------------------                                                            
                                     # End: Committee Related Page..
