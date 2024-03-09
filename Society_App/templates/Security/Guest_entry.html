@@ -6,6 +6,11 @@
                         start Complaint Form
                     ---------------- -->
     <div class="card w-100">
+        {% for message in messages  %}
+              <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong>OOPS!</strong> {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>{% endfor %}
         <form method="post" action="{% url "Insert_Guest_Entry" %}">
             {% csrf_token %}
             <div class="card-body">
@@ -16,7 +21,7 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="Society_Name" class="control-label col-form-label">Society Name</label>
-                            <input type="text" required class="form-control" id="Society_Name" onkeypress="return /^[a-zA-Z]+$/.test(event.key)" name="Society_Name" placeholder=" Enter Society Name" />
+                            <input type="text" required class="form-control" id="Society_Name" value={{security.society_name}} onkeypress="return /^[a-zA-Z]+$/.test(event.key)" name="Society_Name" placeholder=" Enter Society Name" />
                         </div>
                     </div>
                     <div class="col-12">

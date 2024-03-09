@@ -130,7 +130,7 @@
                     <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                       <div class="d-flex align-items-center">
                         <div class="user-profile-img">
-                          <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" class="rounded-circle" width="35" height="35" alt="" />
+                          <img src="{{security.Security_Image.url}}" class="rounded-circle" width="35" height="35" alt="" />
                         </div>
                       </div>
                     </a>
@@ -140,7 +140,7 @@
                           <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                         </div>
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                          <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" class="rounded-circle" width="80" height="80" alt="" />
+                          <img src="{{security.Security_Image.url}}" class="rounded-circle" width="80" height="80" alt="" />
                           <div class="ms-3">
                             <h5 class="mb-1 fs-3">{{security}}</h5>
                             <span class="mb-1 d-block text-dark">Security</span>
@@ -208,7 +208,7 @@
                     <div class="d-flex align-items-center justify-content-center mb-2">
                       <div class="linear-gradient d-flex align-items-center justify-content-center rounded-circle" style="width: 110px; height: 110px;";>
                         <div class="border border-4 border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden" style="width: 100px; height: 100px;";>
-                          <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" alt="" class="w-100 h-100">
+                          <img src="{{security.Security_Image.url}}" alt="" class="w-100 h-100">
                         </div>
                       </div>
                     </div>
@@ -255,12 +255,16 @@
                                       <h5 class="card-title fw-semibold">Change Profile</h5>
                                       <p class="card-subtitle mb-4">Change your profile picture from here</p>
                                       <div class="text-center">
-                                          <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" alt=""
-                                              class="img-fluid rounded-circle" width="120" height="120">
-                                          <div class="d-flex align-items-center justify-content-center my-4 gap-3">
-                                              <button class="btn btn-primary">Upload</button>
-                                              <button class="btn btn-outline-danger">Reset</button>
-                                          </div>
+                                        <img src="{{security.Security_Image.url}}" alt=""
+                                        class="rounded-circle" width="120" height="120">
+                                <from action="" method="post" onchange="this.submit()" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="d-flex align-items-center justify-content-center my-4 gap-3">
+                                        
+                                        <input type="file" name="Security_Image" class="btn btn-primary">
+            
+                                    </div>
+                                </form>
                                           <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
                                       </div>
                                   </div>

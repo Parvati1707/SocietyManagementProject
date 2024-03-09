@@ -672,7 +672,7 @@ def Insert_Guest_Entry(request):
     try:
         if Add_Society.objects.get(Society_Name=request.POST["Society_Name"]):
             login=SingUp.objects.get(Username=request.session['Login_Name'])
-            New_Entry=Guest_Entry.objects.create(Security_Id=login,Citizen_Name=request.POST["Citizen_Name"],Guest_Name=request.POST["Guest_Name"],Reason_for_Comming=request.POST["Reason"],Contact=request.POST["Contect_No"],DateTime=request.POST["datetime"])
+            New_Entry=Guest_Entry.objects.create(Security_Id=login,Society_Name=request.POST["Society_Name"],Citizen_Name=request.POST["Citizen_Name"],Guest_Name=request.POST["Guest_Name"],Reason_for_Comming=request.POST["Reason"],Contact=request.POST["Contect_No"],DateTime=request.POST["datetime"])
             
             messages.warning(request,"Entry Done")
     except:
@@ -986,6 +986,7 @@ def Security_Validation(request):
     security.BirthDate=request.POST["DOB"]
     security.Contact=request.POST["phone"]
     security.Gender=request.POST["gender"]
+    security.society_name=request.POST["Society_Name"]
     security.save()
 
     return redirect(Login_Page)                                   

@@ -30,8 +30,7 @@ class Citizen_Registration(models.Model):
     HouseNo=models.CharField(max_length=10,default="")#
     Resident_Type=models.CharField(choices=Resident_Choice,max_length=20,default="")
     FirstName=models.CharField(max_length=20,default="")#
-    LastName=models.CharField(max_length=20,default="")#
-    #Email=models.EmailField(default="",max_length=30)
+    LastName=models.CharField(max_length=20,default="")
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
     Profession=models.CharField(default="", max_length=50)
@@ -39,6 +38,8 @@ class Citizen_Registration(models.Model):
     Contact=models.CharField(max_length=10,default="")#
     Contac2t=models.CharField(max_length=10,default="")#
     Address=models.TextField(default="",max_length=40)
+    
+    Citizen_Image=models.FileField(upload_to='Citizen_Images/',default="Avatar.png")
 
     def __str__(self):
         return self.singup.Username
@@ -46,10 +47,10 @@ class Citizen_Registration(models.Model):
 class Committee_Registration(models.Model):
     singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Contact=models.CharField(max_length=10,default="")
-    #Email=models.EmailField(default="",max_length=30)
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
     AdharNumber=models.CharField(max_length=20,default="")
+    Committee_Image=models.FileField(upload_to='Committee_Person_Images/',default="Avatar.png")
 
     def __str__(self):
         return self.singup.Username
@@ -57,11 +58,12 @@ class Committee_Registration(models.Model):
 
 class Security_Registration(models.Model):
     singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
+    society_name=models.CharField(default="", max_length=50)
     Contact=models.CharField(max_length=10,default="")
-    #Email=models.EmailField(default="",max_length=30)
     BirthDate=models.DateField(auto_created=True,default="2018-12-12")
     Gender=models.CharField(choices=Gender_choice,max_length=20,default="")
-    AdharNumber=models.CharField(max_length=20,default="")
+    AdharNumber=models.CharField(max_length=20,default="")    
+    Security_Image=models.FileField(upload_to='Security_Person_Images/',default="Avatar.png")
 
     def __str__(self):
         return self.singup.Username
@@ -235,6 +237,7 @@ class Personal_Event_Booking(models.Model):
 
 class Guest_Entry(models.Model):
     Security_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
+    Society_Name=models.CharField(default="", max_length=50)
     Citizen_Name=models.CharField(default="",max_length=50)
     Guest_Name=models.CharField(default="",max_length=50)
     Reason_for_Comming=models.TextField(default="")
