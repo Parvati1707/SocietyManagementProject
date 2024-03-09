@@ -991,6 +991,15 @@ def Security_Validation(request):
 
     return redirect(Login_Page)                                   
 
+def Upload_Security_Image(request):
+    print(request.POST)
+
+def Upload_Committee_Image(request):
+    pass
+
+def Upload_Citizen_Image(request):
+    pass
+
 
 #--------------------------------------------------------------------------------------------------------------                                      
                                             #End: Validation ...

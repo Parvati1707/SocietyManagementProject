@@ -110,5 +110,8 @@ urlpatterns = [
     path("Change_Password_Of_Security",Change_Password_Of_Security,name="Change_Password_Of_Security"),
     path("Change_Password_Of_Committee",Change_Password_Of_Committee,name="Change_Password_Of_Committee"),
     path("Change_Password_Of_Admin",Change_Password_Of_Admin,name="Change_Password_Of_Admin"),
+    path("Upload_Security_Image",Upload_Security_Image,name="Upload_Security_Image"),
+    path("Upload_Committee_Image",Upload_Committee_Image,name="Upload_Committee_Image"),
+    path("Upload_Citizen_Image",Upload_Citizen_Image,name="Upload_Citizen_Image"),
     
 ]
