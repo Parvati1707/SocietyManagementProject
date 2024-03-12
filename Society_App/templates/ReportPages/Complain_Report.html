@@ -9,10 +9,10 @@
     <table class="table border-info table-bordered">
       <thead class="bg-info text-white">
         <tr>
-          <th>Citizen_Id</th>
-          <th>Subject</th>
-          <th>Status</th>
+          <th>Citizen Name</th>
           <th>Complain</th>
+          <th>Subject of Complain</th>
+          <th>Status of Complain</th>
           <th>Entry_Date</th>
         </tr>
       </thead>
@@ -20,9 +20,9 @@
         {% for x in Complain_Report %}
           <tr>
             <td>{{x.Citizen_Id}}</td>
+            <td>{{x.Complain}}</td>
             <td>{{x.Subject}}</td>
             <td>{{x.Status}}</td>
-            <td>{{x.Complain}}</td>
             <td>{{x.Entry_Date}}</td>
           </tr>
         {% endfor %}
