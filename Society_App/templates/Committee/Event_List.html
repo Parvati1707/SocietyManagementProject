@@ -7,19 +7,15 @@
     <table class="table border-info table-bordered">
       <thead class="bg-info text-white">
         <tr>
-          <th>Citizen Name</th>
-          <th>BlockNo</th>
-          <th>HouseNo</th>
-          <th>Resident_Type</th>          
+          <th>Event Name</th>
+          <th>DateTime</th>        
         </tr>
       </thead>
       <tbody>
-        {% for x in Owner_Info %}
+        {% for x in Event_List %}
           <tr>
-            <td>{{x.singup}}</td>
-            <td>{{x.BlockNo}}</td>
-            <td>{{x.HouseNo}}</td>
-            <td>{{x.Resident_Type}}</td>
+            <td>{{x.Event_Type}}</td>
+            <td>{{x.DateTime}}</td>
           </tr>
         {% endfor %}
       </tbody>

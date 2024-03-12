@@ -22,7 +22,7 @@ class SingUp(models.Model):
 
     def __str__(self):
         return self.Username
-
+        
 class Citizen_Registration(models.Model):
     singup=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     TotalMembers=models.CharField(max_length=50,default="")#

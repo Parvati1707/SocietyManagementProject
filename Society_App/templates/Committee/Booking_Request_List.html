@@ -3,24 +3,27 @@
 
 {% block CommitteeNav %}
 <br><br>
+
 <div class="table-responsive">
     <table class="table border-info table-bordered">
       <thead class="bg-info text-white">
         <tr>
+          <th>House_Id</th>
+          <th>Society_Id</th>
           <th>Citizen_Id</th>
-          <th>Subject</th>
-          <th>Status</th>
-          <th>Complain</th>
+          <th>Event_Name</th>
+          <th>No_Of_Guest</th>
           <th>Entry_Date</th>
         </tr>
       </thead>
       <tbody>
-        {% for x in Complain_List %}
+        {% for x in Request_List %}
           <tr>
+            <td>{{x.House_Id}}</td>
+            <td>{{x.Society_Id}}</td>
             <td>{{x.Citizen_Id}}</td>
-            <td>{{x.Subject}}</td>
-            <td>{{x.Status}}</td>
-            <td>{{x.Complain}}</td>
+            <td>{{x.Event_Name}}</td>
+            <td>{{x.No_Of_Guest}}</td>
             <td>{{x.Entry_Date}}</td>
           </tr>
         {% endfor %}

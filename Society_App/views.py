@@ -74,10 +74,12 @@ Committee_Profile_Page_Link="Committee/Committee_Profile.html"
 Arrange_Meeting_Page_Link="Committee/Arrange_Meeting.html"
 Committee_Account_Setting_Page_Link="Committee/Committee_Account_Setting.html"
 Add_Event_Page_Link="Committee/Add_Event.html"
+Society_Event_List_Page_Link="Committee/Event_List.html"
 Add_Notice_Page_Link="Committee/Add_Notice.html"
-Manage_complain_Page_Link="Committee/Manage_Complain.html"
+Committee_Manage_complain_Page_Link="Committee/Manage_Complain.html"
 Display_Owner_Information_Page_Link="Committee/Owner_info.html"
 Raise_Fund_Request_Page_Link="Committee/Raise_Fund_Request.html"
+Booking_Request_Page_Link="Committee/Booking_Request_List.html"
 
 
                                 #Security Pages..
@@ -617,6 +619,16 @@ def Add_Event_Page(request):
     }
     return render(request,Add_Event_Page_Link,Contaxt)
 
+def Society_Event_List_Page(request):
+    event_list=Society_Event.objects.all()
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Context={
+        "committee":committee,
+        "Event_List":event_list
+    }
+    return render(request,Society_Event_List_Page_Link,Context)
+
 def Insert_Event(request):
     Type=Event_Type.objects.get(Event_Name=request.POST["Event_Type"])
 
@@ -626,6 +638,37 @@ def Insert_Event(request):
 
     return redirect(Add_Event_Page)
 
+def Committee_Manage_Complain_Page(request):
+    Complain_List=Complain.objects.all()
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Context={
+        'Complain_List':Complain_List,
+        "committee":committee
+    }
+    return render(request,Committee_Manage_complain_Page_Link,Context)
+
+def Booking_Request_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Request_List=Personal_Event_Booking.objects.all()
+    
+    Contaxt={
+        "committee":committee,
+        'Request_List':Request_List
+    }
+    return render(request,Booking_Request_Page_Link,Contaxt)
+
+def Display_Owner_Information_Page(request):
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Owner_Info=Citizen_Registration.objects.all()
+    
+    Contaxt={
+        "committee":committee,
+        'Owner_Info':Owner_Info
+    }
+    return render(request,Display_Owner_Information_Page_Link,Contaxt)
 #--------------------------------------------------------------------------------------------------------------                                                            
                                     # End: Committee Related Page..
 
@@ -635,6 +678,7 @@ def Insert_Event(request):
 def Security_Profile_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     security=Security_Registration.objects.get(singup=login)
+    security.BirthDate=security.BirthDate.strftime('%Y-%m-%d')
     Contaxt={
         "security":security
     }
@@ -992,13 +1036,26 @@ def Security_Validation(request):
     return redirect(Login_Page)                                   
 
 def Upload_Security_Image(request):
-    print(request.POST)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    security=Security_Registration.objects.get(singup=login)
+    security.Security_Image=request.FILES["Security_Image"]
+    security.save()
+    print("Image Changed")
+    return redirect(Security_Account_Setting_Page)
 
 def Upload_Committee_Image(request):
-    pass
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    committee.Committee_Image=request.FILES["Committee_Image"]
+    committee.save()
+    return redirect(Committee_Account_Setting)
 
 def Upload_Citizen_Image(request):
-    pass
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    citizen=Citizen_Registration.objects.get(singup=login)
+    citizen.Citizen_Image=request.FILES["Citizen_Image"]
+    citizen.save()
+    return redirect(Citizen_Account_Setting_Page)
 
 
 #--------------------------------------------------------------------------------------------------------------                                      

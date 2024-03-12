@@ -51,83 +51,8 @@
                  
                   <li class="nav-item dropdown">
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link notify-badge nav-icon-hover" href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                        <i class="ti ti-basket"></i>
-                        <span class="badge rounded-pill bg-danger fs-2">2</span>                   
-                    </a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="ti ti-bell-ringing"></i>
-                      <div class="notification bg-primary rounded-circle"></div>
-                    </a>
-                    <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                      <div class="d-flex align-items-center justify-content-between py-3 px-7">
-                        <h5 class="mb-0 fs-5 fw-semibold">Notifications</h5>
-                        <span class="badge bg-primary rounded-4 px-3 py-1 lh-sm">5 new</span>
-                      </div>
-                      <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
-                          <span class="me-3">
-                            <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" alt="user" class="rounded-circle" width="48" height="48" />
-                          </span>
-                          <div class="w-75 d-inline-block v-middle">
-                            <h6 class="mb-1 fw-semibold">Roman Joined the Team!</h6>
-                            <span class="d-block">Congratulate him</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
-                          <span class="me-3">
-                            <img src="{% static 'mainpage/images/profile/user-2.jpg' %}" alt="user" class="rounded-circle" width="48" height="48" />
-                          </span>
-                          <div class="w-75 d-inline-block v-middle">
-                            <h6 class="mb-1 fw-semibold">New message</h6>
-                            <span class="d-block">Salma sent you new message</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
-                          <span class="me-3">
-                            <img src="{% static 'mainpage/images/profile/user-3.jpg' %}" alt="user" class="rounded-circle" width="48" height="48" />
-                          </span>
-                          <div class="w-75 d-inline-block v-middle">
-                            <h6 class="mb-1 fw-semibold">Bianca sent payment</h6>
-                            <span class="d-block">Check your earnings</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
-                          <span class="me-3">
-                            <img src="{% static 'mainpage/images/profile/user-4.jpg' %}" alt="user" class="rounded-circle" width="48" height="48" />
-                          </span>
-                          <div class="w-75 d-inline-block v-middle">
-                            <h6 class="mb-1 fw-semibold">Jolly completed tasks</h6>
-                            <span class="d-block">Assign her new tasks</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
-                          <span class="me-3">
-                            <img src="{% static 'mainpage/images/profile/user-5.jpg' %}" alt="user" class="rounded-circle" width="48" height="48" />
-                          </span>
-                          <div class="w-75 d-inline-block v-middle">
-                            <h6 class="mb-1 fw-semibold">John received payment</h6>
-                            <span class="d-block">$230 deducted from account</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
-                          <span class="me-3">
-                            <img src="{% static 'mainpage/images/profile/user-1.jpg' %}" alt="user" class="rounded-circle" width="48" height="48" />
-                          </span>
-                          <div class="w-75 d-inline-block v-middle">
-                            <h6 class="mb-1 fw-semibold">Roman Joined the Team!</h6>
-                            <span class="d-block">Congratulate him</span>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="py-6 px-7 mb-1">
-                        <button class="btn btn-outline-primary w-100"> See All Notifications </button>
-                      </div>
-                    </div>
-                  </li>
+                  
+                  
                   <li class="nav-item dropdown">
                     <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                       <div class="d-flex align-items-center">
@@ -213,14 +138,13 @@
                     </div>
                     <div class="text-center">
                       <h5 class="fs-5 mb-0 fw-semibold">{{committee}}</h5>
-                      <p class="mb-0 fs-4">Committee</p>
+                      <p class="mb-0 fs-4">Committee Member</p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4 order-last">
-                  <ul class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-start my-3 gap-3">
-                   
-                    <li><button class="btn btn-primary">Event List</button></li>
+                  <ul class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-start my-3 gap-3" style="margin-left: 50%;">
+                    <li><a class="btn btn-primary" href="{% url "Society_Event_List_Page" %}">Event List</a></li>
                   </ul>
                 </div>
               </div>    
@@ -238,13 +162,13 @@
                   <a class="nav-link" href="{% url "Raise_fund_Request_Page" %}">Raise Fund</a>
                 </li>
                 <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-                  <a class="nav-link" href="#">Owner Information</a>
+                  <a class="nav-link" href="{% url "Display_Owner_Information_Page" %}">Owner Information</a>
                 </li>
                 <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-                  <a class="nav-link" href="#">Complains</a>
+                  <a class="nav-link" href="{% url "Committee_Manage_Complain_Page" %}">Complains</a>
                 </li>            
                 <li class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6">
-                  <a class="nav-link" href="#">Request List</a>
+                  <a class="nav-link" href="{% url "Booking_Request_Page" %}">Request List</a>
                 </li>
               </ul>
     
@@ -265,14 +189,13 @@
                                 <div class="text-center">
                                   <img src="{{committee.Committee_Image.url}}" alt=""
                                   class="rounded-circle" width="120" height="120">
-                                  <from action="" method="post" onchange="this.submit()" enctype="multipart/form-data">
-                                      {% csrf_token %}
-                                      <div class="d-flex align-items-center justify-content-center my-4 gap-3">
-                                          
-                                          <input type="file" name="Committee_Image" class="btn btn-primary">
-              
+                                  <form action="Upload_Committee_Image" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="d-flex align-items-center justify-content-center my-4 gap-3">
+                                        <input type="file" name="Committee_Image" id="Security_Image" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary">Upload</button>
                                       </div>
-                                  </form>
+                                </form> 
                                     <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
                                 </div>
                             </div>
@@ -297,19 +220,19 @@
                                         <label for="current_Password" class="form-label fw-semibold">Current
                                             Password</label>
                                         <input type="password" name="current_Password" class="form-control"
-                                            id="exampleInputPassword1">
+                                            id="exampleInputPassword1" value="1234567">
                                     </div>
                                     <div class="mb-4">
                                         <label for="new_password" class="form-label fw-semibold">New
                                             Password</label>
                                         <input type="password" name="new_password" class="form-control"
-                                            id="exampleInputPassword1">
+                                            id="exampleInputPassword1" value="1234567">
                                     </div>
                                     <div class="">
                                         <label for="confirm_password" class="form-label fw-semibold">Confirm
                                             Password</label>
                                         <input type="password" name="confirm_password" class="form-control"
-                                            id="exampleInputPassword1">
+                                            id="exampleInputPassword1" value="1234567">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex align-items-center justify-content-end mt-4 gap-3">

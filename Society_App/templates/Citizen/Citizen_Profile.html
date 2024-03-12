@@ -244,7 +244,7 @@
                 </div>
                 <div class="text-center">
                   <h5 class="fs-5 mb-0 fw-semibold">{{citizen}}</h5>
-                  <p class="mb-0 fs-4">Citizen</p>
+                  <p class="mb-0 fs-4">Society Member</p>
                 </div>
               </div>
             </div>
@@ -298,14 +298,13 @@ aria-labelledby="pills-Account-Settings-tab" tabindex="0">
                             <div class="text-center">
                               <img src="{{citizen.Citizen_Image.url}}" alt=""
                               class="rounded-circle" width="120" height="120">
-                      <from action="" method="post" onchange="this.submit()" enctype="multipart/form-data">
-                          {% csrf_token %}
-                          <div class="d-flex align-items-center justify-content-center my-4 gap-3">
-                              
-                              <input type="file" name="Security_Image" class="btn btn-primary">
-  
-                          </div>
-                      </form>
+                              <form action="Upload_Citizen_Image" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="d-flex align-items-center justify-content-center my-4 gap-3">
+                                    <input type="file" name="Citizen_Image" id="Security_Image" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                  </div>
+                            </form>
                                 <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
                             </div>
                         </div>

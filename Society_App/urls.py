@@ -82,6 +82,14 @@ urlpatterns = [
 
     path("Add_Event_Page",Add_Event_Page,name="Add_Event_Page"),
     path("Insert_Event",Insert_Event,name="Insert_Event"),
+    path("Society_Event_List_Page",Society_Event_List_Page,name="Society_Event_List_Page"),
+
+    path("Committee_Manage_Complain_Page",Committee_Manage_Complain_Page,name="Committee_Manage_Complain_Page"),
+
+    path("Booking_Request_Page",Booking_Request_Page,name="Booking_Request_Page"),
+
+    path("Display_Owner_Information_Page",Display_Owner_Information_Page,name="Display_Owner_Information_Page"),
+
 
                                        #  Security Related Urls
 
