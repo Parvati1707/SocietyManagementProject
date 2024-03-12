@@ -79,7 +79,7 @@ Add_Notice_Page_Link="Committee/Add_Notice.html"
 Committee_Manage_complain_Page_Link="Committee/Manage_Complain.html"
 Display_Owner_Information_Page_Link="Committee/Owner_info.html"
 Raise_Fund_Request_Page_Link="Committee/Raise_Fund_Request.html"
-Booking_Request_Page_Link="Committee/Booking_Request_List.html"
+Booking_Request_List_Page_Link="Committee/Booking_Request_List.html"
 
 
                                 #Security Pages..
@@ -648,16 +648,16 @@ def Committee_Manage_Complain_Page(request):
     }
     return render(request,Committee_Manage_complain_Page_Link,Context)
 
-def Booking_Request_Page(request):
+def Booking_Request_List_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     committee=Committee_Registration.objects.get(singup=login)
     Request_List=Personal_Event_Booking.objects.all()
-    
+
     Contaxt={
         "committee":committee,
         'Request_List':Request_List
     }
-    return render(request,Booking_Request_Page_Link,Contaxt)
+    return render(request,Booking_Request_List_Page_Link,Contaxt)
 
 def Display_Owner_Information_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
