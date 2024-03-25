@@ -33,6 +33,7 @@ urlpatterns = [
 
     path("Manage_Complain_Page",Manage_Complain_Page,name="Manage_Complain_Page"),
 
+                                       #  Report Page Related Urls
     path("Report_Page",Report_Page,name="Report_Page"),
     path("Society_Report_Page",Society_Report_Page,name="Society_Report_Page"),
     path("Block_Report_Page",Block_Report_Page,name="Block_Report_Page"),
@@ -41,6 +42,8 @@ urlpatterns = [
     path("Complain_Report_Page",Complain_Report_Page,name="Complain_Report_Page"),
     path("Personal_Event_Booking_Report_Page",Personal_Event_Booking_Report_Page,name="Personal_Event_Booking_Report_Page"),
     path("Sell_Rent_Report_Page",Sell_Rent_Report_Page,name="Sell_Rent_Report_Page"),
+    
+    path("Sreach_Result_Page",Sreach_Result_Page,name="Sreach_Result_Page"),
     
     
     

@@ -137,6 +137,10 @@
             </a>
           </li>
           <li class="nav-item d-none d-lg-block">
+            {% comment %} <form method="get" action="{% url "Sreach_Result_Page" %}">
+                <input type="text" class="form-control" name="query" id="query" placeholder="Sreach Here">
+                <input type="submit" name="submit" value="submit" class="btn btn-info font-medium rounded-pill px-4">
+            </form> {% endcomment %}
             <a class="nav-link nav-icon-hover" href="javascript:void(0)" data-bs-toggle="modal"
               data-bs-target="#exampleModal">
               <i class="ti ti-search"></i>
@@ -145,6 +149,63 @@
         </ul>
       </nav>
     </header>
+    <!--  Search Bar -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content rounded-1">
+          <div class="modal-header border-bottom">
+            <form method="get" action="{% url "Sreach_Result_Page" %}" >
+              <div class="col-sm-9">
+            <input type="text" class="form-control" name="query" placeholder="Search here" id="query" />
+              </div>
+            </form>
+            <span data-bs-dismiss="modal" class="lh-1 cursor-pointer">
+              <i class="ti ti-x fs-5 ms-3"></i>
+            </span>
+          </div>
+          <div class="modal-body message-body" data-simplebar="">
+            <h5 class="mb-0 fs-5 p-1">Quick Page Links</h5>
+            <ul class="list mb-0 py-2">
+              <li class="p-1 mb-1 bg-hover-light-black">
+                <a href="{% url "Society_Report_Page" %}">
+                  <span class="fs-3 text-black fw-normal d-block">Society Detail</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 bg-hover-light-black">
+                <a href="{% url "Block_Report_Page" %}">
+                  <span class="fs-3 text-black fw-normal d-block">Block Details</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 bg-hover-light-black">
+                <a href="{% url "House_Report_Page" %}">
+                  <span class="fs-3 text-black fw-normal d-block">Houses Detail</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 bg-hover-light-black">
+                <a href="{% url "Complain_Report_Page" %}">
+                  <span class="fs-3 text-black fw-normal d-block">Complain List</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 bg-hover-light-black">
+                <a href="{% url "Sell_Rent_Report_Page" %}">
+                  <span class="fs-3 text-black fw-normal d-block">Sell/Rent Info</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 bg-hover-light-black">
+                <a href="{% url "Citizen_Report_Page" %}">
+                  <span class="fs-3 text-black fw-normal d-block">Citizen Info</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 bg-hover-light-black">
+                <a href="{% url "Personal_Event_Booking_Report_Page" %}">
+                  <span class="fs-3 text-black fw-normal d-block">Personal Event Detaile</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- --------------------------------------------------- -->
     <!-- Header End -->
     <!-- --------------------------------------------------- -->

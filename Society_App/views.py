@@ -45,6 +45,8 @@ Personal_Event_Booking_Page_Link="ReportPages/Booking_Request_Report.html"
 
 Sell_Rent_Report_Page_Link="ReportPages/Sell_Rent_Report.html"
 
+sreach_Result_Page_Link="ReportPages/Sreach_Result_Page.html"
+
                                 #Admin Pages..
 
 Admin_Profile_Page_Link="Admin/Admin_Profile.html"
@@ -336,7 +338,15 @@ def Citizen_Report_Page(request):
     }
     return render(request,Citizen_Report_Page_Link,context)
 
-
+def Sreach_Result_Page(request):
+    query=request.GET["query"]
+    print(request.GET["query"])
+    allposts=Add_Society.objects.filter(title__icontains=query).values()
+    #allposts=Add_Society.objects.all()
+    params={
+        'allposts':allposts
+    }
+    return render(request,sreach_Result_Page_Link,params)
 
 
 
