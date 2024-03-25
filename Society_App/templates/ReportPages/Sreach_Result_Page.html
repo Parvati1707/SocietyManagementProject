@@ -4,9 +4,9 @@
 
 {% block ReportContant %}
 
-<h1>Sreach Result</h1>
-
-{% if allposts|length < 1 %}
+<h1>Sreach Result:</h1>
+<br>
+{% if Society_Sreach|length < 1 %}
 <p>No search results</p>
 Your search query : <b>{{query}}</b> did not match any documents. <br>
 Suggestions:
@@ -18,12 +18,10 @@ Suggestions:
 </li>
 </ul>
 {% endif %}
-
 <div class="table-responsive">
     <table class="table border-info table-bordered">
-      
       <tbody>
-        {% for x in allposts %}
+        {% for x in Society_Sreach %}
           <tr>
             <td>{{x.Society_Name}}</td>
             <td>{{x.Address}}</td>
@@ -35,6 +33,40 @@ Suggestions:
         {% endfor %}
       </tbody>
     </table>
-  </div>
+</div>
+
+
+<br>
+<div class="table-responsive">
+  <table class="table border-info table-bordered">
+    <tbody>
+      {% for x in Block_sreach %}
+        <tr>
+          <td>{{x.Society_Name}}</td>
+          <td>{{x.Block_No}}</td>
+          <td>{{x.NO_Of_Floors}}</td>
+          <td>{{x.No_Of_Flats}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive">
+  <table class="table border-info table-bordered">
+    <tbody>
+      {% for x in House_Sreach %}
+        <tr>
+          <td>{{x.Society_Name}}</td>
+          <td>{{x.House_No}}</td>
+          <td>{{x.Block_No}}</td>
+          <td>{{x.House_Type}}</td>
+          <td>{{x.Detail}}</td>
+          <td>{{x.Entry_Date}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 </div>
 {% endblock ReportContant %}

@@ -342,21 +342,42 @@ def Sreach_Result_Page(request):
     query=request.GET["query"]
 
     if len(query)>78:
-        allposts=Add_Society.objects.none
+        Society_Sreach=Add_Society.objects.none
     else:
-        allpost_Name=Add_Society.objects.filter(Society_Name__icontains=query).values()
-        allpost_Address=Add_Society.objects.filter(Address__icontains=query).values()
-        allpost_City=Add_Society.objects.filter(City__icontains=query).values()
-        allpost_Pincode=Add_Society.objects.filter(PinCode__icontains=query).values()
-        allpost_Houses=Add_Society.objects.filter(No_Of_House__icontains=query).values()
-        allpost_Date=Add_Society.objects.filter(Entry_Date__icontains=query).values()
-        allposts=allpost_Name.union(allpost_Address,allpost_City,allpost_Pincode,allpost_Houses,allpost_Date)
 
-    params={
-        'allposts':allposts,
+            # Society details Sreach
+        society_Name=Add_Society.objects.filter(Society_Name__icontains=query).values()
+        society_Address=Add_Society.objects.filter(Address__icontains=query).values()
+        society_City=Add_Society.objects.filter(City__icontains=query).values()
+        society_Pincode=Add_Society.objects.filter(PinCode__icontains=query).values()
+        society_Houses=Add_Society.objects.filter(No_Of_House__icontains=query).values()
+        society_Date=Add_Society.objects.filter(Entry_Date__icontains=query).values()
+        Society_Sreach=society_Name.union(society_Address,society_City,society_Pincode,society_Houses,society_Date)
+
+            # Block Details Sreach
+
+        #b_name=Add_New_Block.objects.filter(Society_Name__icontains=query)        
+        b_no=Add_New_Block.objects.filter(Block_No__icontains=query)
+        b_floor=Add_New_Block.objects.filter(NO_Of_Floors__icontains=query)
+        b_flats=Add_New_Block.objects.filter(No_Of_Flats__icontains=query)
+        Block_sreach=b_no.union(b_floor,b_flats)
+
+            #house Details
+        h_no=Add_House.objects.filter(House_No__icontains=query)
+        h_type=Add_House.objects.filter(House_Type__icontains=query)
+        h_detail=Add_House.objects.filter(Detail__icontains=query)
+        h_date=Add_House.objects.filter(Entry_Date__icontains=query)
+        House_Sreach=h_no.union(h_type,h_detail,h_date)
+
+
+        
+    sreach={
+        'Society_Sreach':Society_Sreach,
+        'Block_sreach':Block_sreach,
+        'House_Sreach':House_Sreach,
         'query':query
     }
-    return render(request,sreach_Result_Page_Link,params)
+    return render(request,sreach_Result_Page_Link,sreach)
 
 
 

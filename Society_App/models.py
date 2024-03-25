@@ -188,26 +188,20 @@ class Complain(models.Model):
     Status=models.CharField(default="Pending", max_length=50)
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
     Complain=models.ForeignKey(Complain_Type, on_delete=models.CASCADE)
-
-     
-    
-
+ 
 class Sell_House(models.Model):
     House_Id=models.ForeignKey(Add_House, on_delete=models.CASCADE)
     Society_Id=models.ForeignKey(Add_Society, on_delete=models.CASCADE)
     Citizen_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Sell_Price=models.FloatField(default="",max_length=10)
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
-    
-
-    
+  
 class Rent_House(models.Model):
     House_Id=models.ForeignKey(Add_House, on_delete=models.CASCADE)
     Society_Id=models.ForeignKey(Add_Society, on_delete=models.CASCADE)
     Citizen_Id=models.ForeignKey(SingUp, on_delete=models.CASCADE)
     Rent_Price=models.FloatField(default="",max_length=20)
     Entry_Date=models.DateField(auto_created=True,default="2018-12-12")
-
 
 class Personal_Event_Booking(models.Model):
     House_Id=models.ForeignKey(Add_House, on_delete=models.CASCADE)
