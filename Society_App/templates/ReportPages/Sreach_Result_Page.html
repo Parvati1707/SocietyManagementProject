@@ -3,18 +3,25 @@
 {% load static %}
 
 {% block ReportContant %}
+
+<h1>Sreach Result</h1>
+
+{% if allposts|length < 1 %}
+<p>No search results</p>
+Your search query : <b>{{query}}</b> did not match any documents. <br>
+Suggestions:
+<ul>
+<li>Make sure that all words are spelled correctly.</li>
+<li>Try more general keywords.</li>
+<li> Try fewer keywords.</li>
+<li> Try different keywords.</li>
+</li>
+</ul>
+{% endif %}
+
 <div class="table-responsive">
     <table class="table border-info table-bordered">
-      <thead class="bg-info text-white">
-        <tr>
-          <th>Society Name</th>
-          <th>Address</th>
-          <th>City</th>
-          <th>PinCode</th>
-          <th>No Of House</th>
-          <th>Entry Date</th>
-        </tr>
-      </thead>
+      
       <tbody>
         {% for x in allposts %}
           <tr>

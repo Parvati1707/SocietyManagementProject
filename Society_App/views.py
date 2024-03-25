@@ -340,11 +340,21 @@ def Citizen_Report_Page(request):
 
 def Sreach_Result_Page(request):
     query=request.GET["query"]
-    print(request.GET["query"])
-    allposts=Add_Society.objects.filter(title__icontains=query).values()
-    #allposts=Add_Society.objects.all()
+
+    if len(query)>78:
+        allposts=Add_Society.objects.none
+    else:
+        allpost_Name=Add_Society.objects.filter(Society_Name__icontains=query).values()
+        allpost_Address=Add_Society.objects.filter(Address__icontains=query).values()
+        allpost_City=Add_Society.objects.filter(City__icontains=query).values()
+        allpost_Pincode=Add_Society.objects.filter(PinCode__icontains=query).values()
+        allpost_Houses=Add_Society.objects.filter(No_Of_House__icontains=query).values()
+        allpost_Date=Add_Society.objects.filter(Entry_Date__icontains=query).values()
+        allposts=allpost_Name.union(allpost_Address,allpost_City,allpost_Pincode,allpost_Houses,allpost_Date)
+
     params={
-        'allposts':allposts
+        'allposts':allposts,
+        'query':query
     }
     return render(request,sreach_Result_Page_Link,params)
 
