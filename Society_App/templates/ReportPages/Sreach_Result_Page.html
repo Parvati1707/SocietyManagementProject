@@ -5,8 +5,8 @@
 {% block ReportContant %}
 
 <h1>Sreach Result:</h1>
-<br>{% comment %} 
-{% if Society_Sreach or Block_sreach|length < 1 %}
+<br>
+{% if Society_Sreach|length < 1 and  Block_sreach|length < 1 and House_Sreach|length < 1 and Event_Sreach|length < 1 and Citizen_Sreach|length < 1 and Sell_Sreach|length < 1 and Rent_Sreach|length < 1 and Complain_sreach|length < 1 %}
 <p>No search results</p>
 Your search query : <b>{{query}}</b> did not match any documents. <br>
 Suggestions:
@@ -17,7 +17,7 @@ Suggestions:
 <li> Try different keywords.</li>
 </li>
 </ul>
-{% endif %} {% endcomment %}
+{% endif %}
 <div class="table-responsive">
     <table class="table border-info table-bordered">
       <tbody>
