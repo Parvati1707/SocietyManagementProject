@@ -6,6 +6,7 @@ from random import randint
 from .models import *
 from django.db import IntegrityError
 from django.contrib import messages
+from django.db.models import Q
 
 
 def Send_OTP(request):
@@ -346,35 +347,45 @@ def Sreach_Result_Page(request):
     else:
 
             # Society details Sreach
-        society_Name=Add_Society.objects.filter(Society_Name__icontains=query).values()
-        society_Address=Add_Society.objects.filter(Address__icontains=query).values()
-        society_City=Add_Society.objects.filter(City__icontains=query).values()
-        society_Pincode=Add_Society.objects.filter(PinCode__icontains=query).values()
-        society_Houses=Add_Society.objects.filter(No_Of_House__icontains=query).values()
-        society_Date=Add_Society.objects.filter(Entry_Date__icontains=query).values()
-        Society_Sreach=society_Name.union(society_Address,society_City,society_Pincode,society_Houses,society_Date)
+        Society_Sreach=Add_Society.objects.filter(Q(Society_Name__icontains=query) | Q(Address__icontains=query) | Q(City__icontains=query) | Q(PinCode__icontains=query) | Q(No_Of_House__icontains=query) | Q(Entry_Date__icontains=query))
 
             # Block Details Sreach
+       
+        Block_sreach=Add_New_Block.objects.filter(Q(Block_No__icontains=query) | Q(NO_Of_Floors__icontains=query) | Q(No_Of_Flats__icontains=query))
 
-        #b_name=Add_New_Block.objects.filter(Society_Name__icontains=query)        
-        b_no=Add_New_Block.objects.filter(Block_No__icontains=query)
-        b_floor=Add_New_Block.objects.filter(NO_Of_Floors__icontains=query)
-        b_flats=Add_New_Block.objects.filter(No_Of_Flats__icontains=query)
-        Block_sreach=b_no.union(b_floor,b_flats)
+            # house Details
 
-            #house Details
-        h_no=Add_House.objects.filter(House_No__icontains=query)
-        h_type=Add_House.objects.filter(House_Type__icontains=query)
-        h_detail=Add_House.objects.filter(Detail__icontains=query)
-        h_date=Add_House.objects.filter(Entry_Date__icontains=query)
-        House_Sreach=h_no.union(h_type,h_detail,h_date)
+        House_Sreach=Add_House.objects.filter(Q(House_No__icontains=query) | Q(House_Type__icontains=query) | Q(Detail__icontains=query) | Q(Entry_Date__icontains=query))
 
+            # Personal event Booking Info
+        
+        Event_Sreach=Personal_Event_Booking.objects.filter(Q(Event_Name__icontains=query) | Q(No_Of_Guest__icontains=query) | Q(Entry_Date__icontains=query))
 
+            # Citizen Info
+
+        Citizen_Sreach=Citizen_Registration.objects.filter(Q(TotalMembers__icontains=query) | Q(Resident_Type__icontains=query) | Q(FirstName__icontains=query) | Q(LastName__icontains=query) | Q(Gender__icontains=query) | Q(Profession__icontains=query) | Q(Contact__icontains=query) | Q(BlockNo__icontains=query) | Q(HouseNo__icontains=query))
+
+            # Sell Sreach Detail
+
+        Sell_Sreach=Sell_House.objects.filter(Q(Sell_Price__icontains=query) | Q(Entry_Date__icontains=query))
+
+            # Rent Sreach Detail
+
+        Rent_Sreach=Rent_House.objects.filter(Q(Rent_Price__icontains=query) | Q(Entry_Date__icontains=query))
+
+            # complain Details
+
+        Complain_sreach=Complain.objects.filter(Q(Subject__icontains=query) | Q(Status__icontains=query) | Q(Entry_Date__icontains=query))
         
     sreach={
         'Society_Sreach':Society_Sreach,
         'Block_sreach':Block_sreach,
         'House_Sreach':House_Sreach,
+        'Event_Sreach':Event_Sreach,
+        'Citizen_Sreach':Citizen_Sreach,
+        'Sell_Sreach':Sell_Sreach,
+        'Rent_Sreach':Rent_Sreach,
+        'Complain_sreach':Complain_sreach,
         'query':query
     }
     return render(request,sreach_Result_Page_Link,sreach)
@@ -782,7 +793,6 @@ def Entry_List(request):
         "guest_entry":guest_entry,
     }
     return render(request,Guest_Entry_List_Page_Link,Contaxt)
-
 
 def Security_Complain(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])

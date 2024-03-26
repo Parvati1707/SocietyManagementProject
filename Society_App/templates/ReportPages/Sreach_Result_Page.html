@@ -5,8 +5,8 @@
 {% block ReportContant %}
 
 <h1>Sreach Result:</h1>
-<br>
-{% if Society_Sreach|length < 1 %}
+<br>{% comment %} 
+{% if Society_Sreach or Block_sreach|length < 1 %}
 <p>No search results</p>
 Your search query : <b>{{query}}</b> did not match any documents. <br>
 Suggestions:
@@ -17,7 +17,7 @@ Suggestions:
 <li> Try different keywords.</li>
 </li>
 </ul>
-{% endif %}
+{% endif %} {% endcomment %}
 <div class="table-responsive">
     <table class="table border-info table-bordered">
       <tbody>
@@ -35,8 +35,6 @@ Suggestions:
     </table>
 </div>
 
-
-<br>
 <div class="table-responsive">
   <table class="table border-info table-bordered">
     <tbody>
@@ -68,5 +66,96 @@ Suggestions:
     </tbody>
   </table>
 </div>
+
+<div class="table-responsive">
+  <table class="table border-info table-bordered">
+    <tbody>
+      {% for x in Event_Sreach %}
+        <tr>
+          <td>{{x.House_Id}}</td>
+          <td>{{x.Society_Id}}</td>
+          <td>{{x.Citizen_Id}}</td>
+          <td>{{x.Event_Name}}</td>
+          <td>{{x.No_Of_Guest}}</td>
+          <td>{{x.Entry_Date}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table border-info table-bordered">
+    <tbody>
+      {% for x in Citizen_Sreach %}
+        <tr>
+          <td>{{x.singup}}</td>
+          <td>{{x.TotalMembers}}</td>
+          <td>{{x.BlockNo}}</td>
+          <td>{{x.HouseNo}}</td>
+          <td>{{x.Resident_Type}}</td>
+          <td>{{x.FirstName}}</td>
+          <td>{{x.LastName}}</td>
+          <td>{{x.BirthDate}}</td>
+          <td>{{x.Gender}}</td>
+          <td>{{x.Profession}}</td>
+          <td>{{x.AdharNumber}}</td>
+          <td>{{x.Contact}}</td>
+          <td>{{x.Contac2t}}</td>
+          <td>{{x.Address}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive">
+    <table class="table border-info table-bordered">
+      <tbody>
+        {% for x in Sell_Sreach %}
+          <tr>
+            <td>{{x.House_Id}}</td>
+            <td>{{x.Society_Id}}</td>
+            <td>{{x.Citizen_Id}}</td>
+            <td>{{x.Sell_Price}}</td>
+            <td>{{x.Entry_Date}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+<div class="table-responsive">
+  <table class="table border-info table-bordered">
+    <tbody>
+      {% for x in Rent_Sreach %}
+        <tr>
+          <td>{{x.House_Id}}</td>
+          <td>{{x.Society_Id}}</td>
+          <td>{{x.Citizen_Id}}</td>
+          <td>{{x.Rent_Price}}</td>
+          <td>{{x.Entry_Date}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table border-info table-bordered">
+    <tbody>
+      {% for x in Complain_sreach %}
+        <tr>
+          <td>{{x.Citizen_Id}}</td>
+          <td>{{x.Complain}}</td>
+          <td>{{x.Subject}}</td>
+          <td>{{x.Status}}</td>
+          <td>{{x.Entry_Date}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock ReportContant %}
