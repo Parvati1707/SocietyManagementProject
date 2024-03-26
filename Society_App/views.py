@@ -840,7 +840,7 @@ def Login_Validation(request):
 
     return render(request,Login_Page)
 
-def Load_Profile(request):
+""" def Load_Profile(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
     if login.Is_Citizen==True:
         citizen=Citizen_Registration.objects.get(singup=login)
@@ -853,16 +853,14 @@ def Load_Profile(request):
         default_Dict["profile_data"]=security
     else:
         messages.warning(request,"Session is not created")
-        return redirect(Login_Page)
+        return redirect(Login_Page) """
 
 def Logout(request):
     print(request.session['Login_Name'])
     del request.session['Login_Name']
     return redirect(Login_Page)
 
-def Registration_Validation(request):
-   # rl=["Citizen","Security","Admin","Committee"]
-
+def Registration_Validation(request):   
     if request.method=="POST":
         Role=request.POST.getlist('role') 
         print(Role)
