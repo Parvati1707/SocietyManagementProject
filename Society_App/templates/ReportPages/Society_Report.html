@@ -4,7 +4,7 @@
 
 
 {% block ReportContant %}
-
+{% comment %} 
 <div class="table-responsive">
     <table class="table border-info table-bordered">
       <thead class="bg-info text-white">
@@ -31,5 +31,23 @@
       </tbody>
     </table>
   </div>
+</div> {% endcomment %}
+{% for x in Society_Report %}  
+<div class="card mb-3" style="max-width: 540px; margin-left:25%; ">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src={{x.Society_Image.url}} class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{x.Society_Name}}</h5>
+        <p class="card-text">{{x.Address}}</p> 
+        <p class="card-text"><small class="text-body-secondary">City :{{x.City}}</small></p>
+        <p class="card-text"><small class="text-body-secondary">Pincode : {{x.PinCode}}</small></p>
+        <p class="card-text"><small class="text-body-secondary">No of Houses.{{x.No_Of_House}}</small></p>
+      </div>
+    </div>
+  </div>
 </div>
+{% endfor %}
 {% endblock ReportContant %}

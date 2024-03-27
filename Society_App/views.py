@@ -56,6 +56,7 @@ Add_Society_Page_Link="Admin/Add_Society.html"
 Add_Block_Page_Link="Admin/Add_Blocks.html"
 Add_Houses_Page_Link="Admin/Add_Houses.html" 
 Manage_Complain_Page_Link="Admin/Manage_Complain.html"
+Solve_Complain_Page_Link="Admin/Solve_complain_Page.html"
 
 
                                 #Citizen Pages..
@@ -80,6 +81,7 @@ Add_Event_Page_Link="Committee/Add_Event.html"
 Society_Event_List_Page_Link="Committee/Event_List.html"
 Add_Notice_Page_Link="Committee/Add_Notice.html"
 Committee_Manage_complain_Page_Link="Committee/Manage_Complain.html"
+Committee_solve_complain_Page_Link="Committee/Solve_complain_Page.html"
 Display_Owner_Information_Page_Link="Committee/Owner_info.html"
 Raise_Fund_Request_Page_Link="Committee/Raise_Fund_Request.html"
 Booking_Request_List_Page_Link="Committee/Booking_Request_List.html"
@@ -262,10 +264,29 @@ def Add_house(request):
 
 def Manage_Complain_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])
+    complain=Complain.objects.all()
     context={
+        'complain':complain,
         "Login":login
     }
     return render(request,Manage_Complain_Page_Link,context)
+
+def Solve_Complain_page(request,id):    
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    complain=Complain.objects.get(id=id)
+    context={
+        'complain':complain,
+        "Login":login
+    }
+    return render(request,Solve_Complain_Page_Link,context)
+
+def Solve_Complain(request,id):
+    complain=Complain.objects.get(id=id)
+
+    complain.Status=request.GET["Status"]
+    complain.save()
+
+    return redirect(Manage_Complain_Page)
 
 
 
@@ -288,7 +309,7 @@ def Report_Page(request):
     return render(request,Report_Page_Link)
 
 def Society_Report_Page(request):
-    Society_Report=Add_Society.objects.all().values()
+    Society_Report=Add_Society.objects.all()
     context={
         'Society_Report':Society_Report,
 
@@ -625,7 +646,7 @@ def Arrange_Meeting_Page(request):
 def Insert_In_Arreage_Meeting(request):
     insert_arrange_meeting=Arrange_Meeting.objects.create(Meet_Agenda=request.POST["meeting_agenda"],DateTime=request.POST["meetingdatetime"],Meet_conclusion=request.POST["meeting_Conclusion"])
     
-    messages.warning(request,"Data Successfully Saved....")
+    messages.success(request,"Data Successfully Saved....")
 
     return redirect(Arrange_Meeting_Page)
 
@@ -642,7 +663,7 @@ def Insert_Raise_Fund_Request(request):
     
     Insert_Fund_request=Raise_Fund.objects.create(Fund_Type=Type,DateTime=request.POST["datetime"])
     
-    messages.warning(request,"Data Successfully Saved....")
+    messages.success(request,"Data Successfully Saved....")
 
     return redirect(Raise_fund_Request_Page)
 
@@ -659,7 +680,7 @@ def Insert_Notice(request):
 
     insert_notice=Notice.objects.create(Notice=Type,Subject=request.POST["Notice_Subject"],DateTime=request.POST["notice_datetime"])
 
-    messages.warning(request,"Data Successfully Saved....")
+    messages.success(request,"Data Successfully Saved....")
 
     return redirect(Add_Notice_Page)
 
@@ -699,6 +720,24 @@ def Committee_Manage_Complain_Page(request):
         "committee":committee
     }
     return render(request,Committee_Manage_complain_Page_Link,Context)
+
+def Committee_Solve_Complain_Page(request,id):
+    complain=Complain.objects.get(id=id)
+    login=SingUp.objects.get(Username=request.session['Login_Name'])
+    committee=Committee_Registration.objects.get(singup=login)
+    Context={
+        'complain':complain,
+        "committee":committee
+    }
+    return render(request,Committee_solve_complain_Page_Link,Context)
+
+def Committee_Solve_Complain(request,id):
+    complain=Complain.objects.get(id=id)
+
+    complain.Status=request.GET["Status"]
+    complain.save()
+
+    return redirect(Committee_Manage_Complain_Page)
 
 def Booking_Request_List_Page(request):
     login=SingUp.objects.get(Username=request.session['Login_Name'])

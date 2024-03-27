@@ -1,29 +1,30 @@
 {% extends "Admin/Admin_Profile.html" %}
 
 {% block AdminContant %}
-<div class="table-responsive">
-    <table class="table border-info table-bordered">
-        <thead class="bg-info text-white">
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Complain Type</th>
-                <th>Subject</th>
-                <th>Status</th>
-                <th>Solve</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Jems</td>
-                <td>Water Supply</td>
-                <td>Inregular Water</td>
-                <td>Pending</td>
-                <td><a href="###" class="btn btn-primary" height="50%">Update</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Citizen Name</th>
+            <th>Complain</th>
+            <th>Subject of Complain</th>
+            <th>Status of Complain</th>
+            <th>Entry_Date</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for x in complain %}
+          <tr>
+            <td>{{x.Citizen_Id}}</td>
+            <td>{{x.Complain}}</td>
+            <td>{{x.Subject}}</td>
+            <td>{{x.Status}}</td>
+            <td>{{x.Entry_Date}}</td>    
+            {% if x.Status == "Pending" %}
+            <td><a href="/Solve_Complain_page/{{ x.id }}" class="btn btn-primary">Solve</a></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
 {% endblock AdminContant %}
 

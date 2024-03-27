@@ -5,7 +5,7 @@
 
 {% block ReportContant %}
 
-<div class="table-responsive">
+{% comment %} <div class="table-responsive">
     <table class="table border-info table-bordered">
       <thead class="bg-info text-white">
         <tr>
@@ -47,5 +47,26 @@
       </tbody>
     </table>
   </div>
+</div> {% endcomment %}
+
+{% for x in Citizen_Report %}
+<div class="card mb-3" style="max-width: 540px; margin-left:25%; ">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src={{x.Citizen_Image.url}} class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{x.FirstName}} {{x.LastName}}</h5>
+        <p class="card-text">{{x.Address}}</p> 
+        <p class="card-text"><small class="text-body-secondary">Professio : {{x.Profession}}</small></p>
+        <p class="card-text"><small class="text-body-secondary">Block No.{{x.BlockNo}}</small></p>
+        <p class="card-text"><small class="text-body-secondary">House No.{{x.HouseNo}}</small></p>
+        <p class="card-text"><small class="text-body-secondary">Contact: {{x.Contact}}</small></p>
+       
+      </div>
+    </div>
+  </div>
 </div>
+{% endfor %}
 {% endblock ReportContant %}
