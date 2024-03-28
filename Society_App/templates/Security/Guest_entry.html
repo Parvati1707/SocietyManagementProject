@@ -49,8 +49,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="datetime" class="control-label col-form-label">Date Time of Meeting </label>
-                            <input type="date" required name="datetime" class="form-control" id="datetime" />
+                            <label for="datetime" class="control-label col-form-label">Entry Date </label>
+                            <input type="date" required name="datetime"  max="" class="form-control" id="datetime" />
                         </div>
                     </div>                    
                 </div>
@@ -83,4 +83,8 @@
                     ---------------- -->
 </div>
 
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById("datetime").setAttribute("max",today);
+</script>
 {% endblock SecuritynAV %}

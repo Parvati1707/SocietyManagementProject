@@ -64,7 +64,7 @@
 
                 <div class="col-md-8">
                     <div class="form-floating mb-3">
-                        <input type="date" class="form-control" required id="Entry_Date" name="Entry_Date" placeholder="Password" />
+                        <input type="date" class="form-control" required id="Entry_Date" name="Entry_Date" max="" placeholder="Password" />
                         <label for="Entry_Date">Entry Date</label>
                     </div>
                 </div>
@@ -92,4 +92,9 @@
         </form>
     </div>
 </div>
+
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById("Entry_Date").setAttribute("max",today);
+</script>
 {% endblock AdminContant %}

@@ -44,7 +44,7 @@
                 
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="date" class="form-control" required  id="tb-cpwd" name="Entry_Date" placeholder="Entry Date" />
+                        <input type="date" class="form-control" required  id="Entry_Date"  max="" name="Entry_Date" placeholder="Entry Date" />
                         <label for="Entry Date">Date of Complaint</label>
                     </div>
                 </div>
@@ -64,4 +64,8 @@
         </form>
     </div>
 </div>
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById("Entry_Date").setAttribute("max",today);
+</script>
 {% endblock CitizenNav  %}

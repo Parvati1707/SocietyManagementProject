@@ -33,7 +33,7 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="meetingdatetime" class="control-label col-form-label">Date Time of Meeting </label>
-                            <input type="date" name="meetingdatetime" required  class="form-control" id="meetingdatetime" />
+                            <input type="date" name="meetingdatetime" required  class="form-control" mx="" id="meetingdatetime" />
                         </div>
                     </div>                    
                 </div>
@@ -66,4 +66,8 @@
                     ---------------- -->
 </div>
 
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById("meetingdatetime").setAttribute("max",today);
+</script>
 {% endblock CommitteeNav %}

@@ -48,7 +48,7 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="Eventdatetime" class="control-label col-form-label">Date Of Notice</label>
-                            <input type="date" name="Eventdatetime" required  class="form-control" id="Eventdatetime" />
+                            <input type="date" name="Eventdatetime" required  class="form-control" max="" id="Eventdatetime" />
                         </div>
                     </div>                    
                 </div>
@@ -70,4 +70,8 @@
                     ---------------- -->
 </div>
 
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById("Eventdatetime").setAttribute("max",today);
+</script>
 {% endblock CommitteeNav %}

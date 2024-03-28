@@ -70,4 +70,8 @@
                     ---------------- -->
 </div>
 
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById("notice_datetime").setAttribute("max",today);
+</script>
 {% endblock CommitteeNav %}
